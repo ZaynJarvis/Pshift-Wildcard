@@ -5,8 +5,6 @@ import Step from '@material-ui/core/Step';
 import StepButton from '@material-ui/core/StepButton';
 import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
