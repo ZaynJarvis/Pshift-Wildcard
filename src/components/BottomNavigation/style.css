@@ -1,15 +1,15 @@
 .bottom-navigation {
   height: var(--footer-height);
   background: #444;
-  color: #fff;
   display: flex;
   justify-content: space-evenly;
   
 }
-.bottom-navigation > div {
+.bottom-navigation >.nav-link {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #aaa;
 }

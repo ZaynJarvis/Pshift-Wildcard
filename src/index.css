@@ -1,3 +1,5 @@
+@import '~antd/dist/antd.css';
+
 :root {
   --header-height: 50px;
   --footer-height: 40px;
