@@ -1,0 +1,20 @@
+.project-navigator {
+  border-radius: 10px;
+  background: #ddd;
+  display: flex;
+  width: 250px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: 1px 2px 3px #0003;
+}
+
+.project-navigator > div {
+  padding: 10px 20px;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.project-navigator > .active {
+  background: powderblue;
+}
