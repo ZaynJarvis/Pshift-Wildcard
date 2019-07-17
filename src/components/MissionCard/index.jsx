@@ -6,7 +6,7 @@ export default ({ id, title, description, imageUrl }) => {
 		alert(id);
 	};
 	return (
-		<div className="wrapper">
+		<div className="project-wrapper"  onClick={() => navigate()}>
 			<div className="main-content">
 				<div className="text-content">
 					<h4>{title}</h4>
@@ -14,7 +14,7 @@ export default ({ id, title, description, imageUrl }) => {
 				</div>
 				{imageUrl && <img src={imageUrl} alt="logo for this project" />}
 			</div>
-			<div className="navigation" onClick={() => navigate()}>
+			<div className="navigation">
 				View Milestone
 			</div>
 		</div>

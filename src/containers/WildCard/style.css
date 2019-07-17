@@ -1,0 +1,8 @@
+.page {
+  height: 100vh;
+}
+.page-content {
+  height: calc(100vh - var(--header-height) - var(--footer-height));
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}

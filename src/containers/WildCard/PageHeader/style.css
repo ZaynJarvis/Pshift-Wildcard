@@ -1,0 +1,15 @@
+
+.page-header {
+  height: var(--header-height);
+  text-align: center;
+  box-shadow: 0px 4px 2px -2px #3334;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.logo-title {
+  height: 80%;
+}

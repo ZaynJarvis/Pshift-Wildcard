@@ -7,6 +7,7 @@ import { linkTo } from '@storybook/addon-links';
 import { Button, Welcome } from '@storybook/react/demo';
 import MissionCard from '../src/components/MissionCard';
 import ProjectPage from '../src/containers/ProjectPage';
+// import WildCard from '../src/containers/WildCard';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -30,3 +31,5 @@ storiesOf('MissionCard', module).add('test', () => (
 ));
 
 storiesOf('Project Page', module).add('basic', () => <ProjectPage />);
+
+// storiesOf('WildCard', module).add('basic', () => <WildCard />);
