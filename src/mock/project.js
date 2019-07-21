@@ -11,6 +11,7 @@ export default [
 		imageUrl:
 			'https://images.pexels.com/photos/169573/pexels-photo-169573.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=100',
 		status: 0,
+		conflict: true,
 	},
 	{
 		title: 'Nodejs backend',
@@ -26,6 +27,7 @@ export default [
 		tasks: [['a'], ['b', 'b'], ['c']],
 		imageUrl:
 			'https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=100',
+		conflict: true,
 		status: 2,
 	},
 	{

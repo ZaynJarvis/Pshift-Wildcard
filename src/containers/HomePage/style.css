@@ -1,0 +1,7 @@
+.project-page {
+  width: 98%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,0 +1,16 @@
+.tag-wrapper {
+  width: 95vw;
+  margin: 16px auto;
+  overflow: scroll;
+  display: flex;
+  white-space: wrap;
+}
+
+.tag-item {
+  white-space: nowrap;
+  border-radius: 10000px;
+  padding: 6px 7px;
+  background: #aaa3;
+  font-size: 0.8rem;
+  margin: 5px 10px;
+}
