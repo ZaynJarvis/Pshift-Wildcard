@@ -12,4 +12,10 @@
 .search-bar > input {
   width: 80%;
   outline: none;
+  font-size: 12px;
+  border: none;
+  box-shadow: none;
+}
+select:focus {
+  font-size: 12px;
 }

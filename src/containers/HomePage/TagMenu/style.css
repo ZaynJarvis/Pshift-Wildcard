@@ -3,7 +3,6 @@
   margin: 16px auto;
   overflow: scroll;
   display: flex;
-  white-space: wrap;
 }
 
 .tag-item {
