@@ -19,8 +19,8 @@ export default () => {
 					<>
 						{Projects.filter(p => !p.completed).map((v, i) => (
 							<MissionCard
-								key={i}
-								id={i}
+								key={v.id}
+								id={v.id}
 								title={v.title}
 								description={v.description}
 								imageUrl={v.imageUrl}
@@ -33,7 +33,8 @@ export default () => {
 					<>
 						{Projects.filter(p => p.completed).map((v, i) => (
 							<MissionCard
-								id={i}
+								key={v.id}
+								id={v.id}
 								title={v.title}
 								description={v.description}
 								imageUrl={v.imageUrl}

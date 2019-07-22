@@ -8,7 +8,8 @@ const MissionCard = ({ id, title, description, imageUrl, showProgress, history }
 	const tasks = Projects[id].tasks;
 	const status = Projects[id].status;
 	const conflict = Projects[id].conflict;
-	console.log(conflict);
+	const completed = Projects[id].completed;
+	console.log(Projects[id]);
 	return (
 		<div
 			className="project-wrapper"
@@ -35,8 +36,8 @@ const MissionCard = ({ id, title, description, imageUrl, showProgress, history }
 							key={v}
 							className={[
 								'progress-traker',
-								i < status && 'progress-complete',
-								i === status && conflict && ' progress-conflict',
+								(i < status || completed) && 'progress-complete',
+								i === status && conflict && !completed && 'progress-conflict',
 							].join(' ')}
 						/>
 					))}

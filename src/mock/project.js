@@ -1,5 +1,6 @@
 export default [
 	{
+		id: 0,
 		title: 'One day build',
 		description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
 		tasks: [
@@ -14,6 +15,7 @@ export default [
 		conflict: true,
 	},
 	{
+		id: 1,
 		title: 'Nodejs backend',
 		description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
 		tasks: [['a'], ['b', 'b'], ['c']],
@@ -22,6 +24,7 @@ export default [
 		status: 1,
 	},
 	{
+		id: 2,
 		title: 'Lorem Ipsum',
 		description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
 		tasks: [['a'], ['b', 'b'], ['c']],
@@ -31,6 +34,7 @@ export default [
 		status: 2,
 	},
 	{
+		id: 3,
 		title: 'React Zeroxac',
 		description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
 		tasks: [['a'], ['b', 'b'], ['c']],
@@ -39,6 +43,7 @@ export default [
 		status: 1,
 	},
 	{
+		id: 4,
 		title: 'Lorem Ipsum',
 		description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
 		tasks: [['a'], ['b', 'b'], ['c']],
@@ -47,6 +52,7 @@ export default [
 		status: 1,
 	},
 	{
+		id: 5,
 		title: 'Telegram Chatbot',
 		description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
 		tasks: [
@@ -60,6 +66,7 @@ export default [
 		status: 2,
 	},
 	{
+		id: 6,
 		title: 'Project Iceberx',
 		description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
 		tasks: [
