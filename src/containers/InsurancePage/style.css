@@ -44,7 +44,12 @@
   font-weight: 300;
   margin: 10px 0;
 }
-
+.insurance > .money {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: #fff;
+}
 .insurance > p {
   font-weight: 200;
   margin: 10px 0;

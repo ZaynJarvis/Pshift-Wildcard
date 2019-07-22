@@ -13,7 +13,7 @@ const Insurance = ({ feature }) => (
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo perferendis a accusamus
 			distinctio et mollitia quasi sed earum.
 		</p>
-		<h2>$32</h2>
+		<h2 className="money">$32</h2>
 		<FontAwesomeIcon className="add-button" icon={faPlus} />
 	</div>
 );

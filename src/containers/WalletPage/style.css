@@ -7,20 +7,21 @@
 }
 
 .wallet-page > img {
-  width: 98%;
-  margin: auto;
-  position: fixed;
+  width: 90%;
+  margin: 1rem auto;
   object-fit: contain;
   transition: 0.1s;
 }
-
+.wallet-page > h2 {
+  margin-bottom: 0;
+  align-self: flex-start;
+  margin-left: 10px;
+}
 .transaction-wrapper {
   border-radius: 16px;
   padding: 0;
   width: 95%;
-  margin-top: 30vh;
-  margin-bottom: 1rem;
-  z-index: 1;
+  margin: 1rem 0;
   background: #fff;
   border: 1px solid #9993;
   overflow: hidden;
