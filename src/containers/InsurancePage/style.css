@@ -1,3 +1,9 @@
+.insurance-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 90%;
+}
 .insurance {
   width: 90%;
   border-radius: 20px;

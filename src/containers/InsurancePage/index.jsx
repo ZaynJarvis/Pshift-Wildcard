@@ -5,8 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import Layout from '../Layout';
-import MissionCard from '../../components/MissionCard';
-import Projects from '../../mock/project';
 
 const Insurance = ({ feature }) => (
 	<div className={'insurance ' + feature}>
@@ -22,8 +20,7 @@ const Insurance = ({ feature }) => (
 export default () => {
 	return (
 		<Layout>
-			<div className="project-page">
-				<div className="project-content" />
+			<div className="insurance-page">
 				<Insurance feature="basic" />
 				<Insurance feature="intermediate" />
 				<Insurance feature="advanced" />
