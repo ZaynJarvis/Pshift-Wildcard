@@ -1,0 +1,46 @@
+.insurance {
+  width: 90%;
+  border-radius: 20px;
+  padding: 1rem;
+  margin: 1.4rem auto;
+  display: flex;
+  height: 11rem;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.basic {
+  background: linear-gradient(139deg, #d4ff90, #6acb9e);
+  box-shadow: 3px 4px 5px #d4ff9084;
+}
+
+.intermediate {
+  background: linear-gradient(139deg, #9fbbe6, #6acbb6);
+  box-shadow: 3px 4px 5px #9fbbe684;
+}
+
+.advanced {
+  background: linear-gradient(139deg, #ff90de, #cb6a97);
+  box-shadow: 3px 4px 5px #ff90de84;
+}
+
+.insurance > .add-button {
+  position: absolute;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  bottom: 16px;
+  right: 16px;
+}
+
+.insurance > h2 {
+  font-weight: 300;
+  margin: 10px 0;
+}
+
+.insurance > p {
+  font-weight: 200;
+  margin: 10px 0;
+  color: #555;
+}

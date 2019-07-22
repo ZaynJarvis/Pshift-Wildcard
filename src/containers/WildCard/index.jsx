@@ -6,6 +6,7 @@ import ProjectPage from '../ProjectPage';
 import HomePage from '../HomePage';
 import MilestonePage from '../MilestonePage';
 import Layout from '../Layout';
+import InsurancePage from '../InsurancePage';
 export default () => {
 	return (
 		<Router>
@@ -13,7 +14,7 @@ export default () => {
 				<Route path="/" exact component={ProjectPage} />
 				<Route path="/project/:id" component={MilestonePage} />
 				<Route path="/home" component={HomePage} />
-				<Route path="/b" component={() => <Layout>400</Layout>} />
+				<Route path="/insurance" component={InsurancePage} />
 				<Route path="/c" component={() => <Layout>400</Layout>} />
 				<Route path="/d" component={() => <Layout>400</Layout>} />
 			</div>

@@ -7,8 +7,8 @@ import { NavLink } from 'react-router-dom';
 export default () => {
 	const config = [
 		{ to: '/home', icon: faHome },
-		{ to: '/c', icon: faTag },
-		{ to: '/b', icon: faBell },
+		{ to: '/insurance', icon: faTag },
+		{ to: '/c', icon: faBell },
 		{ to: '/d', icon: faWallet },
 		{ to: '/', icon: faUser },
 	];
