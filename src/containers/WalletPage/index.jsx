@@ -2,8 +2,9 @@ import React from 'react';
 
 import './style.css';
 import transactions from '../../mock/transactions';
-import card from '../../mock/card.jpg';
 import Layout from '../Layout';
+
+const Card = () => <div className="payment-card">200-301-201-222</div>;
 
 export default () => {
 	const [currency, setCurrency] = React.useState('$');
@@ -16,7 +17,7 @@ export default () => {
 	return (
 		<Layout title="Wallet">
 			<div className="wallet-page">
-				<img src={card} alt="wallet" />
+				<Card />
 				<div className="wallet-header">
 					<h2>Latest Transactions:</h2>
 					<div className="currency-sign">

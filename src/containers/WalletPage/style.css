@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap');
+
 .wallet-page {
   min-height: 100%;
   width: 100%;
@@ -6,11 +8,31 @@
   flex-direction: column;
 }
 
-.wallet-page > img {
+.payment-card {
   width: 90%;
+  height: 200px;
+  border-radius: 20px;
+  box-shadow: 0px 2px 5px #000;
   margin: 1rem auto;
-  object-fit: contain;
   transition: 0.1s;
+  background: linear-gradient(120deg, #2f5d72, #302f65);
+  position: relative;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 200;
+}
+.payment-card::after {
+  content: "LISA";
+  color: #fff;
+  position: absolute;
+  font-size: 2rem;
+  right: 16px;
+  bottom: 16px;
+  font-family: 'Black Han Sans', sans-serif;
+  font-style: italic;
 }
 
 .wallet-header {
