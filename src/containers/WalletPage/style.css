@@ -45,6 +45,7 @@
 .wallet-header > h2 {
   margin-bottom: 0;
   align-self: flex-start;
+  margin: auto 0;
   margin-left: 10px;
 }
 
@@ -53,6 +54,7 @@
   align-self: flex-end;
   justify-content: flex-end;
   align-items: center;
+  height: 100%;
 }
 
 .currency-sign > span {
