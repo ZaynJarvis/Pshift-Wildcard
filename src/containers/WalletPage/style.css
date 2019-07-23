@@ -12,11 +12,32 @@
   object-fit: contain;
   transition: 0.1s;
 }
-.wallet-page > h2 {
+
+.wallet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.wallet-header > h2 {
   margin-bottom: 0;
   align-self: flex-start;
   margin-left: 10px;
 }
+
+.currency-sign {
+  display:flex;
+  align-self: flex-end;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.currency-sign > span {
+  margin: 10px;
+  cursor: pointer;
+}
+
 .transaction-wrapper {
   border-radius: 16px;
   padding: 0;
