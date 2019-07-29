@@ -36,14 +36,14 @@ export default function VerticalLinearStepper({ id }) {
 		<div className={classes.root}>
 			<Stepper nonLinear activeStep={activeStep} orientation="vertical">
 				{tasks.map((_, index) => (
-					<Step key={_}>
+					<Step key={index}>
 						<StepButton completed={status[index]} onClick={() => setActiveStep(index)}>
 							Phase {index}
 						</StepButton>
 						<StepContent>
 							<List component="nav" aria-label="Secondary mailbox folders">
 								{tasks[index].map(v => (
-									<ListItem button>
+									<ListItem button key={v}>
 										<ListItemText primary={v} />
 									</ListItem>
 								))}
