@@ -6,10 +6,10 @@ import { NavLink } from 'react-router-dom';
 
 export default () => {
 	const config = [
-		{ to: '/home', icon: faHome },
-		{ to: '/insurance', icon: faTag },
-		{ to: '/wallet', icon: faWallet },
-		{ to: '/', icon: faUser },
+		{ to: '/', icon: faUser, label: 'market' },
+		{ to: '/home', icon: faHome, label: 'projects' },
+		{ to: '/insurance', icon: faTag, label: 'insurance' },
+		{ to: '/wallet', icon: faWallet, label: 'wallet' },
 	];
 	return (
 		<div className="bottom-navigation">
@@ -19,13 +19,13 @@ export default () => {
 					to={c.to}
 					exact
 					activeStyle={{
-						fontWeight: 'bold',
-						color: '#000',
+						opacity: 1,
 					}}
 					key={i}
 				>
 					<div>
 						<FontAwesomeIcon icon={c.icon} />
+						<p>{c.label}</p>
 					</div>
 				</NavLink>
 			))}

@@ -8,7 +8,7 @@ export default ({ page, setPage }) => {
 				In Progress
 			</div>
 			<div onClick={() => setPage(1)} className={page === 1 ? 'active' : ''}>
-				Achieved
+				Completed
 			</div>
 		</div>
 	);
