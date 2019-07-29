@@ -9,7 +9,6 @@ const MissionCard = ({ id, title, description, imageUrl, showProgress, history }
 	const status = Projects[id].status;
 	const conflict = Projects[id].conflict;
 	const completed = Projects[id].completed;
-	console.log(Projects[id]);
 	return (
 		<div
 			className="project-wrapper"

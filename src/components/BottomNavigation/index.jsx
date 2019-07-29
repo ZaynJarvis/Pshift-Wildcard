@@ -1,13 +1,13 @@
 import React from 'react';
 import './style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faTag, faBell, faUser, faWallet } from '@fortawesome/free-solid-svg-icons';
-import { NavLink } from 'react-router-dom';
+import { faHome, faTag, faUser, faWallet } from '@fortawesome/free-solid-svg-icons';
+import { NavLink, withRouter } from 'react-router-dom';
 
-export default () => {
+const BottomNavigation = ({ location }) => {
 	const config = [
-		{ to: '/', icon: faUser, label: 'market' },
-		{ to: '/home', icon: faHome, label: 'projects' },
+		{ to: '/market', icon: faUser, label: 'market' },
+		{ to: '/projects', icon: faHome, label: 'projects' },
 		{ to: '/insurance', icon: faTag, label: 'insurance' },
 		{ to: '/wallet', icon: faWallet, label: 'wallet' },
 	];
@@ -16,11 +16,9 @@ export default () => {
 			{config.map((c, i) => (
 				<NavLink
 					className="nav-link"
+					activeClassName={location.pathname !== c.to ? null : 'active-route'}
 					to={c.to}
 					exact
-					activeStyle={{
-						opacity: 1,
-					}}
 					key={i}
 				>
 					<div>
@@ -32,3 +30,5 @@ export default () => {
 		</div>
 	);
 };
+
+export default withRouter(BottomNavigation);

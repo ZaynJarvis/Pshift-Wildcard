@@ -2,7 +2,6 @@
 .page-header {
   height: var(--header-height);
   text-align: center;
-  /* box-shadow: 0px 4px 2px -2px #3334; */
   border-bottom: 1px solid #9993;
   background: #fff;
   display: flex;
@@ -10,7 +9,13 @@
   align-items: center;
   margin: auto;
 }
+.page-header > h1 {
+  font-family: 'Black Han Sans', sans-serif;
+  font-weight: 100;
+  margin: 0;
+  transform: translateY(3px);
+}
 
 .logo-title {
-  height: 70%;
+  height: 60%;
 }

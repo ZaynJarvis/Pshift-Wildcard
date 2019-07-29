@@ -19,7 +19,7 @@ const Insurance = ({ feature }) => (
 );
 export default () => {
 	return (
-		<Layout>
+		<Layout title="Insurance">
 			<div className="insurance-page">
 				<Insurance feature="basic" />
 				<Insurance feature="intermediate" />

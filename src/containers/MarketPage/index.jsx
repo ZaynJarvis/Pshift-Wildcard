@@ -1,6 +1,7 @@
 import React from 'react';
 
-import Navigation from './Navigation';
+import SearchBar from './SearchBar';
+import TagMenu from './TagMenu';
 import './style.css';
 
 import Layout from '../Layout';
@@ -11,21 +12,21 @@ export default () => {
 	const [page, setPage] = React.useState(0);
 
 	return (
-		<Layout>
+		<Layout title="WildCard">
 			<div className="project-page">
 				<div className="project-content" />
-				<Navigation page={page} setPage={setPage} />
+				<SearchBar page={page} setPage={setPage} />
+				<TagMenu />
 				{page === 0 ? (
 					<>
 						{Projects.filter(p => !p.completed).map((v, i) => (
 							<MissionCard
-								key={v.id}
-								id={v.id}
+								key={i}
+								id={i}
 								title={v.title}
 								description={v.description}
 								imageUrl={v.imageUrl}
 								tasks={v.tasks}
-								showProgress={true}
 							/>
 						))}
 					</>
@@ -33,13 +34,12 @@ export default () => {
 					<>
 						{Projects.filter(p => p.completed).map((v, i) => (
 							<MissionCard
-								key={v.id}
-								id={v.id}
+								key={i}
+								id={i}
 								title={v.title}
 								description={v.description}
 								imageUrl={v.imageUrl}
 								tasks={v.tasks}
-								showProgress={true}
 							/>
 						))}
 					</>

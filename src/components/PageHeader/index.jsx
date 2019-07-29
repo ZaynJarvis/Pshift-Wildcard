@@ -4,6 +4,6 @@ import './style.css';
 
 export default ({ title }) => {
 	return (
-		<div className="page-header">{title ? <h3>{title}</h3> : <Logo className="logo-title" />}</div>
+		<div className="page-header">{title ? <h1>{title}</h1> : <Logo className="logo-title" />}</div>
 	);
 };
