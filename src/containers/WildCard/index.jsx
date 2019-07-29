@@ -17,7 +17,6 @@ export default () => {
 				<Route path="/home" component={HomePage} />
 				<Route path="/insurance" component={InsurancePage} />
 				<Route path="/wallet" component={WalletPage} />
-				<Route path="/d" component={() => <Layout>400</Layout>} />
 			</div>
 		</Router>
 	);

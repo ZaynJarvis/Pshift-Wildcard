@@ -8,7 +8,6 @@ export default () => {
 	const config = [
 		{ to: '/home', icon: faHome },
 		{ to: '/insurance', icon: faTag },
-		{ to: '/d', icon: faBell },
 		{ to: '/wallet', icon: faWallet },
 		{ to: '/', icon: faUser },
 	];
