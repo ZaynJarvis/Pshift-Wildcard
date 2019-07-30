@@ -1,9 +1,9 @@
 export default [
   {
     id: 0,
-    title: "One day build",
+    title: "React Prototype",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "Building a prototype application for banking sector with preferably following stack/key requirements. I can consider a different technology stack if requirements are met: React JS, Golang, Postgre Sql, Low latency, High performance measured in milliseconds",
     tasks: [
       ["Discussion on Project structure"],
       ["Frontend implement"],
