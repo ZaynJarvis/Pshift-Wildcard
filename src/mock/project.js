@@ -16,12 +16,12 @@ export default [
   },
   {
     id: 1,
-    title: "Nodejs backend",
+    title: "Node.js backend",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "Dear All, I have node based application want to upload to google compute engine. Following task need to be done: 1. I have local docker image, 2. You want to setup compute engine, 3. Setup DNS",
     tasks: [["a"], ["b", "b"], ["c"]],
     imageUrl:
-      "https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwiZ4q35-tzjAhXq4HMBHawUCcYQjRx6BAgBEAU&url=https%3A%2F%2Fthriveglobal.com%2Fstories%2Fwhat-is-the-future-of-node-js%2F&psig=AOvVaw1ewoTXl_YHa0ZTbqgNjVky&ust=1564586981115027",
+      "https://content.thriveglobal.com/wp-content/uploads/2017/10/node.jpg",
     status: 1
   },
   {
