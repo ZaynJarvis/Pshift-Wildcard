@@ -1,50 +1,108 @@
 import React from 'react';
 
-import Navigation from './Navigation';
 import './style.css';
-
 import Layout from '../Layout';
-import MissionCard from '../../components/MissionCard';
-import Projects from '../../mock/project';
+
+import { Container, Row, Col, ButtonGroup, Button, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 export default () => {
-	const [page, setPage] = React.useState(0);
-
 	return (
 		<Layout title="Projects">
-			<div className="project-page">
-				<div className="project-content" />
-				<Navigation page={page} setPage={setPage} />
-				{page === 0 ? (
-					<>
-						{Projects.filter(p => !p.completed).map((v, i) => (
-							<MissionCard
-								key={v.id}
-								id={v.id}
-								title={v.title}
-								description={v.description}
-								imageUrl={v.imageUrl}
-								tasks={v.tasks}
-								showProgress={true}
-							/>
-						))}
-					</>
-				) : (
-					<>
-						{Projects.filter(p => p.completed).map((v, i) => (
-							<MissionCard
-								key={v.id}
-								id={v.id}
-								title={v.title}
-								description={v.description}
-								imageUrl={v.imageUrl}
-								tasks={v.tasks}
-								showProgress={true}
-							/>
-						))}
-					</>
-				)}
-			</div>
+			<Container>
+				
+				<Row>
+					<Col>
+						<ButtonGroup className="centralize">
+							<Button variant="primary">In Progress</Button>
+							<Button variant="light">Completed</Button>
+						</ButtonGroup>
+					</Col>
+				</Row>
+			
+				<Row>
+					<Col md={4}>
+						<Card>
+						<Card.Img variant="top" src="https://via.placeholder.com/180x100.png" />
+						<Card.Body>
+							<Card.Title>Card Title</Card.Title>
+							<Card.Text>
+							Some quick example text to build on the card title and make up the bulk of
+							the card's content.
+							</Card.Text>
+							<Button variant="primary">Manage</Button>
+						</Card.Body>
+						<ListGroup className="list-group-flush">
+							<ListGroup.Item variant="success">Phase 1 of 4: In Progress</ListGroup.Item>
+						</ListGroup>
+						</Card>
+					</Col>
+					<Col md={4}>
+						<Card>
+						<Card.Img variant="top" src="https://via.placeholder.com/180x100.png" />
+						<Card.Body>
+							<Card.Title>Card Title</Card.Title>
+							<Card.Text>
+							Some quick example text to build on the card title and make up the bulk of
+							the card's content.
+							</Card.Text>
+							<Button variant="primary">Manage</Button>
+						</Card.Body>
+						<ListGroup className="list-group-flush">
+							<ListGroup.Item variant="success">Phase 1 of 4: In Progress</ListGroup.Item>
+						</ListGroup>
+						</Card>
+					</Col>
+					<Col md={4}>
+						<Card>
+						<Card.Img variant="top" src="https://via.placeholder.com/180x100.png" />
+						<Card.Body>
+							<Card.Title>Card Title</Card.Title>
+							<Card.Text>
+							Some quick example text to build on the card title and make up the bulk of
+							the card's content.
+							</Card.Text>
+							<Button variant="primary">Manage</Button>
+						</Card.Body>
+						<ListGroup className="list-group-flush">
+							<ListGroup.Item variant="success">Phase 1 of 4: In Progress</ListGroup.Item>
+						</ListGroup>
+						</Card>
+					</Col>
+					<Col md={4}>
+						<Card>
+						<Card.Img variant="top" src="https://via.placeholder.com/180x100.png" />
+						<Card.Body>
+							<Card.Title>Card Title</Card.Title>
+							<Card.Text>
+							Some quick example text to build on the card title and make up the bulk of
+							the card's content.
+							</Card.Text>
+							<Button variant="primary">Manage</Button>
+						</Card.Body>
+						<ListGroup className="list-group-flush">
+							<ListGroup.Item variant="success">Phase 1 of 4: In Progress</ListGroup.Item>
+						</ListGroup>
+						</Card>
+					</Col>
+					<Col md={4}>
+						<Card>
+						<Card.Img variant="top" src="https://via.placeholder.com/180x100.png" />
+						<Card.Body>
+							<Card.Title>Card Title</Card.Title>
+							<Card.Text>
+							Some quick example text to build on the card title and make up the bulk of
+							the card's content.
+							</Card.Text>
+							<Button variant="primary">Manage</Button>
+						</Card.Body>
+						<ListGroup className="list-group-flush">
+							<ListGroup.Item variant="success">Phase 1 of 4: In Progress</ListGroup.Item>
+						</ListGroup>
+						</Card>
+					</Col>
+				</Row>
+
+			</Container>
 		</Layout>
 	);
 };
