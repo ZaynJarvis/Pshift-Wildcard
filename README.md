@@ -15,3 +15,17 @@
 ```
 $ yarn add your-package-name --save
 ```
+
+## How to Upgrade Packages
+
+```
+$ yarn upgrade your-package-name
+```
+
+## Where to Add Custom Global CSS
+
+```
+Layout/style.css
+```
+
+> Avoid unless absolutely necessary
