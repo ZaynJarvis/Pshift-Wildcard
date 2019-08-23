@@ -1,9 +1,21 @@
 import React from 'react';
-import { ReactComponent as Logo } from './logo.svg';
 import './style.css';
+
+import {Navbar} from 'react-bootstrap';
 
 export default ({ title }) => {
 	return (
-		<div className="page-header">{title ? <h1>{title}</h1> : <Logo className="logo-title" />}</div>
+		<Navbar bg="dark" variant="dark" className="centralize">
+			<Navbar.Brand href="#home">
+			{/* <img
+				alt=""
+				src={require('./logo.svg')}
+				width="30"
+				height="30"
+				className="d-inline-block align-top"
+			/> */}
+			{title}
+			</Navbar.Brand>
+		</Navbar>		
 	);
 };
