@@ -3,6 +3,7 @@ import './style.css';
 import Layout from '../Layout';
 
 import { Container, Row, Col, Button, Card, Carousel, Tabs, Tab, ListGroup } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap'
 
 export default () => {
 	return (
@@ -43,7 +44,9 @@ export default () => {
 											Some quick example text to build on the card title and make up the bulk of
 											the card's content.
 											</Card.Text>
-											<Button variant="primary">Manage</Button>
+											<LinkContainer to="/project/0">
+												<Button>Manage Milestones</Button>
+											</LinkContainer>											
 										</Card.Body>
 										<ListGroup className="list-group-flush">
 											<ListGroup.Item variant="success">Phase 1 of 4: In Progress</ListGroup.Item>
@@ -59,7 +62,9 @@ export default () => {
 											Some quick example text to build on the card title and make up the bulk of
 											the card's content.
 											</Card.Text>
-											<Button variant="primary">Manage</Button>
+											<LinkContainer to="/project/0">
+												<Button>Manage Milestones</Button>
+											</LinkContainer>	
 										</Card.Body>
 										<ListGroup className="list-group-flush">
 											<ListGroup.Item variant="success">Phase 1 of 4: In Progress</ListGroup.Item>
@@ -75,7 +80,9 @@ export default () => {
 											Some quick example text to build on the card title and make up the bulk of
 											the card's content.
 											</Card.Text>
-											<Button variant="primary">Manage</Button>
+											<LinkContainer to="/project/0">
+												<Button>Manage Milestones</Button>
+											</LinkContainer>	
 										</Card.Body>
 										<ListGroup className="list-group-flush">
 											<ListGroup.Item variant="success">Phase 1 of 4: In Progress</ListGroup.Item>
@@ -91,7 +98,9 @@ export default () => {
 											Some quick example text to build on the card title and make up the bulk of
 											the card's content.
 											</Card.Text>
-											<Button variant="primary">Manage</Button>
+											<LinkContainer to="/project/0">
+												<Button>Manage Milestones</Button>
+											</LinkContainer>	
 										</Card.Body>
 										<ListGroup className="list-group-flush">
 											<ListGroup.Item variant="success">Phase 1 of 4: In Progress</ListGroup.Item>
@@ -107,7 +116,9 @@ export default () => {
 											Some quick example text to build on the card title and make up the bulk of
 											the card's content.
 											</Card.Text>
-											<Button variant="primary">Manage</Button>
+											<LinkContainer to="/project/0">
+												<Button>Manage Milestones</Button>
+											</LinkContainer>	
 										</Card.Body>
 										<ListGroup className="list-group-flush">
 											<ListGroup.Item variant="success">Phase 1 of 4: In Progress</ListGroup.Item>
@@ -128,7 +139,9 @@ export default () => {
 											Some quick example text to build on the card title and make up the bulk of
 											the card's content.
 											</Card.Text>
-											<Button variant="primary">Manage</Button>
+											<LinkContainer to="/project/0">
+												<Button>Manage Milestones</Button>
+											</LinkContainer>
 										</Card.Body>
 										<ListGroup className="list-group-flush">
 											<ListGroup.Item variant="success">Phase 1 of 4: In Progress</ListGroup.Item>
@@ -144,7 +157,9 @@ export default () => {
 											Some quick example text to build on the card title and make up the bulk of
 											the card's content.
 											</Card.Text>
-											<Button variant="primary">Manage</Button>
+											<LinkContainer to="/project/0">
+												<Button>Manage Milestones</Button>
+											</LinkContainer>
 										</Card.Body>
 										<ListGroup className="list-group-flush">
 											<ListGroup.Item variant="success">Phase 1 of 4: In Progress</ListGroup.Item>
@@ -160,7 +175,9 @@ export default () => {
 											Some quick example text to build on the card title and make up the bulk of
 											the card's content.
 											</Card.Text>
-											<Button variant="primary">Manage</Button>
+											<LinkContainer to="/project/0">
+												<Button>Manage Milestones</Button>
+											</LinkContainer>
 										</Card.Body>
 										<ListGroup className="list-group-flush">
 											<ListGroup.Item variant="success">Phase 1 of 4: In Progress</ListGroup.Item>
@@ -176,7 +193,9 @@ export default () => {
 											Some quick example text to build on the card title and make up the bulk of
 											the card's content.
 											</Card.Text>
-											<Button variant="primary">Manage</Button>
+											<LinkContainer to="/project/0">
+												<Button>Manage Milestones</Button>
+											</LinkContainer>
 										</Card.Body>
 										<ListGroup className="list-group-flush">
 											<ListGroup.Item variant="success">Phase 1 of 4: In Progress</ListGroup.Item>
@@ -192,7 +211,9 @@ export default () => {
 											Some quick example text to build on the card title and make up the bulk of
 											the card's content.
 											</Card.Text>
-											<Button variant="primary">Manage</Button>
+											<LinkContainer to="/project/0">
+												<Button>Manage Milestones</Button>
+											</LinkContainer>
 										</Card.Body>
 										<ListGroup className="list-group-flush">
 											<ListGroup.Item variant="success">Phase 1 of 4: In Progress</ListGroup.Item>
