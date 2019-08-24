@@ -15,36 +15,36 @@ export default () => {
 						<Carousel.Item>
 							<img
 							className="d-block w-100"
-							src="https://source.unsplash.com/800x400/?coding"
+							src="https://source.unsplash.com/800x400/?doctor"
 							alt="First slide"
 							/>
 							<Carousel.Caption>
-							<h3>First slide label</h3>
-							<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+							<h3>CancerCare</h3>
+							<p>From S$8.90/mth with 100% payout at any stage.</p>
 							</Carousel.Caption>
 						</Carousel.Item>
 						<Carousel.Item>
 							<img
 							className="d-block w-100"
-							src="https://source.unsplash.com/800x400/?coding"
+							src="https://source.unsplash.com/800x400/?travel"
 							alt="Third slide"
 							/>
 
 							<Carousel.Caption>
-							<h3>Second slide label</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+							<h3>Travel Insurance</h3>
+							<p>60% off for TravellerShield Plans by end 2019.</p>
 							</Carousel.Caption>
 						</Carousel.Item>
 						<Carousel.Item>
 							<img
 							className="d-block w-100"
-							src="https://source.unsplash.com/800x400/?coding"
+							src="https://source.unsplash.com/800x400/?car"
 							alt="Third slide"
 							/>
 
 							<Carousel.Caption>
-							<h3>Third slide label</h3>
-							<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+							<h3>Car Insurance</h3>
+							<p>Get 10% off by comparing quotes from 3 insurers.</p>
 							</Carousel.Caption>
 						</Carousel.Item>
 						</Carousel>
