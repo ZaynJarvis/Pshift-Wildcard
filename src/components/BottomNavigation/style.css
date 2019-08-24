@@ -42,3 +42,8 @@
 .active-route > div > p {
   color: #000 !important;
 }
+
+/* Custom CSS for Bootstrap */
+nav, nav > div {
+  justify-content: center !important;
+}

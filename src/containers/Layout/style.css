@@ -3,6 +3,7 @@
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   padding-top: 25px;
+  padding-bottom: 55px !important;
 }
 
 /* Custom CSS for Bootstrap */
