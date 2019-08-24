@@ -54,7 +54,7 @@ export default () => {
 				<Row>
 					<Col>
 
-						<Tabs defaultActiveKey="travel" id="uncontrolled-tab-example">
+						<Tabs fill defaultActiveKey="travel" id="uncontrolled-tab-example">
 
 						<Tab eventKey="travel" title="Travel">
 							<Row>
