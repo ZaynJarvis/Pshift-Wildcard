@@ -29,7 +29,7 @@
   font-size: 2rem;
   right: 16px;
   bottom: 16px;
-  font-family: 'Black Han Sans', sans-serif;
+  font-family: "Black Han Sans", sans-serif;
   font-style: italic;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .currency-sign {
-  display:flex;
+  display: flex;
   align-self: flex-end;
   justify-content: flex-end;
   align-items: center;
@@ -70,14 +70,6 @@
   overflow: hidden;
 }
 
-.transaction {
-  display: flex;
-  padding: 1rem;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #9993;
-}
-
 .money-amount {
   color: #de2838;
   font-size: 2rem;
@@ -86,4 +78,31 @@
 
 .inflow {
   color: lightgreen;
+}
+
+/* ANCHOR  */
+.top-left {
+  margin-left: 1rem;
+  margin-top: 0.75rem;
+}
+
+.balance {
+  margin-top: 1rem;
+}
+
+.icon {
+  /* margin: 2rem; */
+  margin-left: 2rem;
+  font-size: 5rem;
+}
+
+.transactions {
+  margin-top: 2rem;
+}
+
+.transaction {
+  /* justify-content: space-between; */
+  align-items: center;
+  margin-bottom: 0;
+  /* align-content: center; */
 }

@@ -3,56 +3,96 @@ import React from 'react';
 import './style.css';
 import transactions from '../../mock/transactions';
 import Layout from '../Layout';
+import {
+  Row,
+  Col,
+  Tab,
+  Tabs,
+  Container,
+  ListGroup,
+  Card
+} from 'react-bootstrap';
+import { FaBitcoin, FaEthereum, FaDollarSign } from 'react-icons/fa';
 
-const Card = () => <div className="payment-card">200-301-201-222</div>;
+// const Card = () => <div className='payment-card'>200-301-201-222</div>;
 
-export default () => {
-	const [currency, setCurrency] = React.useState('$');
-	const [show, setShow] = React.useState(false);
+const Wallet = ({ type, title }) => {
+  const [currency, setCurrency] = React.useState('$');
+  const [show, setShow] = React.useState(false);
 
-	const currencyMap = [{ sign: '$', ratio: 1 }, { sign: '¥', ratio: 5 }, { sign: '€', ratio: 0.5 }];
+  const inputEl = React.useRef(null);
+  const currencyMap = [
+    { sign: '$', ratio: 1 },
+    { sign: '¥', ratio: 5 },
+    { sign: '€', ratio: 0.5 }
+  ];
+  const currencyType = {
+    cash: <FaDollarSign />,
+    bitcoin: <FaBitcoin />,
+    ethereum: <FaEthereum />
+  };
+  return (
+    <Container>
+      <Row className='top'>
+        <Col className='top-left'>
+          <span>Total Balance:</span>
+          <h1 className='balance'>32,000</h1>
+        </Col>
+        <Col>
+          <h1 className='icon'>{currencyType[type]} </h1>
+        </Col>
+      </Row>
 
-	const inputEl = React.useRef(null);
-
-	return (
-		<Layout title="Wallet">
-			<div className="wallet-page">
-				<Card />
-				<div className="wallet-header">
-					<h2>Latest Transactions:</h2>
-					<div className="currency-sign">
-						{show &&
-							currencyMap
-								.filter(v => v.sign !== currency)
-								.map(v => (
-									<span
-										key={v.sign}
-										onClick={() => {
-											setShow(!show);
-											setCurrency(v.sign);
-										}}
-									>
-										{v.sign}
-									</span>
-								))}
-						<span onClick={() => setShow(!show)}>{currency}</span>
-					</div>
-				</div>
-				<div ref={inputEl} className="transaction-wrapper">
-					{transactions.map(v => (
-						<div key={v.id} className="transaction">
-							<div className="content">
-								<h2>{v.item}</h2>
-								<p>{v.description}</p>
-							</div>
-							<div className={'money-amount ' + (v.inflow && 'inflow')}>
-								<span>{currency}</span>
-								<span>{v.amount * currencyMap.find(v => v.sign === currency).ratio}</span>
-							</div>
-						</div>
-					))}
-				</div>
-			</div>
-		</Layout>
-	);
+      <Col className='btm'>
+        <h1>Latest Transactions: </h1>
+        <Card className='transactions'>
+          <ListGroup variant='flush'>
+            {transactions.map(value => (
+              <ListGroup.Item key={value.id}>
+                <Row className='transaction'>
+                  <Col>
+                    <h3>{value.item}</h3>
+                    <p>{value.description}</p>
+                  </Col>
+                  <Col>
+                    <h3
+                      style={{
+                        textAlign: 'right',
+                        color: value.inflow ? 'green' : 'red'
+                      }}>
+                      {value.inflow ? '+' : '-'}
+                      {value.amount}
+                    </h3>
+                  </Col>
+                </Row>
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+        </Card>
+      </Col>
+    </Container>
+  );
 };
+
+const WalletPage = () => {
+  return (
+    <Layout title='Wallet'>
+      <Row>
+        <Col>
+          <Tabs fill defaultActiveKey='cash' style={{ marginTop: '-25px' }}>
+            <Tab eventKey='cash' title='Cash'>
+              <Wallet type='cash' title='Cash' />
+            </Tab>
+            <Tab eventKey='bitcoin' title='Bitcoin'>
+              <Wallet type='bitcoin' title='Bitcoin' />
+            </Tab>
+            <Tab eventKey='ethereum' title='Ethereum'>
+              <Wallet type='ethereum' title='Ethereum' />
+            </Tab>
+          </Tabs>
+        </Col>
+      </Row>
+    </Layout>
+  );
+};
+export default WalletPage;
