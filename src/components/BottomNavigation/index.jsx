@@ -1,34 +1,30 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './style.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faTag, faUser, faWallet } from '@fortawesome/free-solid-svg-icons';
-import { NavLink, withRouter } from 'react-router-dom';
+import { Navbar, Nav } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap'
 
-const BottomNavigation = ({ location }) => {
-	const config = [
-		{ to: '/market', icon: faUser, label: 'market' },
-		{ to: '/projects', icon: faHome, label: 'projects' },
-		{ to: '/insurance', icon: faTag, label: 'insurance' },
-		{ to: '/wallet', icon: faWallet, label: 'wallet' },
-	];
-	return (
-		<div className="bottom-navigation">
-			{config.map((c, i) => (
-				<NavLink
-					className="nav-link"
-					activeClassName={location.pathname !== c.to ? null : 'active-route'}
-					to={c.to}
-					exact
-					key={i}
-				>
-					<div>
-						<FontAwesomeIcon icon={c.icon} />
-						<p>{c.label}</p>
-					</div>
-				</NavLink>
-			))}
-		</div>
-	);
-};
+class BottomNavigation extends Component {
+	render() {
+		return (
+			<Navbar fixed="bottom" bg="dark" variant="dark" className="centralize">
+				<Nav className="mr-auto">
+					<LinkContainer to="/market">
+						<Nav.Link>Market</Nav.Link>
+					</LinkContainer>				
+					<LinkContainer to="/projects">
+						<Nav.Link>Projects</Nav.Link>
+					</LinkContainer>
+					<LinkContainer to="/insurance">
+						<Nav.Link>Insurance</Nav.Link>
+					</LinkContainer>
+					<LinkContainer to="/wallet">
+						<Nav.Link>Wallet</Nav.Link>
+					</LinkContainer>					
+				</Nav>
+			</Navbar>
+		)
+	}
+}
 
-export default withRouter(BottomNavigation);
+
+export default BottomNavigation;
