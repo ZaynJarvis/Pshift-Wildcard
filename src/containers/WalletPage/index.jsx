@@ -14,18 +14,7 @@ import {
 } from 'react-bootstrap';
 import { FaBitcoin, FaEthereum, FaDollarSign } from 'react-icons/fa';
 
-// const Card = () => <div className='payment-card'>200-301-201-222</div>;
-
 const Wallet = ({ type, title }) => {
-  const [currency, setCurrency] = React.useState('$');
-  const [show, setShow] = React.useState(false);
-
-  const inputEl = React.useRef(null);
-  const currencyMap = [
-    { sign: '$', ratio: 1 },
-    { sign: '¥', ratio: 5 },
-    { sign: '€', ratio: 0.5 }
-  ];
   const currencyType = {
     cash: <FaDollarSign />,
     bitcoin: <FaBitcoin />,
