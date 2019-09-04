@@ -1,0 +1,66 @@
+{
+    "name": "wildcard-backend",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "build": "tsc",
+        "dev": "ts-node-dev ./index.ts",
+        "start": "node ./built/index.js",
+        "format": "prettier --write \"src/**/*.ts\"",
+        "lint": "tslint -p tsconfig.json && eslint . --ignore-path .gitignore",
+        "test": "mocha -r ts-node/register ./test/**/*.test.ts --watch-extensions ts",
+        "test:watch": "mocha -r ts-node/register -w ./test ./test/**/*.test.ts --watch-extensions ts"
+    },
+    "dependencies": {
+        "axios": "0.19.0",
+        "body-parser": "^1.18.3",
+        "cookie-parser": "~1.4.3",
+        "cors": "^2.8.5",
+        "debug": "~2.6.9",
+        "express": "~4.16.0",
+        "formidable": "^1.2.1",
+        "jsonwebtoken": "^8.4.0",
+        "log4js": "^3.0.6",
+        "morgan": "~1.9.0",
+        "passport": "^0.4.0",
+        "passport-jwt": "4.0.0",
+        "passport-local": "^1.0.0"
+    },
+    "devDependencies": {
+        "@types/body-parser": "1.17.0",
+        "@types/chai": "4.1.7",
+        "@types/cookie-parser": "1.4.1",
+        "@types/cors": "2.8.5",
+        "@types/debug": "4.1.4",
+        "@types/express": "4.17.0",
+        "@types/formidable": "1.0.31",
+        "@types/jsonwebtoken": "8.3.2",
+        "@types/log4js": "2.3.5",
+        "@types/mocha": "5.2.7",
+        "@types/morgan": "1.7.36",
+        "@types/node": "^12.7.2",
+        "@types/passport": "1.0.0",
+        "@types/passport-jwt": "3.0.1",
+        "@types/passport-local": "1.0.33",
+        "chai": "4.2.0",
+        "husky": "3.0.0",
+        "lint-staged": "9.2.0",
+        "mocha": "6.2.0",
+        "prettier": "^1.16.4",
+        "ts-node-dev": "1.0.0-pre.40",
+        "tslint": "5.18.0",
+        "tslint-config-prettier": "1.18.0",
+        "typescript": "3.5.3"
+    },
+    "lint-staged": {
+        "api/**/*.ts": [
+            "npm run test",
+            "tslint --fix"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    }
+}
