@@ -6,3 +6,5 @@ export * from './Project';
 export * from './ProjectDAO';
 export * from './Insurance';
 export * from './InsuranceDAO';
+export * from './Gig';
+export * from './GigDAO';

@@ -18,7 +18,19 @@ router.post('/login', login);
 // router.get('/profile', profile);
 
 // project
-import { createProject, getAllProjects, getProjectByID, updateProject } from '../controllers';
+import {
+    createProject,
+    getAllProjects,
+    getProjectByID,
+    updateProject
+} from '../controllers';
+router.post('/projects', createProject);
+router.get('/projects', getAllProjects);
+router.get('/projects/:id', getProjectByID);
+router.put('/projects/:id', updateProject);
+
+// gig
+import { createGig, getAllGigs, getGigByID, updateGig } from '../controllers';
 router.post('/projects', createProject);
 router.get('/projects', getAllProjects);
 router.get('/projects/:id', getProjectByID);
