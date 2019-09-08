@@ -8,6 +8,7 @@ import MilestonePage from '../MilestonePage';
 import InsurancePage from '../InsurancePage';
 import WalletPage from '../WalletPage';
 import BottomNavigation from '../../components/BottomNavigation';
+import JobPage from '../JobPage';
 const WildCard = () => {
   return (
     <Router>
@@ -27,6 +28,7 @@ const SubRoute = ({ location }) => {
       <Route path='/market' component={HomePage} />
       <Route path='/insurance' component={InsurancePage} />
       <Route path='/wallet' component={WalletPage} />
+      <Route exact path='/job/:id' component={JobPage} />
       {!(location.pathname.indexOf('/project/') === 0) && <BottomNavigation />}
     </>
   );
