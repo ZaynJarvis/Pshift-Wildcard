@@ -31,10 +31,10 @@ router.put('/projects/:id', updateProject);
 
 // gig
 import { createGig, getAllGigs, getGigByID, updateGig } from '../controllers';
-router.post('/projects', createProject);
-router.get('/projects', getAllProjects);
-router.get('/projects/:id', getProjectByID);
-router.put('/projects/:id', updateProject);
+router.post('/gigs', createGig);
+router.get('/gigs', getAllGigs);
+router.get('/gigs/:id', getGigByID);
+router.put('/gigs/:id', updateGig);
 
 // transaction
 import { createTransaction, getAllTransactions, getTransactionByID, updateTransaction } from '../controllers'; // prettier-ignore
