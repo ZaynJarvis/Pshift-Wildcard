@@ -2,20 +2,23 @@ import { generateUUID } from '../utils';
 
 export class Insurance {
     public id: string;
+    public type: string;
     public title: string;
     public description: string;
     public imageUrl: string;
     public url: string;
     public amount: number;
     constructor(obj: {
+        type?: string;
         title?: string;
         description?: string;
         imageUrl?: string;
         url?: string;
         amount?: number;
     }) {
-        const { title, description, imageUrl, url, amount } = obj;
+        const { type, title, description, imageUrl, url, amount } = obj;
         this.id = generateUUID();
+        this.type = type;
         this.title = title;
         this.description = description;
         this.imageUrl = imageUrl;
@@ -23,13 +26,17 @@ export class Insurance {
         this.amount = amount;
     }
     public update(obj: {
+        type?: string;
         title?: string;
         description?: string;
         imageUrl?: string;
         url?: string;
         amount?: number;
     }) {
-        const { title, description, imageUrl, url, amount } = obj;
+        const { type, title, description, imageUrl, url, amount } = obj;
+        if (type) {
+            this.type = type;
+        }
         if (title) {
             this.title = title;
         }
