@@ -1,14 +1,13 @@
-import { GET_ALL_PROJECTS } from '../types';
+import { GET_ALL_GIGS } from '../types';
 
 export default (state, action) => {
   switch (action.type) {
-    case GET_ALL_PROJECTS:
+    case GET_ALL_GIGS:
       return {
         ...state,
-        transactions: action.payload,
+        gigs: action.payload,
         loading: false
       };
-
     default:
       return state;
   }
