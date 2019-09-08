@@ -1,0 +1,60 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJhMWQ2LTQyMjEtODNhYyIsImVtYWlsIjoiemF5bmphcnZpc0BnbWFpbC5jb20iLCJuYW1lIjoiQWxhbiBUdW5uZXIiLCJleHBpcmVzSW4iOiI3ZCIsImlhdCI6MTU2NzYxNDI4Mn0.PiQDBr1AoVq3EGotDMG9YShKGEMmDD-AJ2SjG3RwzUQ
+@http = http
+@host = localhost
+@port = 3000
+@uri = {{http}}://{{host}}:{{port}}
+@question = Anyone has precedents under s49(a) Trade marks act?
+
+###
+POST {{uri}}/api/hello
+
+###
+POST {{uri}}/api/register
+Content-Type: application/json
+
+{
+    "name": "Alan Tunner",
+    "email": "zaynjarvis@gmail.com",
+    "password": "Kuzacooze!12"
+}
+
+###
+POST {{uri}}/api/login
+Content-Type: application/json
+
+{
+    "email": "zaynjarvis@gmail.com",
+    "password": "Kuzacooze!12"
+}
+
+###
+GET {{uri}}/api/profile
+Authorization: Bearer {{token}}
+
+
+###
+POST {{uri}}/api/insurances
+Content-Type: application/json
+
+{
+    "title": "New Transaction",
+    "description": "des sth",
+    "amount": 371.3,
+    "imageUrl": "http://image.io/x.png",
+    "url": "http://web.com/"
+}
+
+###
+GET {{uri}}/api/insurances/2984-4a6a-a698
+
+###
+GET {{uri}}/api/insurances
+
+###
+PUT {{uri}}/api/insurances/2984-4a6a-a698
+Content-Type: application/json
+
+{
+    "url": "https://web.com.cn/"
+}
+

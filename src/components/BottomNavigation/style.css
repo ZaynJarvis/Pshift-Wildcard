@@ -1,4 +1,4 @@
-.bottom-navigation {
+/* .bottom-navigation {
   height: var(--footer-height);
   background: #fff;
   border-top: 1px solid #9993;
@@ -11,11 +11,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.nav-link {
+} */
+/* .nav-link {
   text-decoration: none;
-}
-.nav-link > div {
+} */
+/* .nav-link > div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,11 +34,33 @@
   color: transparent;
   font-size: 10px;
   margin: 0;
-  margin-top: 2px;
+  margin-bottom: 2px;
   font-weight: 200;
   transition: 0.3s;
 }
 
 .active-route > div > p {
   color: #000 !important;
+} */
+
+/* Custom CSS for Bootstrap */
+nav,
+nav > div {
+  justify-content: space-between !important;
+}
+
+.navbar {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.navbar p {
+  margin-bottom: 0;
+  font-size: 0.5rem;
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
