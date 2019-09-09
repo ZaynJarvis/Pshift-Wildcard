@@ -21,13 +21,14 @@ const Wallet = (type, title) => {
   };
 
   const transactionContext = useContext(TransactionContext);
+  // console.log(transactionContext);
 
-  // const { transactions, loading, getAllTransactions } = transactionContext;
+  const { transactions, loading, getAllTransactions } = transactionContext;
 
-  // useEffect(() => {
-  //   getAllTransactions();
-  //   // eslint-disable-next-line
-  // }, []);
+  useEffect(() => {
+    getAllTransactions();
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <Container>
@@ -45,12 +46,12 @@ const Wallet = (type, title) => {
         <h1>Latest Transactions: </h1>
         <Card className='transactions'>
           <ListGroup variant='flush'>
-            {/* {transactions.map(value => (
+            {transactions.map(value => (
               <ListGroup.Item key={value.id}>
                 <Row className='transaction'>
                   <Col>
-                    <h3>{value.title}</h3>
-                    <p>{value.description}</p>
+                    <h4>{value.item}</h4>
+                    <p>{value.date}</p>
                   </Col>
                   <Col>
                     <h3
@@ -64,7 +65,7 @@ const Wallet = (type, title) => {
                   </Col>
                 </Row>
               </ListGroup.Item>
-            ))} */}
+            ))}
           </ListGroup>
         </Card>
       </Col>

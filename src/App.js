@@ -10,11 +10,11 @@ const App = () => {
     <InsuranceState>
       <GigState>
         <ProjectState>
-          {/* <TransactionState> */}
-          <div className='App'>
-            <WildCard />
-          </div>
-          {/* </TransactionState> */}
+          <TransactionState>
+            <div className='App'>
+              <WildCard />
+            </div>
+          </TransactionState>
         </ProjectState>
       </GigState>
     </InsuranceState>
