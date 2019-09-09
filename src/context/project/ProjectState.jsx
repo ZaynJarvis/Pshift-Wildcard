@@ -1,4 +1,4 @@
-import { React, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import axios from 'axios';
 import ProjectContext from './projectContext';
 import ProjectReducer from './projectReducer';
@@ -17,6 +17,7 @@ const ProjectState = props => {
   const getAllProjects = async () => {
     setLoading();
     const res = await axios.get(`http://localhost:3000/api/projects`);
+    console.log(res);
     dispatch({
       type: GET_ALL_PROJECTS,
       payload: res.data
@@ -30,6 +31,7 @@ const ProjectState = props => {
     <ProjectContext.Provider
       value={{
         projects: state.projects,
+        loading: state.loading,
         getAllProjects
       }}>
       {props.children}

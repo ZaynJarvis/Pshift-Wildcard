@@ -1,4 +1,4 @@
-import { React, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import axios from 'axios';
 import TransactionContext from './transactionContext';
 import TransactionReducer from './transactionReducer';
@@ -16,6 +16,7 @@ const TransactionState = props => {
   const getAllTransactions = async () => {
     setLoading();
     const res = await axios.get(`http://localhost:3000/api/transactions`);
+    console.log(res);
     dispatch({
       type: GET_ALL_TRANSACTIONS,
       payload: res.data
@@ -27,7 +28,11 @@ const TransactionState = props => {
 
   return (
     <TransactionContext.Provider
-      value={{ transactions: state.transactions, getAllTransactions }}>
+      value={{
+        transactions: state.transactions,
+        loading: state.loading,
+        getAllTransactions
+      }}>
       {props.children}
     </TransactionContext.Provider>
   );

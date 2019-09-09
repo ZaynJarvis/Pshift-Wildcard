@@ -1,4 +1,4 @@
-import { GET_ALL_TRANSACTIONS } from '../types';
+import { GET_ALL_TRANSACTIONS, SET_LOADING } from '../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -8,7 +8,11 @@ export default (state, action) => {
         transactions: action.payload,
         loading: false
       };
-
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true
+      };
     default:
       return state;
   }

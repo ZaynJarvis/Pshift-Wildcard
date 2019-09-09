@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import './style.css';
 import Layout from '../Layout';
-
+import ProjectContext from '../../context/project/projectContext';
 import {
   Container,
   Row,
@@ -16,6 +16,16 @@ import {
 import { LinkContainer } from 'react-router-bootstrap';
 
 const ProjectsPage = () => {
+  const projectContext = useContext(ProjectContext);
+
+  const { projects, loading, getAllProjects } = projectContext;
+
+  useEffect(() => {
+    getAllProjects();
+    // console.log(projects);
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <Layout title='Projects'>
       <Container>
@@ -46,6 +56,45 @@ const ProjectsPage = () => {
               <Tab eventKey='ongoing' title='Ongoing'>
                 <Row>
                   <Col md={4}>
+                    {projects.map(project => (
+                      <Card key={project.id}>
+                        <Card.Img variant='top' src={project.imageUrl} />
+                        <Card.Body>
+                          <Card.Title>{project.title}</Card.Title>
+                          <Card.Text>{project.description}</Card.Text>
+                          <LinkContainer to='/project/0'>
+                            <Button>Manage Milestones</Button>
+                          </LinkContainer>
+                        </Card.Body>
+                        <ListGroup className='list-group-flush'>
+                          <ListGroup.Item variant='success'>
+                            Phase 1 of 4: In Progress
+                          </ListGroup.Item>
+                        </ListGroup>
+                      </Card>
+                    ))}
+                    {/* <Card>
+                      <Card.Img
+                        variant='top'
+                        src='https://source.unsplash.com/180x100/?coding'
+                      />
+                      <Card.Body>
+                        <Card.Title>Card Title</Card.Title>
+                        <Card.Text>
+                          Some quick example text to build on the card title and
+                          make up the bulk of the card's content.
+                        </Card.Text>
+                        <LinkContainer to='/project/0'>
+                          <Button>Manage Milestones</Button>
+                        </LinkContainer>
+                      </Card.Body>
+                      <ListGroup className='list-group-flush'>
+                        <ListGroup.Item variant='success'>
+                          Phase 1 of 4: In Progress
+                        </ListGroup.Item>
+                      </ListGroup>
+                    </Card>
+
                     <Card>
                       <Card.Img
                         variant='top'
@@ -67,8 +116,7 @@ const ProjectsPage = () => {
                         </ListGroup.Item>
                       </ListGroup>
                     </Card>
-                  </Col>
-                  <Col md={4}>
+
                     <Card>
                       <Card.Img
                         variant='top'
@@ -90,8 +138,7 @@ const ProjectsPage = () => {
                         </ListGroup.Item>
                       </ListGroup>
                     </Card>
-                  </Col>
-                  <Col md={4}>
+
                     <Card>
                       <Card.Img
                         variant='top'
@@ -113,8 +160,7 @@ const ProjectsPage = () => {
                         </ListGroup.Item>
                       </ListGroup>
                     </Card>
-                  </Col>
-                  <Col md={4}>
+
                     <Card>
                       <Card.Img
                         variant='top'
@@ -135,30 +181,7 @@ const ProjectsPage = () => {
                           Phase 1 of 4: In Progress
                         </ListGroup.Item>
                       </ListGroup>
-                    </Card>
-                  </Col>
-                  <Col md={4}>
-                    <Card>
-                      <Card.Img
-                        variant='top'
-                        src='https://source.unsplash.com/180x100/?coding'
-                      />
-                      <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </Card.Text>
-                        <LinkContainer to='/project/0'>
-                          <Button>Manage Milestones</Button>
-                        </LinkContainer>
-                      </Card.Body>
-                      <ListGroup className='list-group-flush'>
-                        <ListGroup.Item variant='success'>
-                          Phase 1 of 4: In Progress
-                        </ListGroup.Item>
-                      </ListGroup>
-                    </Card>
+                    </Card> */}
                   </Col>
                 </Row>
               </Tab>

@@ -19,7 +19,6 @@ const InsurancePage = () => {
 
   useEffect(() => {
     getAllInsurances();
-    console.log(insurances);
     // NOTE Fix warning
     // eslint-disable-next-line
   }, []);
@@ -73,94 +72,20 @@ const InsurancePage = () => {
               <Tab eventKey='travel' title='Travel'>
                 <Row>
                   <Col md={4}>
-                    {insurances.map(insurance => (
-                      <Card key={insurance.id}>
-                        <Card.Img variant='top' src={insurance.imageUrl} />
-                        <Card.Body>
-                          <Card.Title>Card Title</Card.Title>
-                          <Card.Text>
-                            Some quick example text to build on the card title
-                            and make up the bulk of the card's content.
-                          </Card.Text>
-                          <Button variant='primary'>Go somewhere</Button>
-                        </Card.Body>
-                      </Card>
-                    ))}
-                    {/* <Card>
-                      <Card.Img
-                        variant='top'
-                        src='https://source.unsplash.com/180x100/?coding'
-                      />
-                      <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </Card.Text>
-                        <Button variant='primary'>Go somewhere</Button>
-                      </Card.Body>
-                    </Card>
-
-                    <Card>
-                      <Card.Img
-                        variant='top'
-                        src='https://source.unsplash.com/180x100/?coding'
-                      />
-                      <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </Card.Text>
-                        <Button variant='primary'>Go somewhere</Button>
-                      </Card.Body>
-                    </Card>
-
-                    <Card>
-                      <Card.Img
-                        variant='top'
-                        src='https://source.unsplash.com/180x100/?coding'
-                      />
-                      <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </Card.Text>
-                        <Button variant='primary'>Go somewhere</Button>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  <Col md={4}>
-                    <Card>
-                      <Card.Img
-                        variant='top'
-                        src='https://source.unsplash.com/180x100/?coding'
-                      />
-                      <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </Card.Text>
-                        <Button variant='primary'>Go somewhere</Button>
-                      </Card.Body>
-                    </Card>
-
-                    <Card>
-                      <Card.Img
-                        variant='top'
-                        src='https://source.unsplash.com/180x100/?coding'
-                      />
-                      <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </Card.Text>
-                        <Button variant='primary'>Go somewhere</Button>
-                      </Card.Body>
-                    </Card> */}
+                    {insurances
+                      .filter(insurance => {
+                        return insurance.type === 'travel';
+                      })
+                      .map(insurance => (
+                        <Card key={insurance.id}>
+                          <Card.Img variant='top' src={insurance.imageUrl} />
+                          <Card.Body>
+                            <Card.Title>{insurance.title}</Card.Title>
+                            <Card.Text>{insurance.description}</Card.Text>
+                            <Button variant='primary'>Apply</Button>
+                          </Card.Body>
+                        </Card>
+                      ))}
                   </Col>
                 </Row>
               </Tab>
@@ -168,169 +93,20 @@ const InsurancePage = () => {
               <Tab eventKey='home' title='Home'>
                 <Row>
                   <Col md={4}>
-                    <Card>
-                      <Card.Img
-                        variant='top'
-                        src='https://source.unsplash.com/180x100/?coding'
-                      />
-                      <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </Card.Text>
-                        <Button variant='primary'>Go somewhere</Button>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  <Col md={4}>
-                    <Card>
-                      <Card.Img
-                        variant='top'
-                        src='https://source.unsplash.com/180x100/?coding'
-                      />
-                      <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </Card.Text>
-                        <Button variant='primary'>Go somewhere</Button>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  <Col md={4}>
-                    <Card>
-                      <Card.Img
-                        variant='top'
-                        src='https://source.unsplash.com/180x100/?coding'
-                      />
-                      <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </Card.Text>
-                        <Button variant='primary'>Go somewhere</Button>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  <Col md={4}>
-                    <Card>
-                      <Card.Img
-                        variant='top'
-                        src='https://source.unsplash.com/180x100/?coding'
-                      />
-                      <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </Card.Text>
-                        <Button variant='primary'>Go somewhere</Button>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  <Col md={4}>
-                    <Card>
-                      <Card.Img
-                        variant='top'
-                        src='https://source.unsplash.com/180x100/?coding'
-                      />
-                      <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </Card.Text>
-                        <Button variant='primary'>Go somewhere</Button>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                </Row>
-              </Tab>
-
-              <Tab eventKey='comingSoon' title='Coming Soon' disabled>
-                <Row>
-                  <Col md={4}>
-                    <Card>
-                      <Card.Img
-                        variant='top'
-                        src='https://source.unsplash.com/180x100/?coding'
-                      />
-                      <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </Card.Text>
-                        <Button variant='primary'>Go somewhere</Button>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  <Col md={4}>
-                    <Card>
-                      <Card.Img
-                        variant='top'
-                        src='https://source.unsplash.com/180x100/?coding'
-                      />
-                      <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </Card.Text>
-                        <Button variant='primary'>Go somewhere</Button>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  <Col md={4}>
-                    <Card>
-                      <Card.Img
-                        variant='top'
-                        src='https://source.unsplash.com/180x100/?coding'
-                      />
-                      <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </Card.Text>
-                        <Button variant='primary'>Go somewhere</Button>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  <Col md={4}>
-                    <Card>
-                      <Card.Img
-                        variant='top'
-                        src='https://source.unsplash.com/180x100/?coding'
-                      />
-                      <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </Card.Text>
-                        <Button variant='primary'>Go somewhere</Button>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  <Col md={4}>
-                    <Card>
-                      <Card.Img
-                        variant='top'
-                        src='https://source.unsplash.com/180x100/?coding'
-                      />
-                      <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </Card.Text>
-                        <Button variant='primary'>Go somewhere</Button>
-                      </Card.Body>
-                    </Card>
+                    {insurances
+                      .filter(insurance => {
+                        return insurance.type === 'home';
+                      })
+                      .map(insurance => (
+                        <Card key={insurance.id}>
+                          <Card.Img variant='top' src={insurance.imageUrl} />
+                          <Card.Body>
+                            <Card.Title>{insurance.title}</Card.Title>
+                            <Card.Text>{insurance.description}</Card.Text>
+                            <Button variant='primary'>Apply</Button>
+                          </Card.Body>
+                        </Card>
+                      ))}
                   </Col>
                 </Row>
               </Tab>

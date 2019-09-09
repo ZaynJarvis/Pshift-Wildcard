@@ -9,13 +9,13 @@ const App = () => {
   return (
     <InsuranceState>
       <GigState>
-        {/* <ProjectState> */}
-        {/* <TransactionState> */}
-        <div className='App'>
-          <WildCard />
-        </div>
-        {/* </TransactionState> */}
-        {/* </ProjectState> */}
+        <ProjectState>
+          {/* <TransactionState> */}
+          <div className='App'>
+            <WildCard />
+          </div>
+          {/* </TransactionState> */}
+        </ProjectState>
       </GigState>
     </InsuranceState>
   );

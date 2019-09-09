@@ -1,7 +1,5 @@
-import React from 'react';
-
+import React, { useEffect, useContext } from 'react';
 import './style.css';
-import transactions from '../../mock/transactions';
 import Layout from '../Layout';
 import {
   Row,
@@ -13,13 +11,24 @@ import {
   Card
 } from 'react-bootstrap';
 import { FaBitcoin, FaEthereum, FaDollarSign } from 'react-icons/fa';
+import TransactionContext from '../../context/transaction/transactionContext';
 
-const Wallet = ({ type, title }) => {
+const Wallet = (type, title) => {
   const currencyType = {
     cash: <FaDollarSign />,
     bitcoin: <FaBitcoin />,
     ethereum: <FaEthereum />
   };
+
+  const transactionContext = useContext(TransactionContext);
+
+  // const { transactions, loading, getAllTransactions } = transactionContext;
+
+  // useEffect(() => {
+  //   getAllTransactions();
+  //   // eslint-disable-next-line
+  // }, []);
+
   return (
     <Container>
       <Row className='top'>
@@ -36,11 +45,11 @@ const Wallet = ({ type, title }) => {
         <h1>Latest Transactions: </h1>
         <Card className='transactions'>
           <ListGroup variant='flush'>
-            {transactions.map(value => (
+            {/* {transactions.map(value => (
               <ListGroup.Item key={value.id}>
                 <Row className='transaction'>
                   <Col>
-                    <h3>{value.item}</h3>
+                    <h3>{value.title}</h3>
                     <p>{value.description}</p>
                   </Col>
                   <Col>
@@ -55,7 +64,7 @@ const Wallet = ({ type, title }) => {
                   </Col>
                 </Row>
               </ListGroup.Item>
-            ))}
+            ))} */}
           </ListGroup>
         </Card>
       </Col>

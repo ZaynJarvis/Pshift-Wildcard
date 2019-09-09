@@ -1,9 +1,8 @@
 import React, { useReducer } from 'react';
 import axios from 'axios';
-
-import { GET_ALL_GIGS, SET_LOADING } from '../types';
-import gigReducer from './gigReducer';
+import GigReducer from './gigReducer';
 import GigContext from './gigContext';
+import { GET_ALL_GIGS, SET_LOADING } from '../types';
 
 const GigState = props => {
   const initialState = {
@@ -11,7 +10,7 @@ const GigState = props => {
     loading: false
   };
 
-  const [state, dispatch] = useReducer(gigReducer, initialState);
+  const [state, dispatch] = useReducer(GigReducer, initialState);
 
   // Get all gigs
   const getAllGigs = async () => {
@@ -30,6 +29,7 @@ const GigState = props => {
     <GigContext.Provider
       value={{
         gigs: state.gigs,
+        loading: state.loading,
         getAllGigs
       }}>
       {props.children}

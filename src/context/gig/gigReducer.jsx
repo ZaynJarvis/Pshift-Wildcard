@@ -1,4 +1,4 @@
-import { GET_ALL_GIGS } from '../types';
+import { GET_ALL_GIGS, SET_LOADING } from '../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -6,6 +6,11 @@ export default (state, action) => {
       return {
         ...state,
         gigs: action.payload,
+        loading: false
+      };
+    case SET_LOADING:
+      return {
+        ...state,
         loading: false
       };
     default:
