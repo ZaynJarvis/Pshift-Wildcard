@@ -8,6 +8,7 @@ export class Insurance {
     public imageUrl: string;
     public url: string;
     public amount: number;
+    public inCarousel: boolean;
     constructor(obj: {
         type?: string;
         title?: string;
@@ -15,8 +16,17 @@ export class Insurance {
         imageUrl?: string;
         url?: string;
         amount?: number;
+        inCarousel?: boolean;
     }) {
-        const { type, title, description, imageUrl, url, amount } = obj;
+        const {
+            type,
+            title,
+            description,
+            imageUrl,
+            url,
+            amount,
+            inCarousel
+        } = obj;
         this.id = generateUUID();
         this.type = type;
         this.title = title;
@@ -24,6 +34,7 @@ export class Insurance {
         this.imageUrl = imageUrl;
         this.url = url;
         this.amount = amount;
+        this.inCarousel = inCarousel;
     }
     public update(obj: {
         type?: string;
@@ -32,8 +43,17 @@ export class Insurance {
         imageUrl?: string;
         url?: string;
         amount?: number;
+        inCarousel?: boolean;
     }) {
-        const { type, title, description, imageUrl, url, amount } = obj;
+        const {
+            type,
+            title,
+            description,
+            imageUrl,
+            url,
+            amount,
+            inCarousel
+        } = obj;
         if (type) {
             this.type = type;
         }
@@ -51,6 +71,9 @@ export class Insurance {
         }
         if (amount) {
             this.amount = amount;
+        }
+        if (inCarousel) {
+            this.inCarousel = inCarousel;
         }
     }
 }

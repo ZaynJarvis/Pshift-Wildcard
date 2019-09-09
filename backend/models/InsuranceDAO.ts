@@ -9,7 +9,8 @@ export class InsuranceStore {
             imageUrl:
                 'https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=100',
             url: '',
-            amount: 1000
+            amount: 1000,
+            inCarousel: true
         }),
         new Insurance({
             type: 'home',
@@ -18,7 +19,8 @@ export class InsuranceStore {
             imageUrl:
                 'https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=100',
             url: '',
-            amount: 1000
+            amount: 1000,
+            inCarousel: false
         }),
         new Insurance({
             type: 'travel',
@@ -28,7 +30,8 @@ export class InsuranceStore {
             imageUrl:
                 'https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=100',
             url: '',
-            amount: 500
+            amount: 500,
+            inCarousel: true
         }),
         new Insurance({
             type: 'home',
@@ -38,7 +41,8 @@ export class InsuranceStore {
             imageUrl:
                 'https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=100',
             url: '',
-            amount: 500
+            amount: 500,
+            inCarousel: false
         }),
         new Insurance({
             type: 'travel',
@@ -47,7 +51,8 @@ export class InsuranceStore {
             imageUrl:
                 'https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=100',
             url: '',
-            amount: 2000
+            amount: 2000,
+            inCarousel: false
         }),
         new Insurance({
             type: 'home',
@@ -56,7 +61,8 @@ export class InsuranceStore {
             imageUrl:
                 'https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=100',
             url: '',
-            amount: 2000
+            amount: 2000,
+            inCarousel: false
         })
     ];
     public static getInsurance(id: string): Insurance | null {
