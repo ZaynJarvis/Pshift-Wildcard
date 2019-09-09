@@ -5,15 +5,31 @@ export class Project {
     public title: string;
     public description: string;
     public imageUrl: string;
-    constructor(obj: { title?: string; description?: string; imageUrl?: string }) {
-        const { title, description, imageUrl } = obj;
+    public inCarousel: boolean;
+    public isCompleted: boolean;
+    constructor(obj: {
+        title?: string;
+        description?: string;
+        imageUrl?: string;
+        inCarousel: boolean;
+        isCompleted: boolean;
+    }) {
+        const { title, description, imageUrl, inCarousel, isCompleted } = obj;
         this.id = generateUUID();
         this.title = title;
         this.description = description;
         this.imageUrl = imageUrl;
+        this.inCarousel = inCarousel;
+        this.isCompleted = isCompleted;
     }
-    public update(obj: { title?: string; description?: string; imageUrl?: string }) {
-        const { title, description, imageUrl } = obj;
+    public update(obj: {
+        title?: string;
+        description?: string;
+        imageUrl?: string;
+        inCarousel?: boolean;
+        isCompleted?: boolean;
+    }) {
+        const { title, description, imageUrl, inCarousel, isCompleted } = obj;
         if (title) {
             this.title = title;
         }
@@ -22,6 +38,12 @@ export class Project {
         }
         if (imageUrl) {
             this.imageUrl = imageUrl;
+        }
+        if (inCarousel) {
+            this.inCarousel = inCarousel;
+        }
+        if (isCompleted) {
+            this.isCompleted = isCompleted;
         }
     }
 }
