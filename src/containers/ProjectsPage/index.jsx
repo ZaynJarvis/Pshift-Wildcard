@@ -103,7 +103,7 @@ const ProjectsPage = () => {
                             src={project.imageUrl}
                             noLazyLoad='true'
                             className='cardImgTop'
-                            height='250'
+                            height='200'
                             alt='...'></Image>
                           <Card.Body>
                             <Card.Title>{project.title}</Card.Title>

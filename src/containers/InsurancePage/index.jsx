@@ -113,7 +113,12 @@ const InsurancePage = () => {
                         })
                         .map(insurance => (
                           <Card key={insurance.id}>
-                            <Card.Img variant='top' src={insurance.imageUrl} />
+                            <Image
+                              src={insurance.imageUrl}
+                              noLazyLoad='true'
+                              className='cardImgTop'
+                              height='200'
+                              alt='...'></Image>
                             <Card.Body>
                               <Card.Title>{insurance.title}</Card.Title>
                               <Card.Text>{insurance.description}</Card.Text>
