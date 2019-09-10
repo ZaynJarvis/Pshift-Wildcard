@@ -7,6 +7,7 @@ import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import GigContext from '../../context/gig/gigContext';
 import Loader from 'react-loader-spinner';
+import Image from 'react-graceful-image';
 
 const KEYS_TO_FILTERS = ['title', 'description'];
 
@@ -27,58 +28,44 @@ const MarketPage = () => {
     setTerm(term);
   };
 
-  // Comment out during test phase
-  // const filteredGigs = gigs.filter(createFilter(searchTerm, KEYS_TO_FILTERS));
-  const filteredGigs = [{}, {}, {}];
+  const filteredGigs = gigs.filter(createFilter(searchTerm, KEYS_TO_FILTERS));
 
   return (
     <Layout title='Marketplace'>
-      {loading ? (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          {/* <Loader
-            type='Rings'
-            color='#00BFFF'
-            height={100}
-            width={100}
-            // timeout={3000} //3 secs
-          /> */}
-        </div>
-      ) : (
-        <Container>
-          <Row>
-            <Col>
-              <SearchInput
-                className='search-input form-control'
-                onChange={searchUpdated}
-              />
-            </Col>
-          </Row>
+      <Container>
+        <Row>
+          <Col>
+            <SearchInput
+              className='search-input form-control'
+              onChange={searchUpdated}
+            />
+          </Col>
+        </Row>
 
-          <Row>
-            <Col md={4}>
-              {filteredGigs.map(project => {
-                return (
-                  <Card key={'project.id'}>
-                    <Card.Img
-                      variant='top'
-                      src={
-                        'https://miro.medium.com/max/1200/1*y6C4nSvy2Woe0m7bWEn4BA.png'
-                      }
-                    />
-                    <Card.Body>
-                      <Card.Title>{'project.title'}</Card.Title>
-                      <Card.Text>{'project.description'}</Card.Text>
-                      <LinkContainer exact to={`/job/${'project.id'}`}>
-                        <Button variant='primary'>Apply</Button>
-                      </LinkContainer>
-                    </Card.Body>
-                  </Card>
-                );
-              })}
-            </Col>
-          </Row>
-        </Container>
-      )}
+        <Row>
+          <Col md={4}>
+            {filteredGigs.map(project => {
+              return (
+                <Card key={project.id}>
+                  <Image
+                    src={project.imageUrl}
+                    noLazyLoad='true'
+                    className='cardImgTop'
+                    height='200'
+                    alt='...'></Image>
+                  <Card.Body>
+                    <Card.Title>{project.title}</Card.Title>
+                    <Card.Text>{project.description}</Card.Text>
+                    <LinkContainer exact to={`/job/${project.id}`}>
+                      <Button variant='primary'>Apply</Button>
+                    </LinkContainer>
+                  </Card.Body>
+                </Card>
+              );
+            })}
+          </Col>
+        </Row>
+      </Container>
     </Layout>
   );
 };

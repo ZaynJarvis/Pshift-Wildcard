@@ -44,30 +44,34 @@ const Wallet = (type, title) => {
 
       <Col className='btm'>
         <h1>Latest Transactions: </h1>
-        <Card className='transactions'>
-          <ListGroup variant='flush'>
-            {transactions.map(value => (
-              <ListGroup.Item key={value.id}>
-                <Row className='transaction'>
-                  <Col>
-                    <h4>{value.item}</h4>
-                    <p>{value.date}</p>
-                  </Col>
-                  <Col>
-                    <h3
-                      style={{
-                        textAlign: 'right',
-                        color: value.inflow ? 'green' : 'red'
-                      }}>
-                      {value.inflow ? '+' : '-'}
-                      {value.amount}
-                    </h3>
-                  </Col>
-                </Row>
-              </ListGroup.Item>
-            ))}
-          </ListGroup>
-        </Card>
+        {loading ? (
+          <div></div>
+        ) : (
+          <Card className='transactions'>
+            <ListGroup variant='flush'>
+              {transactions.map(value => (
+                <ListGroup.Item key={value.id}>
+                  <Row className='transaction'>
+                    <Col>
+                      <h4>{value.item}</h4>
+                      <p>{value.date}</p>
+                    </Col>
+                    <Col>
+                      <h3
+                        style={{
+                          textAlign: 'right',
+                          color: value.inflow ? 'green' : 'red'
+                        }}>
+                        {value.inflow ? '+' : '-'}
+                        {value.amount}
+                      </h3>
+                    </Col>
+                  </Row>
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+          </Card>
+        )}
       </Col>
     </Container>
   );

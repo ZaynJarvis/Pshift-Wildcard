@@ -13,6 +13,8 @@ import {
   Tabs,
   Tab
 } from 'react-bootstrap';
+import Image from 'react-graceful-image';
+
 const InsurancePage = () => {
   const insuranceContext = useContext(InsuranceContext);
   const { loading, insurances, getAllInsurances } = insuranceContext;
@@ -25,28 +27,31 @@ const InsurancePage = () => {
 
   return (
     <Layout title='Insurance'>
-      {!loading && (
+      {loading ? (
+        <div></div>
+      ) : (
         <Container>
           <Row>
             <Col>
               <Carousel>
                 <Carousel.Item>
-                  <img
-                    className='d-block w-100'
+                  <Image
                     src='https://source.unsplash.com/800x400/?doctor'
-                    alt='First slide'
-                  />
+                    // noLazyLoad='true'
+                    className='d-block w-100'
+                    alt='...'></Image>
+
                   <Carousel.Caption>
                     <h3>CancerCare</h3>
                     <p>From S$8.90/mth with 100% payout at any stage.</p>
                   </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img
-                    className='d-block w-100'
+                  <Image
                     src='https://source.unsplash.com/800x400/?travel'
-                    alt='Third slide'
-                  />
+                    noLazyLoad='true'
+                    className='d-block w-100'
+                    alt='...'></Image>
 
                   <Carousel.Caption>
                     <h3>Travel Insurance</h3>
@@ -54,11 +59,11 @@ const InsurancePage = () => {
                   </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img
-                    className='d-block w-100'
+                  <Image
                     src='https://source.unsplash.com/800x400/?car'
-                    alt='Third slide'
-                  />
+                    noLazyLoad='true'
+                    className='d-block w-100'
+                    alt='...'></Image>
                   <Carousel.Caption>
                     <h3>Car Insurance</h3>
                     <p>Get 10% off by comparing quotes from 3 insurers.</p>
@@ -82,12 +87,12 @@ const InsurancePage = () => {
                         })
                         .map(insurance => (
                           <Card key={insurance.id}>
-                            <Card.Img
-                              variant='top'
-                              src={
-                                'https://miro.medium.com/max/1200/1*y6C4nSvy2Woe0m7bWEn4BA.png'
-                              }
-                            />
+                            <Image
+                              src={insurance.imageUrl}
+                              noLazyLoad='true'
+                              className='cardImgTop'
+                              height='200'
+                              alt='...'></Image>
                             <Card.Body>
                               <Card.Title>{insurance.title}</Card.Title>
                               <Card.Text>{insurance.description}</Card.Text>

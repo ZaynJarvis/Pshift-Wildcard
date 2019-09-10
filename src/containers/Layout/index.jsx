@@ -4,10 +4,10 @@ import './style.css';
 import PageHeader from '../../components/PageHeader';
 
 export default ({ title, children }) => {
-	return (
-		<>
-			<PageHeader title={title} />
-			<div className="page-content">{children || '404'}</div>
-		</>
-	);
+  return (
+    <>
+      <PageHeader title={title} />
+      <div className='page-content'>{children || <div></div>}</div>
+    </>
+  );
 };
