@@ -9,60 +9,71 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Projects from '../../../mock/project';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
-	root: {
-		width: '90%',
-	},
-	button: {
-		marginTop: theme.spacing(1),
-		marginRight: theme.spacing(1),
-	},
-	actionsContainer: {
-		marginBottom: theme.spacing(2),
-	},
-	resetContainer: {
-		padding: theme.spacing(3),
-	},
+  root: {
+    width: '90%'
+  },
+  button: {
+    marginTop: theme.spacing(1),
+    marginRight: theme.spacing(1)
+  },
+  actionsContainer: {
+    marginBottom: theme.spacing(2)
+  },
+  resetContainer: {
+    padding: theme.spacing(3)
+  }
 }));
 
 export default function VerticalLinearStepper({ id }) {
-	const classes = useStyles();
-	const [activeStep, setActiveStep] = React.useState(Projects[id].status);
-	const status = [true, true, false, false];
-	const tasks = Projects[id].tasks;
+  const classes = useStyles();
+  const [activeStep, setActiveStep] = React.useState(Projects[id].status);
+  const status = [true, true, false, false];
+  const tasks = Projects[id].tasks;
 
-	return (
-		<div className={classes.root}>
-			<Stepper nonLinear activeStep={activeStep} orientation="vertical">
-				{tasks.map((_, index) => (
-					<Step key={index}>
-						<StepButton completed={status[index]} onClick={() => setActiveStep(index)}>
-							Phase {index}
-						</StepButton>
-						<StepContent>
-							<List component="nav" aria-label="Secondary mailbox folders">
-								{tasks[index].map(v => (
-									<ListItem button key={v}>
-										<ListItemText primary={v} />
-									</ListItem>
-								))}
-							</List>
+  return (
+    <div className={classes.root}>
+      <Stepper nonLinear activeStep={activeStep} orientation='vertical'>
+        {tasks.map((_, index) => (
+          <Step key={index}>
+            <StepButton
+              completed={status[index]}
+              onClick={() => setActiveStep(index)}>
+              Phase {index}
+            </StepButton>
+            <StepContent>
+              <List component='nav' aria-label='Secondary mailbox folders'>
+                {tasks[index].map(v => (
+                  <ListItem button key={v}>
+                    <ListItemText primary={v} />
+                  </ListItem>
+                ))}
+              </List>
 
-							<div className={classes.actionsContainer}>
-								<div>
-									<Button variant="outlined" color="primary" className={classes.button}>
-										Request for review
-									</Button>
-									<Button variant="contained" color="secondary" className={classes.button}>
-										Start a Dispute
-									</Button>
-								</div>
-							</div>
-						</StepContent>
-					</Step>
-				))}
-			</Stepper>
-		</div>
-	);
+              <div className={classes.actionsContainer}>
+                <div>
+                  <Button
+                    variant='outlined'
+                    color='primary'
+                    className={classes.button}>
+                    Request for review
+                  </Button>
+                  <Link to='/dispute'>
+                    <Button
+                      variant='contained'
+                      color='secondary'
+                      className={classes.button}>
+                      Start a Dispute
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </StepContent>
+          </Step>
+        ))}
+      </Stepper>
+    </div>
+  );
 }

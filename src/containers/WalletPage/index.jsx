@@ -13,12 +13,13 @@ import {
 import { FaBitcoin, FaEthereum, FaDollarSign } from 'react-icons/fa';
 import TransactionContext from '../../context/transaction/transactionContext';
 
-const Wallet = (type, title) => {
+const Wallet = ({ type, title }) => {
   const currencyType = {
     cash: <FaDollarSign />,
     bitcoin: <FaBitcoin />,
     ethereum: <FaEthereum />
   };
+  const Icon = currencyType['cash'];
 
   const transactionContext = useContext(TransactionContext);
   // console.log(transactionContext);
@@ -38,40 +39,36 @@ const Wallet = (type, title) => {
           <h1 className='balance'>32,000</h1>
         </Col>
         <Col>
-          <h1 className='icon'>{currencyType[type]} </h1>
+          <h1 className='icon'>{Icon} </h1>
         </Col>
       </Row>
 
       <Col className='btm'>
         <h1>Latest Transactions: </h1>
-        {loading ? (
-          <div></div>
-        ) : (
-          <Card className='transactions'>
-            <ListGroup variant='flush'>
-              {transactions.map(value => (
-                <ListGroup.Item key={value.id}>
-                  <Row className='transaction'>
-                    <Col>
-                      <h4>{value.item}</h4>
-                      <p>{value.date}</p>
-                    </Col>
-                    <Col>
-                      <h3
-                        style={{
-                          textAlign: 'right',
-                          color: value.inflow ? 'green' : 'red'
-                        }}>
-                        {value.inflow ? '+' : '-'}
-                        {value.amount}
-                      </h3>
-                    </Col>
-                  </Row>
-                </ListGroup.Item>
-              ))}
-            </ListGroup>
-          </Card>
-        )}
+        <Card className='transactions'>
+          <ListGroup variant='flush'>
+            {transactions.map(value => (
+              <ListGroup.Item key={value.id}>
+                <Row className='transaction'>
+                  <Col>
+                    <h4>{value.item}</h4>
+                    <p>{value.date}</p>
+                  </Col>
+                  <Col>
+                    <h3
+                      style={{
+                        textAlign: 'right',
+                        color: value.inflow ? 'green' : 'red'
+                      }}>
+                      {value.inflow ? '+' : '-'}
+                      {value.amount}
+                    </h3>
+                  </Col>
+                </Row>
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+        </Card>
       </Col>
     </Container>
   );

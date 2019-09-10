@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './style.css';
-import { Navbar, Nav, Row } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { FaWallet, FaProjectDiagram } from 'react-icons/fa';
 import { IoMdPeople, IoIosBrowsers } from 'react-icons/io';

@@ -6,7 +6,6 @@ import SearchInput, { createFilter } from 'react-search-input';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import GigContext from '../../context/gig/gigContext';
-import Loader from 'react-loader-spinner';
 import Image from 'react-graceful-image';
 
 const KEYS_TO_FILTERS = ['title', 'description'];
@@ -14,7 +13,7 @@ const KEYS_TO_FILTERS = ['title', 'description'];
 const MarketPage = () => {
   const gigContext = useContext(GigContext);
 
-  const { gigs, loading, getAllGigs } = gigContext;
+  const { gigs, getAllGigs } = gigContext;
 
   useEffect(() => {
     getAllGigs();
@@ -56,7 +55,7 @@ const MarketPage = () => {
                   <Card.Body>
                     <Card.Title>{project.title}</Card.Title>
                     <Card.Text>{project.description}</Card.Text>
-                    <LinkContainer exact to={`/job/${project.id}`}>
+                    <LinkContainer exact to={`/offer/${project.id}`}>
                       <Button variant='primary'>Apply</Button>
                     </LinkContainer>
                   </Card.Body>
