@@ -19,8 +19,10 @@ import Loader from 'react-loader-spinner';
 const ProjectsPage = () => {
   const projectContext = useContext(ProjectContext);
 
-  const { projects, loading, getAllProjects } = projectContext;
-
+  // Comment out during dev phase
+  // const {projects} = projectContext
+  const { loading, getAllProjects } = projectContext;
+  const projects = [{}, {}, {}];
   useEffect(() => {
     getAllProjects();
     // eslint-disable-next-line
@@ -44,20 +46,22 @@ const ProjectsPage = () => {
             <Col>
               <Carousel>
                 {projects
-                  .filter(project => {
-                    return project.inCarousel === true;
-                  })
+                  // .filter(project => {
+                  //   return project.inCarousel === true;
+                  // })
                   .map(project => (
-                    <Carousel.Item key={project.id}>
+                    <Carousel.Item key={'project.id'}>
                       <img
                         className='d-block w-100'
-                        src={project.imageUrl}
+                        src={
+                          'https://miro.medium.com/max/1200/1*y6C4nSvy2Woe0m7bWEn4BA.png'
+                        }
                         alt='First slide'
-                        style={{ height: '200px' }}
+                        style={{ height: '300px' }}
                       />
                       <Carousel.Caption>
-                        <h3>{project.title}</h3>
-                        <p>{project.description}</p>
+                        <h3>{'project.title'}</h3>
+                        <p>{'project.description'}</p>
                       </Carousel.Caption>
                     </Carousel.Item>
                   ))}
@@ -75,15 +79,20 @@ const ProjectsPage = () => {
                   <Row>
                     <Col md={4}>
                       {projects
-                        .filter(project => {
-                          return project.inCarousel === false;
-                        })
+                        // .filter(project => {
+                        //   return project.inCarousel === false;
+                        // })
                         .map(project => (
-                          <Card key={project.id}>
-                            <Card.Img variant='top' src={project.imageUrl} />
+                          <Card key={'project.id'}>
+                            <Card.Img
+                              variant='top'
+                              src={
+                                'https://miro.medium.com/max/1200/1*y6C4nSvy2Woe0m7bWEn4BA.png'
+                              }
+                            />
                             <Card.Body>
-                              <Card.Title>{project.title}</Card.Title>
-                              <Card.Text>{project.description}</Card.Text>
+                              <Card.Title>{'project.title'}</Card.Title>
+                              <Card.Text>{'project.description'}</Card.Text>
                               <LinkContainer to='/project/0'>
                                 <Button>Manage Milestones</Button>
                               </LinkContainer>
@@ -103,15 +112,20 @@ const ProjectsPage = () => {
                   <Row>
                     <Col md={4}>
                       {projects
-                        .filter(project => {
-                          return project.isComplete === true;
-                        })
+                        // .filter(project => {
+                        //   return project.isComplete === true;
+                        // })
                         .map(project => (
-                          <Card key={project.id}>
-                            <Card.Img variant='top' src={project.imageUrl} />
+                          <Card key={'project.id'}>
+                            <Card.Img
+                              variant='top'
+                              src={
+                                'https://miro.medium.com/max/1200/1*y6C4nSvy2Woe0m7bWEn4BA.png'
+                              }
+                            />
                             <Card.Body>
-                              <Card.Title>{project.title}</Card.Title>
-                              <Card.Text>{project.description}</Card.Text>
+                              <Card.Title>{'project.title'}</Card.Title>
+                              <Card.Text>{'project.description'}</Card.Text>
                               <LinkContainer to='/project/0'>
                                 <Button>Manage Milestones</Button>
                               </LinkContainer>

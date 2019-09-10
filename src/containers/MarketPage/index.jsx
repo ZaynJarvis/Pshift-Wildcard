@@ -27,7 +27,9 @@ const MarketPage = () => {
     setTerm(term);
   };
 
-  const filteredGigs = gigs.filter(createFilter(searchTerm, KEYS_TO_FILTERS));
+  // Comment out during test phase
+  // const filteredGigs = gigs.filter(createFilter(searchTerm, KEYS_TO_FILTERS));
+  const filteredGigs = [{}, {}, {}];
 
   return (
     <Layout title='Marketplace'>
@@ -56,12 +58,17 @@ const MarketPage = () => {
             <Col md={4}>
               {filteredGigs.map(project => {
                 return (
-                  <Card key={project.id}>
-                    <Card.Img variant='top' src={project.imageUrl} />
+                  <Card key={'project.id'}>
+                    <Card.Img
+                      variant='top'
+                      src={
+                        'https://miro.medium.com/max/1200/1*y6C4nSvy2Woe0m7bWEn4BA.png'
+                      }
+                    />
                     <Card.Body>
-                      <Card.Title>{project.title}</Card.Title>
-                      <Card.Text>{project.description}</Card.Text>
-                      <LinkContainer exact to={`/job/${project.id}`}>
+                      <Card.Title>{'project.title'}</Card.Title>
+                      <Card.Text>{'project.description'}</Card.Text>
+                      <LinkContainer exact to={`/job/${'project.id'}`}>
                         <Button variant='primary'>Apply</Button>
                       </LinkContainer>
                     </Card.Body>

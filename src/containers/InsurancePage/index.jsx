@@ -82,7 +82,12 @@ const InsurancePage = () => {
                         })
                         .map(insurance => (
                           <Card key={insurance.id}>
-                            <Card.Img variant='top' src={insurance.imageUrl} />
+                            <Card.Img
+                              variant='top'
+                              src={
+                                'https://miro.medium.com/max/1200/1*y6C4nSvy2Woe0m7bWEn4BA.png'
+                              }
+                            />
                             <Card.Body>
                               <Card.Title>{insurance.title}</Card.Title>
                               <Card.Text>{insurance.description}</Card.Text>
