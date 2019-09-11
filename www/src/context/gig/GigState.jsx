@@ -5,37 +5,38 @@ import GigContext from './gigContext';
 import { GET_ALL_GIGS, SET_LOADING } from '../types';
 
 const GigState = props => {
-  const initialState = {
-    gigs: [],
-    loading: false
-  };
+	const initialState = {
+		gigs: [],
+		loading: false,
+	};
 
-  const [state, dispatch] = useReducer(GigReducer, initialState);
+	const [state, dispatch] = useReducer(GigReducer, initialState);
 
-  // Get all gigs
-  const getAllGigs = async () => {
-    setLoading();
-    const res = await axios.get(`http://service:3000/api/gigs`);
-    console.log(res);
-    dispatch({
-      type: GET_ALL_GIGS,
-      payload: res.data
-    });
-  };
+	// Get all gigs
+	const getAllGigs = async () => {
+		setLoading();
+		const res = await axios.get(`${process.env.REACT_API || 'http://localhost'}/api/gigs`);
+		console.log(res);
+		dispatch({
+			type: GET_ALL_GIGS,
+			payload: res.data,
+		});
+	};
 
-  // Set Loading
-  const setLoading = () => dispatch({ type: SET_LOADING });
+	// Set Loading
+	const setLoading = () => dispatch({ type: SET_LOADING });
 
-  return (
-    <GigContext.Provider
-      value={{
-        gigs: state.gigs,
-        loading: state.loading,
-        getAllGigs
-      }}>
-      {props.children}
-    </GigContext.Provider>
-  );
+	return (
+		<GigContext.Provider
+			value={{
+				gigs: state.gigs,
+				loading: state.loading,
+				getAllGigs,
+			}}
+		>
+			{props.children}
+		</GigContext.Provider>
+	);
 };
 
 export default GigState;
