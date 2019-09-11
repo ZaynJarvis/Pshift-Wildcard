@@ -6,37 +6,38 @@ import ProjectReducer from './projectReducer';
 import { GET_ALL_PROJECTS, SET_LOADING } from '../types';
 
 const ProjectState = props => {
-  const initialState = {
-    projects: [],
-    loading: false
-  };
+	const initialState = {
+		projects: [],
+		loading: false,
+	};
 
-  const [state, dispatch] = useReducer(ProjectReducer, initialState);
+	const [state, dispatch] = useReducer(ProjectReducer, initialState);
 
-  // Get all projects
-  const getAllProjects = async () => {
-    setLoading();
-    const res = await axios.get(`http://localhost:3000/api/projects`);
-    // console.log(res);
-    dispatch({
-      type: GET_ALL_PROJECTS,
-      payload: res.data
-    });
-  };
+	// Get all projects
+	const getAllProjects = async () => {
+		setLoading();
+		const res = await axios.get(`http://service/api/projects`);
+		// console.log(res);
+		dispatch({
+			type: GET_ALL_PROJECTS,
+			payload: res.data,
+		});
+	};
 
-  // Set Loading
-  const setLoading = () => dispatch({ type: SET_LOADING });
+	// Set Loading
+	const setLoading = () => dispatch({ type: SET_LOADING });
 
-  return (
-    <ProjectContext.Provider
-      value={{
-        projects: state.projects,
-        loading: state.loading,
-        getAllProjects
-      }}>
-      {props.children}
-    </ProjectContext.Provider>
-  );
+	return (
+		<ProjectContext.Provider
+			value={{
+				projects: state.projects,
+				loading: state.loading,
+				getAllProjects,
+			}}
+		>
+			{props.children}
+		</ProjectContext.Provider>
+	);
 };
 
 export default ProjectState;
