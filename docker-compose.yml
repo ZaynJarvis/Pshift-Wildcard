@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  service:
+    build: ./backend
+    ports:
+      - 3001:3000
+  www:
+    build: ./www
+    ports:
+      - 3000:80
+    depends_on:
+      - service
+
