@@ -15,7 +15,7 @@ const TransactionState = props => {
 
   const getAllTransactions = async () => {
     setLoading();
-    const res = await axios.get(`http://service/api/transactions`);
+    const res = await axios.get(`http://service:3000/api/transactions`);
     console.log(res);
     dispatch({
       type: GET_ALL_TRANSACTIONS,
