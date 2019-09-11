@@ -1,10 +1,6 @@
-FROM node:10
-WORKDIR /app
-COPY ./package.json /app
-RUN yarn install
+FROM nginx
 
-COPY . /app
+COPY ./build/. /usr/share/nginx/html
 
-CMD ["yarn", "start"]
+EXPOSE 80
 
-EXPOSE 3000

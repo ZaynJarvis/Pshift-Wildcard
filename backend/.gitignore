@@ -5,7 +5,7 @@ logs/
 .DS_Store
 
 public/
-built/
+build/
 
 temp/
 
