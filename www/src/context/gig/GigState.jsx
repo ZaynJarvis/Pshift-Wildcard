@@ -15,7 +15,7 @@ const GigState = props => {
 	// Get all gigs
 	const getAllGigs = async () => {
 		setLoading();
-		const res = await axios.get(`${process.env.REACT_API || 'http://localhost'}/api/gigs`);
+		const res = await axios.get(`/api/gigs`);
 		console.log(res);
 		dispatch({
 			type: GET_ALL_GIGS,
