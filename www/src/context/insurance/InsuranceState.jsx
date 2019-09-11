@@ -15,7 +15,7 @@ const InsuranceState = props => {
 	// Get Insurance
 	const getAllInsurances = async () => {
 		setLoading();
-		const res = await axios.get(`${process.env.REACT_API || 'http://localhost'}/api/insurances`);
+		const res = await axios.get(`/api/insurances`);
 		console.log(res);
 		dispatch({
 			type: GET_ALL_INSURANCES,
