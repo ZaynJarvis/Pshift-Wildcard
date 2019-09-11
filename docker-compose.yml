@@ -11,9 +11,4 @@ services:
       - 3000:80
     depends_on:
       - service
-  curl:
-    image: byrnedo/alpine-curl
-    command: curl http://service:3000/api/gigs
-    depends_on:
-      - service
 

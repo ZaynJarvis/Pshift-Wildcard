@@ -2,7 +2,7 @@
 all: 
 	$(MAKE) -C backend all
 	$(MAKE) -C www all
-	docker-compose up -d
+	docker-compose up --build -d
 
 clean:
 	docker-compose down
