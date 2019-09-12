@@ -44,7 +44,7 @@ const OfferPage = () => {
                 <h3>Description</h3>
               </Form.Label>
               <Form.Control as='textarea' rows='5' placeholder='Be nice!' />
-              <Form.Text className='text-muted'>Describe the dispute</Form.Text>
+              <Form.Text className='text-muted'>Describe the milestone</Form.Text>
             </Form.Group>
 
             <Form.Group>
