@@ -8,11 +8,16 @@ Wildcard is the next-gen free-lancing platform that utilizes AI and big data to 
 * npm
 * yarn
 
-# Instructions on launching the app locally
+# Download and launch the app locally
 1. Download the code 
 ```
-git clone 
+git clone https://github.com/ZaynJarvis/Pshift-Wildcard.git
+cd Pshift-Wildcard
 ```
-
+2. launch the app 
+```
+sudo make
+```
+you may access the app now at ```localhost:3000```
 
 ### frontend container depends on nginx, build frontend before run docker-compose
