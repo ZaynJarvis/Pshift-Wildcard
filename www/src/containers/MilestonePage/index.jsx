@@ -1,11 +1,10 @@
 import React from 'react';
 import './style.css';
-import { Row, Col, Container } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import Layout from '../Layout/index';
 import { withRouter } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import Stepper from './Stepper';
+import BottomNavigation from '../../components/BottomNavigation/index';
 
 const MilestonePage = ({ match, history }) => {
   return (
@@ -14,6 +13,7 @@ const MilestonePage = ({ match, history }) => {
         <Row>
           <Col>
             <Stepper id={match.params.id} />
+            <BottomNavigation />
           </Col>
         </Row>
       </Layout>
