@@ -42,9 +42,9 @@ const MarketPage = () => {
         </Row>
 
         <Row>
-          <Col md={4}>
-            {filteredGigs.map(project => {
-              return (
+          {filteredGigs.map(project => {
+            return (
+              <Col md={4}>
                 <Card key={project.id}>
                   <Image
                     src={project.imageUrl}
@@ -60,9 +60,9 @@ const MarketPage = () => {
                     </LinkContainer>
                   </Card.Body>
                 </Card>
-              );
-            })}
-          </Col>
+              </Col>
+            );
+          })}
         </Row>
       </Container>
     </Layout>

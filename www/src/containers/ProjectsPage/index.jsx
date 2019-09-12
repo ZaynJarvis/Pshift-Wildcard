@@ -83,8 +83,8 @@ const ProjectsPage = () => {
             <Tabs fill defaultActiveKey='ongoing' id='uncontrolled-tab-example'>
               <Tab eventKey='ongoing' title='Ongoing'>
                 <Row>
-                  <Col md={4}>
-                    {projects.map(project => (
+                  {projects.map(project => (
+                    <Col md={4}>
                       <Card key={project.id}>
                         <Image
                           src={project.imageUrl}
@@ -105,8 +105,8 @@ const ProjectsPage = () => {
                           </ListGroup.Item>
                         </ListGroup>
                       </Card>
-                    ))}
-                  </Col>
+                    </Col>
+                  ))}
                 </Row>
               </Tab>
 

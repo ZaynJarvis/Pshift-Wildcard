@@ -74,12 +74,12 @@ const InsurancePage = () => {
             <Tabs fill defaultActiveKey='travel' id='uncontrolled-tab-example'>
               <Tab eventKey='travel' title='Travel'>
                 <Row>
-                  <Col md={4}>
-                    {insurances
-                      .filter(insurance => {
-                        return insurance.type === 'travel';
-                      })
-                      .map(insurance => (
+                  {insurances
+                    .filter(insurance => {
+                      return insurance.type === 'travel';
+                    })
+                    .map(insurance => (
+                      <Col md={4}>
                         <Card key={insurance.id}>
                           <Image
                             src={insurance.imageUrl}
@@ -93,19 +93,19 @@ const InsurancePage = () => {
                             <Button variant='primary'>Apply</Button>
                           </Card.Body>
                         </Card>
-                      ))}
-                  </Col>
+                      </Col>
+                    ))}
                 </Row>
               </Tab>
 
               <Tab eventKey='home' title='Home'>
                 <Row>
-                  <Col md={4}>
-                    {insurances
-                      .filter(insurance => {
-                        return insurance.type === 'home';
-                      })
-                      .map(insurance => (
+                  {insurances
+                    .filter(insurance => {
+                      return insurance.type === 'home';
+                    })
+                    .map(insurance => (
+                      <Col md={4}>
                         <Card key={insurance.id}>
                           <Image
                             src={insurance.imageUrl}
@@ -119,8 +119,8 @@ const InsurancePage = () => {
                             <Button variant='primary'>Apply</Button>
                           </Card.Body>
                         </Card>
-                      ))}
-                  </Col>
+                      </Col>
+                    ))}
                 </Row>
               </Tab>
               <Tab eventKey='coming' title='Coming soon...' disabled></Tab>

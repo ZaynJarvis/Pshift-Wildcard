@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../../Layout/index';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const DisputePage = () => {
@@ -17,25 +17,35 @@ const DisputePage = () => {
               Discuss on the Project structure. Reach Consensus on SCOPE,
               PERFORMANCE, ROBUSTNESS. Deliver UI MockUp.
             </p>
-            <textarea
-              placeholder='Remember, be nice!'
-              cols='53'
-              rows='10'
-              style={{ border: '1px dashed #32a8a4' }}></textarea>
-            <Button
-              variant='outline-secondary'
-              block
-              style={{ marginTop: '20px' }}>
-              Upload material
-            </Button>
-            <Link to='/projects'>
+            <Form>
+              <Form.Group>
+                <Form.Label>
+                  <h3>Description</h3>
+                </Form.Label>
+                <Form.Control
+                  as='textarea'
+                  rows='5'
+                  placeholder='Enter description'
+                />
+                <Form.Text className='text-muted'>
+                  Describe the milestone
+                </Form.Text>
+              </Form.Group>
               <Button
-                variant='outline-dark'
+                variant='outline-secondary'
                 block
                 style={{ marginTop: '20px' }}>
-                Submit
+                Upload material
               </Button>
-            </Link>
+              <Link to='/projects'>
+                <Button
+                  variant='outline-dark'
+                  block
+                  style={{ marginTop: '20px' }}>
+                  Submit
+                </Button>
+              </Link>
+            </Form>
           </Col>
         </Row>
       </Container>
