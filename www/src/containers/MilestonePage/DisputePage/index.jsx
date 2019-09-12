@@ -7,8 +7,8 @@ const DisputePage = () => {
   return (
     <Layout title='Dispute '>
       <Container>
-        <Row className='top'>
-          <Col className='top-left'>
+        <Row>
+          <Col>
             <h1 className='balance'>React Prototype</h1>
             <h2 className='balance' style={{ color: '#777' }}>
               Milestone 1
@@ -19,20 +19,20 @@ const DisputePage = () => {
             </p>
             <textarea
               placeholder='Remember, be nice!'
-              cols='45'
+              cols='53'
               rows='10'
               style={{ border: '1px dashed #32a8a4' }}></textarea>
             <Button
               variant='outline-secondary'
               block
-              style={{ marginTop: '10px' }}>
+              style={{ marginTop: '20px' }}>
               Upload material
             </Button>
             <Link to='/projects'>
               <Button
                 variant='outline-dark'
                 block
-                style={{ marginTop: '15px' }}>
+                style={{ marginTop: '20px' }}>
                 Submit
               </Button>
             </Link>
