@@ -124,9 +124,6 @@ const ProjectsPage = () => {
                         <Card.Body>
                           <Card.Title>{project.title}</Card.Title>
                           <Card.Text>{project.description}</Card.Text>
-                          <LinkContainer to='/project/0'>
-                            <Button>View Milestones</Button>
-                          </LinkContainer>
                         </Card.Body>
                       </Card>
                     ))}
