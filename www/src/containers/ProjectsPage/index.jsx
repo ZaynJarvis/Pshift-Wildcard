@@ -125,14 +125,9 @@ const ProjectsPage = () => {
                           <Card.Title>{project.title}</Card.Title>
                           <Card.Text>{project.description}</Card.Text>
                           <LinkContainer to='/project/0'>
-                            <Button>Manage Milestones</Button>
+                            <Button>View Milestones</Button>
                           </LinkContainer>
                         </Card.Body>
-                        <ListGroup className='list-group-flush'>
-                          <ListGroup.Item variant='success'>
-                            Phase 1 of 4: In Progress
-                          </ListGroup.Item>
-                        </ListGroup>
                       </Card>
                     ))}
                   </Col>
