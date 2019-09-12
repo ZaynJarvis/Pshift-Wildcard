@@ -19,7 +19,7 @@ cd Pshift-Wildcard
 ```
 sudo make
 ```
-You have brought the app live on your local workstation! you can access the it at ```localhost:3000```.
+You have brought the app live on your local workstation! You can access it at ```localhost:3000```.
 
 Note that the Wildcard application has been fulled containerized with Docker Container and Docker Service. For details on the container configuration, please refer to the ```docker-compose.yml``` and ```Dockerfile``` files.
 
