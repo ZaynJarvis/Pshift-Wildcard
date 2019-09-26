@@ -1,6 +1,7 @@
 all: install build
 
 install: package.json
+	rm -rf ./build
 	npm i
 
 build:

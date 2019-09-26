@@ -1,6 +1,7 @@
 all: install build
 
-install: package.json
+install: 
+	rm -rf ./build
 	yarn install
 
 build:
