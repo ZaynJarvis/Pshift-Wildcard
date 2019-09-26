@@ -1,5 +1,9 @@
-all:
+all: install build
+
+install: package.json
 	npm i
+
+build:
 	npm run build
 	
 clean:

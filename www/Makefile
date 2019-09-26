@@ -1,6 +1,10 @@
-all:
-	npm i
-	npm run build
+all: install build
+
+install: package.json
+	yarn install
+
+build:
+	yarn build
 
 clean:
 	rm -rf ./build
