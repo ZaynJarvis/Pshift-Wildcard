@@ -39,7 +39,7 @@ const DisputePage = () => {
               </Button>
               <Link to='/projects'>
                 <Button
-                  variant='outline-dark'
+                  variant='outline-light'
                   block
                   style={{ marginTop: '20px' }}>
                   Submit

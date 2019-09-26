@@ -5,7 +5,7 @@ import { Navbar } from 'react-bootstrap';
 
 const PageHeader = ({ title }) => {
   return (
-    <Navbar bg='dark' variant='dark' className='centralize'>
+    <Navbar bg='light' variant='light' className='centralize'>
       <Navbar.Brand>
         {/* <img
           alt='wildcard'

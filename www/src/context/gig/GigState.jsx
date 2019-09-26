@@ -15,7 +15,7 @@ const GigState = props => {
 	// Get all gigs
 	const getAllGigs = async () => {
 		setLoading();
-		const res = await axios.get(`/api/gigs`);
+		const res = await axios.get(`${'http://54.169.193.114:3001'}/api/gigs`);
 		console.log(res);
 		dispatch({
 			type: GET_ALL_GIGS,

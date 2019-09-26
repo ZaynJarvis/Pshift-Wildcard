@@ -39,3 +39,19 @@
 .search-input > input:focus {
   outline: none;
 }
+
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.like {
+  color: pink;
+  font-size: 1.3rem;
+}
+.default {
+  color: lightgrey;
+  font-size: 1.3rem;
+}

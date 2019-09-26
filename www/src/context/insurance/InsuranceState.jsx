@@ -15,7 +15,7 @@ const InsuranceState = props => {
 	// Get Insurance
 	const getAllInsurances = async () => {
 		setLoading();
-		const res = await axios.get(`/api/insurances`);
+		const res = await axios.get(`${'http://54.169.193.114:3001'}/api/insurances`);
 		console.log(res);
 		dispatch({
 			type: GET_ALL_INSURANCES,
