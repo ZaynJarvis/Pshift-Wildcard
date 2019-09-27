@@ -53,4 +53,8 @@ data.filter(d => Math.random() < 0.3).forEach(d => {
     updateGig({ params: { id: d.id }, body: { uid: 'James', like: ['James'] } }, null, null);
 });
 
+data.filter(d => Math.random() < 0.2).forEach(d => {
+    updateGig({ params: { id: d.id }, body: { uid: 'Kun', like: ['Kun'] } }, null, null);
+});
+
 // clearOldFilesInDir('./logs', 0.5, null);
