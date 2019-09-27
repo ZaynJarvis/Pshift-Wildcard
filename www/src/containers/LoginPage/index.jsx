@@ -36,6 +36,10 @@ export default ({ history }) => {
 					'login-profile userb ' + (user ? (user === 'James' ? 'active' : 'inactive') : '')
 				}
 			></div>
+			<div
+				onClick={() => click('Kun')}
+				className={'login-profile userc ' + (user ? (user === 'Kun' ? 'active' : 'inactive') : '')}
+			></div>
 		</div>
 	);
 };
