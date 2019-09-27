@@ -1,7 +1,7 @@
 FROM node
 WORKDIR /app
 COPY ./package.json .
-RUN sudo apt-get install redis-server && npm install --only=prod
+RUN apt-get install redis-server && npm install --only=prod
 
 WORKDIR /app/build
 COPY ./build/. .
