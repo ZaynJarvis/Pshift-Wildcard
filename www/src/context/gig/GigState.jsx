@@ -16,10 +16,10 @@ const GigState = props => {
 	const getAllGigs = async id => {
 		setLoading();
 		let data = [];
-		const res = await axios.get(`${'http://localhost:3001'}/api/gigs/recommend/${id}`);
+		const res = await axios.get(`/api/gigs/recommend/${id}`);
 		data = res.data;
 		console.log(data);
-		const resAll = await axios.get(`${'http://localhost:3001'}/api/gigs`);
+		const resAll = await axios.get(`/api/gigs`);
 		dispatch({
 			type: GET_ALL_GIGS,
 			payload: [...data, ...resAll.data],
@@ -28,7 +28,7 @@ const GigState = props => {
 
 	const updateGig = async (id, content) => {
 		setLoading();
-		const p = await axios.put(`${'http://localhost:3001'}/api/gigs/${id}`, content);
+		const p = await axios.put(`/api/gigs/${id}`, content);
 		dispatch({
 			type: UPDATE_GIG,
 			payload: state.gigs.map(s => {
