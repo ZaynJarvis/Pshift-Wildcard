@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Layout from '../Layout/index';
 import { Row, Col, Container, Form, Button } from 'react-bootstrap';
+import './index.css';
 import Stepper from 'react-stepper-horizontal';
 import { Redirect } from 'react-router-dom';
 
@@ -29,6 +30,7 @@ const OfferPage = () => {
 				<Col>
 					<Row>
 						<Stepper
+							className="stepper"
 							steps={[
 								{ title: 'Milestone 0' },
 								{ title: 'Milestone 1' },

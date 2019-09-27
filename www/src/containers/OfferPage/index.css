@@ -1,0 +1,9 @@
+#root > div > div > div > div > div > div > div > div > div > div {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+#root > div > div > div > div > div > div > div > div > div > a,
+#root > div > div > div > div > div > div > div > div > div > div {
+  font-size: 12px !important;
+}

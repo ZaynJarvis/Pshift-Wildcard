@@ -1,4 +1,4 @@
-.bottom-navigation {
+/* .bottom-navigation {
   height: var(--footer-height);
   background: #fff;
   border-top: 1px solid #9993;
@@ -41,4 +41,24 @@
 
 .active-route > div > p {
   color: #000 !important;
+} */
+nav,
+nav > div {
+  justify-content: space-between !important;
+}
+
+.navbar {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.navbar p {
+  margin-bottom: 0;
+  font-size: 0.5rem;
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
