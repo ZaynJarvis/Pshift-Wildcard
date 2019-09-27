@@ -27,7 +27,7 @@ const ProjectsPage = () => {
 									src="https://images.unsplash.com/photo-1536859355448-76f92ebdc33d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
 									noLazyLoad="true"
 									className="d-block w-100"
-									style={{ height: '250px' }}
+									style={{ height: '250px', objectFit: 'cover' }}
 									alt="..."
 								></Image>
 								<Carousel.Caption>
@@ -53,7 +53,7 @@ const ProjectsPage = () => {
 									src="https://www.analyticsindiamag.com/wp-content/uploads/2019/05/Latest-UI-UX-Trends-2018.jpg"
 									noLazyLoad="true"
 									className="d-block w-100"
-									style={{ height: '250px' }}
+									style={{ height: '250px', objectFit: 'cover' }}
 									alt="..."
 								></Image>
 								<Carousel.Caption>
@@ -78,6 +78,7 @@ const ProjectsPage = () => {
 												<Image
 													src={project.imageUrl}
 													noLazyLoad="true"
+													style={{  objectFit: 'cover' }}
 													className="cardImgTop"
 													height="200"
 													alt="..."

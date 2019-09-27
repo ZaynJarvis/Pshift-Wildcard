@@ -20,6 +20,7 @@ const InsurancePage = () => {
 									src="https://source.unsplash.com/800x400/?doctor"
 									className="d-block w-100"
 									alt="..."
+									style={{ objectFit: 'cover' }}
 								></Image>
 
 								<Carousel.Caption>
@@ -32,6 +33,7 @@ const InsurancePage = () => {
 									src="https://source.unsplash.com/800x400/?travel"
 									noLazyLoad="true"
 									className="d-block w-100"
+									style={{ objectFit: 'cover' }}
 									alt="..."
 								></Image>
 
@@ -45,6 +47,7 @@ const InsurancePage = () => {
 									src="https://source.unsplash.com/800x400/?car"
 									noLazyLoad="true"
 									className="d-block w-100"
+									style={{ objectFit: 'cover' }}
 									alt="..."
 								></Image>
 								<Carousel.Caption>
@@ -72,7 +75,8 @@ const InsurancePage = () => {
 														noLazyLoad="true"
 														className="cardImgTop"
 														height="200"
-														alt="..."
+									style={{ objectFit: 'cover' }}
+									alt="..."
 													></Image>
 													<Card.Body>
 														<Card.Title>{insurance.title}</Card.Title>
@@ -97,7 +101,8 @@ const InsurancePage = () => {
 													<Image
 														src={insurance.imageUrl}
 														noLazyLoad="true"
-														className="cardImgTop"
+									style={{ objectFit: 'cover' }}
+									className="cardImgTop"
 														height="200"
 														alt="..."
 													></Image>

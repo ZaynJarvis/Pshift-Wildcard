@@ -1,10 +1,10 @@
-#root > div > div > div > div > div > div > div > div > div > div {
+.stepper > div > div > div > div {
   display: flex !important;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-#root > div > div > div > div > div > div > div > div > div > a,
-#root > div > div > div > div > div > div > div > div > div > div {
+.stepper > div > div > div > a,
+.stepper > div > div > div > div {
   font-size: 12px !important;
 }

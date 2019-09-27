@@ -28,9 +28,8 @@ const OfferPage = () => {
 		<Layout title="Offer">
 			<Container>
 				<Col>
-					<Row>
+					<Row className="stepper">
 						<Stepper
-							className="stepper"
 							steps={[
 								{ title: 'Milestone 0' },
 								{ title: 'Milestone 1' },
