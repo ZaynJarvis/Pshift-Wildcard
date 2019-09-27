@@ -4,6 +4,7 @@ import Layout from '../Layout';
 
 import SearchInput, { createFilter } from 'react-search-input';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import GigContext from '../../context/gig/gigContext';
 import UserContext from '../../context/user/userContext';
 import Image from 'react-graceful-image';
@@ -65,8 +66,10 @@ const MarketPage = () => {
 									<Card.Body>
 										<Card.Title>{project.title}</Card.Title>
 										<Card.Text>{project.description}</Card.Text>
-										<div className="links" to={`/offer/${project.id}`}>
-											<Button variant="outline-info">Apply</Button>
+										<div className="links">
+											<LinkContainer to={`/offer/${project.id}`}>
+												<Button variant="outline-info">Apply</Button>
+											</LinkContainer>
 											{project.like !== undefined && project.like.includes(uid) ? (
 												<FontAwesomeIcon
 													icon={faStar}
