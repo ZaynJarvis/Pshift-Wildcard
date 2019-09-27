@@ -8,13 +8,13 @@ RUN wget http://download.redis.io/redis-stable.tar.gz && \
     mv src/redis-server /usr/bin/ && \
     cd .. && \
     rm -r redis-stable && \
-    npm install -g concurrently   
+    npm install -g concurrently
 
 RUN npm install --only=prod
 
 WORKDIR /app/build
 COPY ./build/. .
 
-CMD concurrently "/usr/bin/redis-server --bind '0.0.0.0'" "sleep 5s; node index.js"
+CMD redis-cli flushall && concurrently "/usr/bin/redis-server --bind '0.0.0.0'" "sleep 5s; node index.js"
 
 EXPOSE 3000
