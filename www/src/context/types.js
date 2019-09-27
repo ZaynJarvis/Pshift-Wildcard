@@ -1,5 +1,7 @@
 export const GET_ALL_TRANSACTIONS = 'GET_ALL_TRANSACTIONS';
 export const GET_ALL_INSURANCES = 'GET_ALL_INSURANCES';
 export const GET_ALL_GIGS = 'GET_ALL_GIGS';
+export const UPDATE_GIG = 'UPDATE_GIG';
 export const SET_LOADING = 'SET_LOADING';
 export const GET_ALL_PROJECTS = 'GET_ALL_PROJECTS';
+export const UPDATE_USER_ID = 'UPDATE_USER_ID';

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import passport from 'passport';
+// import passport from 'passport';
 
 const router = Router();
 
@@ -18,22 +18,19 @@ router.post('/login', login);
 // router.get('/profile', profile);
 
 // project
-import {
-    createProject,
-    getAllProjects,
-    getProjectByID,
-    updateProject
-} from '../controllers';
+import { createProject, getAllProjects, getProjectByID, updateProject } from '../controllers';
 router.post('/projects', createProject);
 router.get('/projects', getAllProjects);
 router.get('/projects/:id', getProjectByID);
 router.put('/projects/:id', updateProject);
 
 // gig
-import { createGig, getAllGigs, getGigByID, updateGig } from '../controllers';
+import { createGig, getAllGigs, getGigByID, getRecomGigs, updateGig } from '../controllers';
+
 router.post('/gigs', createGig);
 router.get('/gigs', getAllGigs);
 router.get('/gigs/:id', getGigByID);
+router.get('/gigs/recommend/:id', getRecomGigs);
 router.put('/gigs/:id', updateGig);
 
 // transaction

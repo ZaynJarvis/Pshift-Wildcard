@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import axios from 'axios';
 import GigReducer from './gigReducer';
 import GigContext from './gigContext';
-import { GET_ALL_GIGS, SET_LOADING } from '../types';
+import { GET_ALL_GIGS, SET_LOADING, UPDATE_GIG } from '../types';
 
 const GigState = props => {
 	const initialState = {
@@ -13,13 +13,28 @@ const GigState = props => {
 	const [state, dispatch] = useReducer(GigReducer, initialState);
 
 	// Get all gigs
-	const getAllGigs = async () => {
+	const getAllGigs = async id => {
 		setLoading();
-		const res = await axios.get(`${'http://54.169.193.114:3001'}/api/gigs`);
-		console.log(res);
+		let data = [];
+		const res = await axios.get(`${'http://localhost:3001'}/api/gigs/recommend/${id}`);
+		data = res.data;
+		console.log(data);
+		const resAll = await axios.get(`${'http://localhost:3001'}/api/gigs`);
 		dispatch({
 			type: GET_ALL_GIGS,
-			payload: res.data,
+			payload: [...data, ...resAll.data],
+		});
+	};
+
+	const updateGig = async (id, content) => {
+		setLoading();
+		const p = await axios.put(`${'http://localhost:3001'}/api/gigs/${id}`, content);
+		dispatch({
+			type: UPDATE_GIG,
+			payload: state.gigs.map(s => {
+				if (s.id === id) return p.data;
+				else return s;
+			}),
 		});
 	};
 
@@ -32,6 +47,7 @@ const GigState = props => {
 				gigs: state.gigs,
 				loading: state.loading,
 				getAllGigs,
+				updateGig,
 			}}
 		>
 			{props.children}

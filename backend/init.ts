@@ -2,6 +2,7 @@ import fs from 'fs';
 import log4js from 'log4js';
 import HTTPLogger from 'morgan';
 import path from 'path';
+import { getAllGigs, updateGig } from './controllers/gig';
 import './utils/passport';
 
 HTTPLogger.token('user', (req: any) => {
@@ -40,6 +41,16 @@ folders.forEach(folder => {
     if (!fs.existsSync(folder)) {
         fs.mkdirSync(folder);
     }
+});
+
+const data = getAllGigs(null, null, null);
+
+data.filter(d => Math.random() < 0.3).forEach(d => {
+    updateGig({ params: { id: d.id }, body: { uid: 'Zayn', like: ['Zayn'] } }, null, null);
+});
+
+data.filter(d => Math.random() < 0.3).forEach(d => {
+    updateGig({ params: { id: d.id }, body: { uid: 'James', like: ['James'] } }, null, null);
 });
 
 // clearOldFilesInDir('./logs', 0.5, null);

@@ -13,7 +13,7 @@ import routesApi from './routes';
 
 const app = express();
 const AppLogger = log4js.getLogger('wildcard');
-const port = 3000;
+const port = 3001;
 const httpLog = fs.createWriteStream(path.join(__dirname, 'http.log'), { flags: 'a' });
 const loggerFormat =
     ':date[iso] :: :pmethod :purl :: [:status] res-length: :res[content-length]\t res-time :response-time ms :: :user';

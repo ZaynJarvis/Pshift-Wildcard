@@ -17,3 +17,4 @@ scripts/\.ipynb_checkpoints/
 
 
 test/*.http
+dump.rdb

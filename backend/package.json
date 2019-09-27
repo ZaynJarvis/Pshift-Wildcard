@@ -24,7 +24,8 @@
         "morgan": "~1.9.0",
         "passport": "^0.4.0",
         "passport-jwt": "4.0.0",
-        "passport-local": "^1.0.0"
+        "passport-local": "^1.0.0",
+        "raccoon": "0.2.8"
     },
     "devDependencies": {
         "@types/body-parser": "1.17.0",
@@ -38,7 +39,7 @@
         "@types/log4js": "2.3.5",
         "@types/mocha": "5.2.7",
         "@types/morgan": "1.7.36",
-        "@types/node": "^12.7.2",
+        "@types/node": "12.7.8",
         "@types/passport": "1.0.0",
         "@types/passport-jwt": "3.0.1",
         "@types/passport-local": "1.0.33",

@@ -16,8 +16,7 @@ const ProjectState = props => {
 	// Get all projects
 	const getAllProjects = async () => {
 		setLoading();
-		const res = await axios.get(`${'http://54.169.193.114:3001'}/api/projects`);
-		console.log(res);
+		const res = await axios.get(`${'http://localhost:3001'}/api/projects`);
 		dispatch({
 			type: GET_ALL_PROJECTS,
 			payload: res.data,

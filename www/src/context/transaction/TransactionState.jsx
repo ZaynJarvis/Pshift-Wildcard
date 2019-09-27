@@ -15,8 +15,7 @@ const TransactionState = props => {
 
 	const getAllTransactions = async () => {
 		setLoading();
-		const res = await axios.get(`${'http://54.169.193.114:3001'}/api/transactions`);
-		console.log(res);
+		const res = await axios.get(`${'http://localhost:3001'}/api/transactions`);
 		dispatch({
 			type: GET_ALL_TRANSACTIONS,
 			payload: res.data,

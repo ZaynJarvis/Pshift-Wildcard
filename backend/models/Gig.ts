@@ -5,9 +5,9 @@ export class Gig {
     public title: string;
     public description: string;
     public imageUrl: string;
-    public like: boolean;
+    public like: string[];
 
-    constructor(obj: { title?: string; description?: string; imageUrl?: string; like?: boolean }) {
+    constructor(obj: { title?: string; description?: string; imageUrl?: string; like?: string[] }) {
         const { title, description, imageUrl, like } = obj;
         this.id = generateUUID();
         this.title = title;
@@ -19,7 +19,7 @@ export class Gig {
         title?: string;
         description?: string;
         imageUrl?: string;
-        like?: boolean;
+        like?: string[];
     }) {
         const { title, description, imageUrl, like } = obj;
         if (title) {
@@ -31,7 +31,7 @@ export class Gig {
         if (imageUrl) {
             this.imageUrl = imageUrl;
         }
-        if (like) {
+        if (like !== undefined) {
             this.like = like;
         }
     }

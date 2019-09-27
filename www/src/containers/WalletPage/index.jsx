@@ -11,7 +11,7 @@ const Wallet = ({ type, title }) => {
 		bitcoin: <FaBitcoin />,
 		ethereum: <FaEthereum />,
 	};
-	const Icon = currencyType['cash'];
+	const Icon = currencyType[type];
 
 	const transactionContext = useContext(TransactionContext);
 	// console.log(transactionContext);
@@ -70,21 +70,19 @@ const Wallet = ({ type, title }) => {
 const WalletPage = () => {
 	return (
 		<Layout title="Wallet">
-			<Row>
-				<Col>
-					<Tabs fill defaultActiveKey="cash" style={{ marginTop: '-25px' }}>
-						<Tab eventKey="cash" title="Cash">
-							<Wallet type="cash" title="Cash" />
-						</Tab>
-						<Tab eventKey="bitcoin" title="Bitcoin">
-							<Wallet type="bitcoin" title="Bitcoin" />
-						</Tab>
-						<Tab eventKey="ethereum" title="Ethereum">
-							<Wallet type="ethereum" title="Ethereum" />
-						</Tab>
-					</Tabs>
-				</Col>
-			</Row>
+			<div>
+				<Tabs fill defaultActiveKey="cash" style={{ marginTop: '-25px' }}>
+					<Tab eventKey="cash" title="Cash">
+						<Wallet type="cash" title="Cash" />
+					</Tab>
+					<Tab eventKey="bitcoin" title="Bitcoin">
+						<Wallet type="bitcoin" title="Bitcoin" />
+					</Tab>
+					<Tab eventKey="ethereum" title="Ethereum">
+						<Wallet type="ethereum" title="Ethereum" />
+					</Tab>
+				</Tabs>
+			</div>
 		</Layout>
 	);
 };
