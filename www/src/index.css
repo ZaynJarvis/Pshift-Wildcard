@@ -27,3 +27,7 @@ code {
   width: 0px;
   background: transparent;
 }
+
+.card {
+  overflow: hidden;
+}
