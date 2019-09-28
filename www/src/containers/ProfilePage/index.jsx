@@ -57,7 +57,7 @@ export default () => {
           }}>
           <div
             role='progressbar'
-            class='progress-bar bg-danger'
+            className='progress-bar bg-danger'
             style={{ height: '3px', width: '80%' }}></div>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <span>Exp.</span>
