@@ -1,4 +1,4 @@
-/* .insurance-page {
+.insurance-page {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -33,11 +33,11 @@
 
 .insurance > .add-button {
   position: absolute;
-  font-size: 20px;
+  /* font-size: 20px;
   font-weight: bold;
-  color: #fff;
+  color: #fff; */
   bottom: 16px;
-  right: 16px;
+  left: 16px;
 }
 
 .insurance > h2 {
@@ -54,4 +54,4 @@
   font-weight: 200;
   margin: 10px 0;
   color: #555;
-} */
+}

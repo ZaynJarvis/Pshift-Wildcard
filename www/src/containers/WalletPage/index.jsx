@@ -11,10 +11,21 @@ const Wallet = ({ type, title }) => {
 		bitcoin: <FaBitcoin />,
 		ethereum: <FaEthereum />,
 	};
+
+	const currencyAmout = {
+		cash: 5000,
+		bitcoin: 20,
+		ethereum: 36,
+	};
+
+	const currencyRatio = {
+		cash: 1,
+		bitcoin: 30,
+		ethereum: 17,
+	};
 	const Icon = currencyType[type];
 
 	const transactionContext = useContext(TransactionContext);
-	// console.log(transactionContext);
 
 	const { transactions, getAllTransactions } = transactionContext;
 
@@ -28,7 +39,7 @@ const Wallet = ({ type, title }) => {
 			<Row className="top">
 				<Col className="top-left">
 					<span>Total Balance:</span>
-					<h1 className="balance">32,000</h1>
+					<h1 className="balance">{currencyAmout[type]}</h1>
 				</Col>
 				<Col>
 					<h1 className="icon">{Icon} </h1>
@@ -36,7 +47,7 @@ const Wallet = ({ type, title }) => {
 			</Row>
 
 			<Col className="btm">
-				<h1>Latest Transactions: </h1>
+				<h3>Latest Transactions: </h3>
 				<Card className="transactions">
 					<ListGroup variant="flush">
 						{transactions.map(value => (
@@ -54,7 +65,7 @@ const Wallet = ({ type, title }) => {
 											}}
 										>
 											{value.inflow ? '+' : '-'}
-											{value.amount}
+											{(value.amount / currencyRatio[type]).toFixed(2)}
 										</h3>
 									</Col>
 								</Row>
