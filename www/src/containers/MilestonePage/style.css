@@ -11,3 +11,8 @@
 .milestone-page {
   margin-top: 3rem;
 } */
+.dispute-button {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+}

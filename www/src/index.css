@@ -3,6 +3,9 @@
   --header-height: 50px;
   --footer-height: 48px;
 }
+html {
+  overflow: hidden;
+}
 body,
 html {
   position: fixed;
@@ -21,6 +24,7 @@ code {
 }
 * {
   box-sizing: border-box;
+  outline: none !important;
 }
 
 *::-webkit-scrollbar {

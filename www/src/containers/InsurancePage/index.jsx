@@ -7,29 +7,52 @@ import './style.css';
 import Layout from '../Layout';
 
 const Insurance = ({ feature, title, desc }) => (
-	<div className={'insurance ' + feature}>
-		<h4>{title}</h4>
-		<p>{desc}</p>
-		<Button className="add-button" variant="outline-light">
-			Apply
-		</Button>
-	</div>
+  <div className={'insurance ' + feature}>
+    <h5>{title}</h5>
+    <p>{desc}</p>
+    <Button className='add-button' variant='outline-light'>
+      Apply
+    </Button>
+  </div>
 );
 export default () => {
-	const { insurances } = React.useContext(InsuranceContext);
-	console.log(insurances);
-	const type = ['basic', 'intermediate', 'advanced'];
-	return (
-		<Layout title="Insurance">
-			<div className="insurance-page">
-				{insurances
-					.filter(m => m.type === 'home')
-					.map((m, i) => (
-						<Insurance feature={type[i % 3]} title={m.title} desc={m.description} key={m.title} />
-					))}
-			</div>
-		</Layout>
-	);
+  const { insurances } = React.useContext(InsuranceContext);
+  const type = ['basic', 'intermediate', 'advanced'];
+  return (
+    <Layout title='Insurance'>
+      <div className='insurance-page'>
+        <h4>Awards</h4>
+        <div
+          style={{
+            width: '85%',
+            background: 'lightgrey',
+            height: '3px',
+            marginBottom: '4rem'
+          }}>
+          <div
+            role='progressbar'
+            class='progress-bar bg-danger'
+            style={{ height: '3px', width: '80%' }}></div>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <span>Exp.</span>
+            <span role='img' aria-label='img'>
+              👑
+            </span>
+          </div>
+        </div>
+        {insurances
+          .filter(m => m.type === 'home')
+          .map((m, i) => (
+            <Insurance
+              feature={type[i % 3]}
+              title={m.title}
+              desc={m.description}
+              key={m.title}
+            />
+          ))}
+      </div>
+    </Layout>
+  );
 };
 
 // import React, { useContext } from 'react';

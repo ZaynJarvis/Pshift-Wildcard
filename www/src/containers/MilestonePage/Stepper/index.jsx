@@ -9,7 +9,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Projects from '../../../mock/project';
-import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -60,14 +59,6 @@ export default function VerticalLinearStepper({ id }) {
                     className={classes.button}>
                     Request for review
                   </Button>
-                  <Link to='/dispute'>
-                    <Button
-                      variant='contained'
-                      color='secondary'
-                      className={classes.button}>
-                      Start a Dispute
-                    </Button>
-                  </Link>
                 </div>
               </div>
             </StepContent>

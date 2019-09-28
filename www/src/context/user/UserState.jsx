@@ -5,29 +5,28 @@ import UserReducer from './UserReducer';
 import { UPDATE_USER_ID } from '../types';
 
 const UserState = props => {
-	const initialState = {
-		id: 'Zayn',
-	};
+  const initialState = {
+    id: 'Zayn'
+  };
 
-	const [state, dispatch] = useReducer(UserReducer, initialState);
+  const [state, dispatch] = useReducer(UserReducer, initialState);
 
-	const setUserID = async id => {
-		dispatch({
-			type: UPDATE_USER_ID,
-			payload: id,
-		});
-	};
+  const setUserID = async id => {
+    dispatch({
+      type: UPDATE_USER_ID,
+      payload: id
+    });
+  };
 
-	return (
-		<UserContext.Provider
-			value={{
-				id: state.id,
-				setUserID,
-			}}
-		>
-			{props.children}
-		</UserContext.Provider>
-	);
+  return (
+    <UserContext.Provider
+      value={{
+        id: state.id,
+        setUserID
+      }}>
+      {props.children}
+    </UserContext.Provider>
+  );
 };
 
 export default UserState;

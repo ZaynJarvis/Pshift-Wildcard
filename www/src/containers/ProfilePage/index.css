@@ -1,0 +1,111 @@
+.profile-wrapper {
+  background: url("https://images.pexels.com/photos/990826/pexels-photo-990826.jpeg?auto=compress&cs=tinysrgb&h=750&w=500")
+    #000;
+  background-size: contain;
+  background-position: top;
+  overflow: auto;
+  height: 100vh;
+}
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  transform: translateY(20vh);
+  background: #fff;
+  min-height: 100vh;
+  border-radius: 20px;
+  box-shadow: -6px 0 20px rgb(188, 177, 198);
+  padding-bottom: 7rem;
+}
+
+.profile-avatar {
+  transform: translateY(-50%);
+}
+
+.profile-avatar img {
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+}
+
+.profile-desc {
+  width: 100vw;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateY(-2rem);
+  padding-bottom: 2rem;
+}
+
+.user-interest {
+  padding: 5px 10px;
+  background: pink;
+  border-radius: 1000px;
+}
+
+.list-wrapper {
+  list-style: none;
+  width: 90vw;
+  padding: 0;
+}
+
+.list-content {
+  transition: 0.2s;
+  background: #fff;
+}
+
+.list-content > .preview {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.project-content {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  color: #666;
+}
+.award-link,
+.project-content > a {
+  border: 1pt solid pink;
+  color: pink;
+  align-self: flex-end;
+  padding: 0px 16px;
+  border-radius: 10000px;
+  background: transparent;
+  margin-top: 0.4rem;
+}
+
+.award-link * {
+  color: pink !important;
+}
+
+.liked-project {
+  margin-top: 0.5rem;
+  width: 90%;
+}
+
+.user-comments {
+  width: 100vw;
+  display: flex;
+  padding: 16px 1.3rem;
+}
+
+.comment-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-author {
+  align-self: flex-end;
+  color: grey;
+  font-size: 1.3rem;
+}
+
+.comment-author > span {
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+}
