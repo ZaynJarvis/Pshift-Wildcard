@@ -21,7 +21,7 @@ export default () => {
   return (
     <Layout title='Insurance'>
       <div className='insurance-page'>
-        <h4>Awards</h4>
+        <h4>Rewards</h4>
         <div
           style={{
             width: '85%',
