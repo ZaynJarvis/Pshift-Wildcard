@@ -7,60 +7,68 @@ import './style.css';
 import Layout from '../Layout';
 
 const Insurance = ({ feature, title, desc, text = 'Redeem' }) => (
-  <div className={'insurance ' + feature}>
-    <h5>{title}</h5>
-    <p>{desc}</p>
-    <Button className='add-button' variant='outline-light'>
-      {text}
-    </Button>
-  </div>
+	<div className={'insurance ' + feature}>
+		<h5>{title}</h5>
+		<p>{desc}</p>
+		<Button className="add-button" variant="outline-light">
+			{text}
+		</Button>
+	</div>
 );
-export default () => {
-  const { insurances } = React.useContext(InsuranceContext);
-  const type = ['basic', 'intermediate', 'advanced'];
-  return (
-    <Layout title='Insurance'>
-      <div className='insurance-page'>
-        <h4>Rewards</h4>
-        <div
-          style={{
-            width: '85%',
-            background: 'lightgrey',
-            height: '3px',
-            marginBottom: '4rem'
-          }}>
-          <div
-            role='progressbar'
-            className='progress-bar bg-danger'
-            style={{ height: '3px', width: '80%' }}></div>
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <span>Points: 5,600</span>
-            <span role='img' aria-label='img'>
-              👑
-            </span>
-          </div>
-        </div>
-        <Insurance
-          feature={type[2]}
-          title={'CPF'}
-          desc={'Get CPF saving plan for yourself'}
-          text='Learn more'
-        />
-        <hr style={{ background: '#eeea', height: '1pt', width: '90%' }} />
 
-        {insurances
-          // .filter(m => m.type === 'home')
-          .map((m, i) => (
-            <Insurance
-              feature={type[i % 3]}
-              title={m.title}
-              desc={m.description}
-              key={m.title}
-            />
-          ))}
-      </div>
-    </Layout>
-  );
+export default () => {
+	const { insurances } = React.useContext(InsuranceContext);
+	const type = ['basic', 'intermediate', 'advanced'];
+	return (
+		<Layout title="Insurance">
+			<div className="insurance-page">
+				<h4>Rewards</h4>
+				<div
+					style={{
+						width: '85%',
+						background: 'lightgrey',
+						height: '3px',
+						marginBottom: '4rem',
+					}}
+				>
+					<div
+						role="progressbar"
+						className="progress-bar bg-danger"
+						style={{ height: '3px', width: '80%' }}
+					></div>
+					<div style={{ display: 'flex', justifyContent: 'space-between' }}>
+						<span>Points: 5,600</span>
+						<span role="img" aria-label="img">
+							👑
+						</span>
+					</div>
+				</div>
+				<div style={{ position: 'relative', width: '100%' }}>
+					<div className="folder-item">
+						<Insurance
+							feature={type[2]}
+							title={'CPF'}
+							desc={'Get CPF saving plan for yourself'}
+							text="Learn more"
+						/>
+					</div>
+				</div>
+				{/* <hr style={{ background: '#eeea', height: '1pt', width: '90%' }} /> */}
+
+				{insurances
+					// .filter(m => m.type === 'home')
+					.map((m, i) => (
+						<Insurance
+							feature={type[i % 3]}
+							title={m.title}
+							desc={m.description}
+							key={m.title}
+							text={'Redeem with pt. ' + (i + 1) * 2000}
+						/>
+					))}
+			</div>
+		</Layout>
+	);
 };
 
 // import React, { useContext } from 'react';
