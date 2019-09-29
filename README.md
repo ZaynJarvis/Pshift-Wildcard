@@ -10,7 +10,7 @@ Wildcard is the next-gen free-lancing platform that utilizes AI and big data to 
 - npm
 - Yarn
 
-# Download and launch the app locally
+## Download and launch the app locally
 
 1. Download the code
 
@@ -28,3 +28,19 @@ sudo make
 You have brought the app live on your local workstation! You can access it at `localhost:3000`.
 
 Note that the Wildcard application has been fulled containerized with Docker Container and Docker Service. For details on the container configuration, please refer to the `docker-compose.yml` and `Dockerfile` files.
+
+## Tech stack
+
+* Angular Frontend
+* Node.js (typescript) Backend
+* Redis in-memory Database
+* Docker - Docker Compose Containerization
+* Travis CI/CD automation
+* AWS EC2 Deployment
+* tslint - eslint - Prettier Code style linting
+* Netlify Frontend development testing
+
+## Demo
+
+Reach demo website at [pshift.zaynjarvis.com](http://pshift.zaynjarvis.com)
+
