@@ -6,12 +6,12 @@ import React from 'react';
 import './style.css';
 import Layout from '../Layout';
 
-const Insurance = ({ feature, title, desc }) => (
+const Insurance = ({ feature, title, desc, text = 'Redeem' }) => (
   <div className={'insurance ' + feature}>
     <h5>{title}</h5>
     <p>{desc}</p>
     <Button className='add-button' variant='outline-light'>
-      Redeem
+      {text}
     </Button>
   </div>
 );
@@ -31,10 +31,10 @@ export default () => {
           }}>
           <div
             role='progressbar'
-            class='progress-bar bg-danger'
+            className='progress-bar bg-danger'
             style={{ height: '3px', width: '80%' }}></div>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <span>Exp.</span>
+            <span>Points: 5,600</span>
             <span role='img' aria-label='img'>
               👑
             </span>
@@ -43,10 +43,11 @@ export default () => {
         <Insurance
           feature={type[2]}
           title={'CPF'}
-          desc={
-            'Central Provident Fund is a compulsory comprehensive savings plan for working Singaporeans and permanent residents primarily to fund their retirement, healthcare, and housing needs'
-          }
+          desc={'Get CPF saving plan for yourself'}
+          text='Learn more'
         />
+        <hr style={{ background: '#eeea', height: '1pt', width: '90%' }} />
+
         {insurances
           // .filter(m => m.type === 'home')
           .map((m, i) => (

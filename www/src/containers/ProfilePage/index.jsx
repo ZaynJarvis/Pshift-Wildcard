@@ -60,7 +60,7 @@ export default () => {
             className='progress-bar bg-danger'
             style={{ height: '3px', width: '80%' }}></div>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <span>Exp.</span>
+            <span>Points: 5,600</span>
             <span role='img' aria-label='img'>
               👑
             </span>
