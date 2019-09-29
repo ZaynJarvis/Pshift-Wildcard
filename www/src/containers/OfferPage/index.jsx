@@ -44,7 +44,14 @@ const OfferPage = () => {
 							<Form.Label>
 								<h3>Description</h3>
 							</Form.Label>
-							<Form.Control as="textarea" rows="5" placeholder="Be nice!" />
+							<Form.Control
+								as="textarea"
+								rows="5"
+								placeholder="What solution do you propose to work on?"
+								style={{
+									resize: 'none',
+								}}
+							/>
 							<Form.Text className="text-muted">Describe the milestone</Form.Text>
 						</Form.Group>
 

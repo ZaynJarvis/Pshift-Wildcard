@@ -54,7 +54,7 @@ const Wallet = ({ type, title }) => {
 							<ListGroup.Item key={value.id}>
 								<Row className="transaction">
 									<Col>
-										<h4>{value.item}</h4>
+										<h6>{value.item}</h6>
 										<p>{value.date}</p>
 									</Col>
 									<Col>

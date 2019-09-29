@@ -15,7 +15,7 @@
   min-height: 100vh;
   border-radius: 20px;
   box-shadow: -6px 0 20px rgb(188, 177, 198);
-  padding-bottom: 7rem;
+  padding-bottom: 4rem;
 }
 
 .profile-avatar {
@@ -68,6 +68,8 @@
   flex-direction: column;
   color: #666;
 }
+
+
 .award-link,
 .project-content > a {
   border: 1pt solid pink;
@@ -77,6 +79,15 @@
   border-radius: 10000px;
   background: transparent;
   margin-top: 0.4rem;
+}
+
+.award-link  {
+  padding: 5px 16px;
+}
+
+.award-link:active,.award-link:focus, .award-link:hover {
+  text-decoration: none !important;
+  color: pink !important;
 }
 
 .award-link * {
@@ -93,7 +104,9 @@
   display: flex;
   padding: 16px 1.3rem;
 }
-
+.user-comments .comment {
+  width: 100%;
+}
 .comment-body {
   display: flex;
   flex-direction: column;

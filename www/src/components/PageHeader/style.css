@@ -19,3 +19,8 @@
 .logo-title {
   height: 60%;
 } */
+
+.header {
+  background: #fff !important;
+  border-bottom: 1pt solid #eee9;
+}
