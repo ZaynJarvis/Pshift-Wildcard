@@ -44,7 +44,7 @@ export default () => {
             transform: 'translateY(-36px)'
           }}>
           <Link to='/insurance' className='award-link'>
-            View Awards <FontAwesomeIcon icon={faArrowRight} />
+            View Rewards <FontAwesomeIcon icon={faArrowRight} />
           </Link>
         </div>
         <div
