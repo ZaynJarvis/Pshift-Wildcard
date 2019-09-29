@@ -11,7 +11,7 @@ const Insurance = ({ feature, title, desc }) => (
     <h5>{title}</h5>
     <p>{desc}</p>
     <Button className='add-button' variant='outline-light'>
-      Apply
+      Redeem
     </Button>
   </div>
 );
