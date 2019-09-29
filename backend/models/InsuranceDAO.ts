@@ -4,7 +4,7 @@ export class InsuranceStore {
     public static d: Insurance[] = [
         new Insurance({
             type: 'travel',
-            title: 'Fitness Gym monthly membership membership',
+            title: 'Fitness Gym monthly membership',
             description: '1 month of Firness Gym premium membership',
             imageUrl:
                 'https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?cs=srgb&dl=crossfit-crossfit-training-energy-1552242.jpg&fm=jpg',

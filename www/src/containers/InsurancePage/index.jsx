@@ -40,6 +40,13 @@ export default () => {
             </span>
           </div>
         </div>
+        <Insurance
+          feature={type[2]}
+          title={'CPF'}
+          desc={
+            'Central Provident Fund is a compulsory comprehensive savings plan for working Singaporeans and permanent residents primarily to fund their retirement, healthcare, and housing needs'
+          }
+        />
         {insurances
           // .filter(m => m.type === 'home')
           .map((m, i) => (
