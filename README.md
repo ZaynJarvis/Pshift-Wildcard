@@ -1,6 +1,6 @@
 # WildCard
 
-This is the prototype of Wildcard app for DBS Pshift Phase2. The prototype has been containerized and deployed on AWS, and is live [here](localhost)!
+This is the prototype of Wildcard app for DBS Pshift Phase2. The prototype has been containerized and deployed on AWS, and is live [here](http://pshift.zaynjarvis.com)!
 
 Wildcard is the next-gen free-lancing platform that utilizes AI and big data to boost job discovery, manage milestones to ensure work quality, allow timely payments, resolve disputes, provide insurance and tax filing for freelancers via Smart Contract to bring a peace of mind for clients and freelancers.
 
@@ -9,6 +9,7 @@ Wildcard is the next-gen free-lancing platform that utilizes AI and big data to 
 - Node.js
 - npm
 - Yarn
+- Docker
 
 ## Download and launch the app locally
 
