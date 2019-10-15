@@ -22,3 +22,16 @@ nav > div {
 .navbar-nav .nav-link.active {
   outline: none;
 }
+
+@media (min-width: 1024px) {
+  .navbar.bottom {
+    padding: 0 8rem;
+  }
+  .bottom .nav-link {
+    font-size: 1.5rem;
+  }
+  .bottom p {
+    margin-bottom: 0;
+    font-size: 0.8rem;
+  }
+}

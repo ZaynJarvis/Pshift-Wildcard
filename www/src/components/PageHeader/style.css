@@ -2,3 +2,8 @@
   background: #fff !important;
   border-bottom: 1pt solid #eee9;
 }
+@media (min-width: 1024px) {
+  .header .title {
+    font-size: 1.5rem;
+  }
+}

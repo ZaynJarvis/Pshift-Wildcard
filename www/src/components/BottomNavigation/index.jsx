@@ -8,7 +8,7 @@ import { IoMdPerson, IoIosBrowsers } from 'react-icons/io';
 class BottomNavigation extends Component {
 	render() {
 		return (
-			<Navbar fixed="bottom" bg="light" variant="light" className="centralize navbar">
+			<Navbar fixed="bottom" bg="light" variant="light" className="centralize navbar bottom">
 				<Nav className="mr-auto">
 					<LinkContainer to="/market">
 						<Nav.Link className="nav-link">

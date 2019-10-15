@@ -3,6 +3,12 @@
   --header-height: 50px;
   --footer-height: 48px;
 }
+@media (min-width: 1024px) {
+  :root {
+    --header-height: 50px;
+    --footer-height: 60px;
+  }
+}
 html {
   overflow: hidden;
 }
