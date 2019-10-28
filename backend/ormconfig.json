@@ -1,0 +1,18 @@
+{
+    "type": "mysql",
+    "host": "157.230.243.121",
+    "port": 3306,
+    "username": "wildcard",
+    "password": "wildcard",
+    "database": "wildcard",
+    "synchronize": true,
+    "logging": false,
+    "entities": ["entity/**/*.ts"],
+    "migrations": ["migration/**/*.ts"],
+    "subscribers": ["subscriber/**/*.ts"],
+    "cli": {
+        "entitiesDir": "entity",
+        "migrationsDir": "migration",
+        "subscribersDir": "subscriber"
+    }
+}
