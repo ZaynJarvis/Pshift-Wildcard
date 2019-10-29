@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Project } from './Project';
 import { User } from './User';
 
@@ -15,7 +15,7 @@ export class Gig {
 
     @ManyToOne(type => User, user => user.gigs)
     public client: User;
-    @OneToOne(type => Project, project => project.gig)
+    @OneToMany(type => Project, project => project.gig)
     public project: Project;
 
     @PrimaryGeneratedColumn()

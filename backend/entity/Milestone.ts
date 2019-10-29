@@ -11,14 +11,14 @@ export enum MilestoneStatus {
 
 @Entity()
 export class Milestone {
+    // Transaction unidirectional
     @Column('text')
     public description: string;
     @Column('text')
     public deliverables: string;
-
     @Column({
-        default: 'Pending',
-        enum: ['Pending', 'completed by client', 'completed by freelancer', 'completed by admin'],
+        default: 'proposed',
+        enum: ['proposed', 'completed by client', 'completed by freelancer', 'completed by admin'],
     })
     public MilestoneStatus: MilestoneStatus;
 

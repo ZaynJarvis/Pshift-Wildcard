@@ -22,7 +22,7 @@ export class User {
     @Column('text')
     public avatarUrl: string;
 
-    @OneToMany(type => Transaction, transaction => transaction.client)
+    @OneToMany(type => Transaction, transaction => transaction.client) // same effect as transaction => transaction.freelancer
     public transactions: Transaction[];
 
     @OneToMany(type => Project, project => project.freelancer)

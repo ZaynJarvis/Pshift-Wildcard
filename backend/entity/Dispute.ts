@@ -15,7 +15,7 @@ export class Dispute {
     public remark: string;
     @Column({
         default: 'Pending',
-        enum: ['Pending', 'Improving', 'Completed'],
+        enum: ['pending', 'improving', 'completed'],
     })
     public disputeStatus: DisputeStatus;
 
