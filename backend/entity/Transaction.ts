@@ -22,7 +22,8 @@ export class Transaction {
     @Column('text')
     public description: string;
     @Column({
-        enum: ['pending', 'completed'],
+        default: 'pending',
+        // enum: ['pending', 'completed'],
     })
     public transactionStatus: TransactionStatus;
 

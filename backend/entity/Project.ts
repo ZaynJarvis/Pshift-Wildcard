@@ -15,15 +15,14 @@ export class Project {
     @Column('double')
     public amount: number; // end amount / total amount
     @Column({
-        default: 'Pending',
-        enum: ['proposed', 'accepted', 'rejected', 'paid', 'completed'],
+        default: 'pending',
+        // enum: ['proposed', 'accepted', 'rejected', 'paid', 'completed'],
     })
     public ProjectStatus: ProjectStatus;
 
     @ManyToOne(type => User, user => user.projects)
     public freelancer: User;
-    @ManyToOne(type => Gig, gig => gig.project) // Many to one
-    @JoinColumn()
+    @ManyToOne(type => Gig, gig => gig.projects)
     public gig: Gig;
     @OneToMany(type => Milestone, milestone => milestone.project, {
         cascade: true,

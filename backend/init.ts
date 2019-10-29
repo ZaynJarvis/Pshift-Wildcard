@@ -7,39 +7,75 @@ import { getAllGigs, updateGig } from './controllers/gig';
 import './utils/passport';
 
 import { createConnection } from 'typeorm';
+import { Gig } from './entity/Gig';
 import { Transaction, TransactionStatus } from './entity/Transaction';
 import { User } from './entity/User';
 
 // tslint:disable
 createConnection()
     .then(async connection => {
+        // export class Gig {
+        //     @Column()
+        //     public title: string;
+        //     @Column('text')
+        //     public imageUrl: string;
+        //     @Column('text')
+        //     public description: string;
+        //     @Column()
+        //     public active: boolean;
+
+        //     @ManyToOne(type => User, user => user.gigs)
+        //     public client: User;
+        //     @OneToMany(type => Project, project => project.gig)
+        //     public project: Project;
+
+        //     @PrimaryGeneratedColumn()
+        //     public id?: number;
+        // }
+
         console.log('Inserting a new user into the database...');
         const a = new User();
         a.name = 'LL';
         a.email = 'ZZ';
+        a.description = 'This is me';
+        a.avatarUrl = ' ';
         a.setPassword('kk');
-        const b = new User();
-        b.name = 'OO';
-        b.email = 'PP';
-        b.setPassword('kkaxs');
+        // const b = new User();
+        // b.name = 'OO';
+        // b.email = 'PP';
+        // b.description = 'This is me';
+        // b.avatarUrl = '';
+        // b.setPassword('kkaxs');
+        const g = new Gig();
+        g.title = 'G';
+        g.imageUrl = 'xxx';
+        g.description = 'des';
+        g.client = a;
 
         await connection.manager.save(a);
-        await connection.manager.save(b);
-        const t = new Transaction();
-        t.type = 'a';
-        t.description = 'b';
-        t.transactionStatus = TransactionStatus.Pending;
-        t.amount = 33.5;
-        t.client = a;
-        t.freelancer = b;
+        await connection.manager.save(g);
+        // await connection.manager.save(b);
+        // const t = new Transaction();
+        // t.type = 'a';
+        // t.description = 'b';
+        // t.transactionStatus = TransactionStatus.Pending;
+        // t.amount = 33.5;
+        // t.client = a;
+        // t.freelancer = b;
 
-        await connection.manager.save(t);
-
-        console.log('Saved a new user with id: ' + t.id);
+        // await connection.manager.save(t);
 
         console.log('Loading ts from the database...');
-        const ts = await connection.manager.find(Transaction);
-        console.log('Loaded ts: ', ts);
+        const repo = await connection.getRepository(User);
+        const u: User[] = await repo.find({ relations: ['gigs'] });
+        // let u = await connection
+        //     .getRepository(User)
+        //     .createQueryBuilder('user')
+        //     .innerJoinAndSelect('user.transactions', 'transaction')
+        //     .getMany();
+
+        console.log('Loaded ts: ', u);
+        console.log('Loaded ts: ', u.map(x => x.gigs));
     })
     .catch(error => console.log(error));
 // tslint:enable

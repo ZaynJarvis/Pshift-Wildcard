@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Dispute } from './Dispute';
 import { Project } from './Project';
 
@@ -18,15 +18,15 @@ export class Milestone {
     public deliverables: string;
     @Column({
         default: 'proposed',
-        enum: ['proposed', 'completed by client', 'completed by freelancer', 'completed by admin'],
+        // enum: ['proposed', 'completed by client', 'completed by freelancer', 'completed by admin'],
     })
     public MilestoneStatus: MilestoneStatus;
 
     @ManyToOne(type => Project, project => project.milestones)
     public project: Project;
 
-    @OneToOne(type => Dispute)
-    public dispute: Dispute;
+    @OneToMany(type => Dispute, dispute => dispute.milestone)
+    public dispute: Dispute[];
 
     @PrimaryGeneratedColumn()
     public id?: number;

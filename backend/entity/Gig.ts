@@ -10,13 +10,15 @@ export class Gig {
     public imageUrl: string;
     @Column('text')
     public description: string;
-    @Column()
+    @Column({
+        default: false,
+    })
     public active: boolean;
 
     @ManyToOne(type => User, user => user.gigs)
     public client: User;
     @OneToMany(type => Project, project => project.gig)
-    public project: Project;
+    public projects: Project[];
 
     @PrimaryGeneratedColumn()
     public id?: number;

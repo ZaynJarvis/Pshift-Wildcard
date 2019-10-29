@@ -24,10 +24,8 @@ export class User {
 
     @OneToMany(type => Transaction, transaction => transaction.client) // same effect as transaction => transaction.freelancer
     public transactions: Transaction[];
-
     @OneToMany(type => Project, project => project.freelancer)
     public projects: Project[];
-
     @OneToMany(type => Gig, gig => gig.client)
     public gigs: Project[];
 
