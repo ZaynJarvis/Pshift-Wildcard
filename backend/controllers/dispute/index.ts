@@ -27,4 +27,5 @@ export const createDispute = async (req, res, next) => {
     newDispute.remark = remark;
     newDispute.milestone = mileStone;
     await connection.manager.save(newDispute);
+    res.send();
 };

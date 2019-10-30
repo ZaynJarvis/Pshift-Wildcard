@@ -7,8 +7,8 @@ const router = Router();
 router.all('/hello', (req, res) => res.json({ text: 'Hello World!' }));
 
 // authentication unsecured route
-import { login, profile, register } from '../controllers/auth';
-router.post('/register', register);
+import { login, profile } from '../controllers/auth';
+// router.post('/register', register);
 router.post('/login', login);
 
 // route lock, comment out when authorization is not required
@@ -72,6 +72,8 @@ router.put('/insurances/:id', updateInsurance);
 
 //user
 import {
+    createUser,
+    getAllUsers,
     getGigsByUser,
     getProjectsByUser,
     getTransactionsByUser
@@ -79,6 +81,8 @@ import {
 router.get('/users/:id/gigs', getGigsByUser);
 router.get('/users/:id/projects', getProjectsByUser);
 router.get('/users/:id/transactions', getTransactionsByUser);
+router.post('/users', createUser);
+router.get('/users', getAllUsers);
 
 //dispute
 import { createDispute } from '../controllers/dispute';
