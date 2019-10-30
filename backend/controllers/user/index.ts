@@ -123,6 +123,7 @@ export const createUser = async (req, res, next) => {
     newUser.avatarUrl = avatarUrl;
     newUser.setPassword(password);
     await connection.manager.save(newUser);
+    res.send();
     // const user = new User(req.body);
     // try {
     //     const existedUser = UserStore.getUser(user.email);
