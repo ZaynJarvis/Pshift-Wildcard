@@ -1,15 +1,11 @@
 import log4js from 'log4js';
 const AppLogger = log4js.getLogger('getKnowledge');
-import { NotFound } from '../../utils/NotFound';
-import { Conn } from '../../utils/connection';
-import {
-    getRecommendation,
-    likeProject,
-    unlikeProject
-} from '../../utils/recEngine';
 import { Gig } from '../../entity/Gig';
-import { User } from '../../entity/User';
 import { Project, ProjectStatus } from '../../entity/Project';
+import { User } from '../../entity/User';
+import { Conn } from '../../utils/connection';
+import { NotFound } from '../../utils/NotFound';
+import { getRecommendation, likeProject, unlikeProject } from '../../utils/recEngine';
 
 // export const getGigByID = (req, res, next): Gig => {
 //     const id = req.params ? req.params.id : req;
@@ -56,9 +52,9 @@ import { Project, ProjectStatus } from '../../entity/Project';
 
 export const getAllGigs = async (req, res, next) => {
     const connection = await Conn.getInstance();
-    let gigRepository = connection.getRepository(Gig);
-    let allGigs: Gig[] = await gigRepository.find({
-        where: { active: true }
+    const gigRepository = connection.getRepository(Gig);
+    const allGigs: Gig[] = await gigRepository.find({
+        where: { active: true },
     });
     if (res) {
         res.send(allGigs);
@@ -69,12 +65,12 @@ export const createGig = async (req, res, next) => {
     const { title, imageUrl, description, userId } = req.body;
 
     const connection = await Conn.getInstance();
-    let userRepository = connection.getRepository(User);
-    let user: User = await userRepository.findOne({
+    const userRepository = connection.getRepository(User);
+    const user: User = await userRepository.findOne({
         where: { id: userId },
-        relations: ['gigs']
+        relations: ['gigs'],
     });
-    let newGig = new Gig();
+    const newGig = new Gig();
     newGig.title = title;
     newGig.imageUrl = imageUrl;
     newGig.description = description;
@@ -86,10 +82,10 @@ export const updateGig = async (req, res, next) => {
     const gigId = req.params ? req.params.id : req;
 
     const connection = await Conn.getInstance();
-    let gigRepository = connection.getRepository(Gig);
-    let gig: Gig = await gigRepository.findOne({
+    const gigRepository = connection.getRepository(Gig);
+    const gig: Gig = await gigRepository.findOne({
         where: { id: gigId },
-        relations: ['client']
+        relations: ['client'],
     });
     if (!gig) {
         next(new NotFound(`gig id ${gigId} not found`));
@@ -99,10 +95,10 @@ export const updateGig = async (req, res, next) => {
         .createQueryBuilder()
         .update(Gig)
         .set({
-            title: title,
-            imageUrl: imageUrl,
-            description: description,
-            active: active
+            title,
+            imageUrl,
+            description,
+            active,
         })
         .where({ id: gigId })
         .execute();
@@ -117,23 +113,23 @@ export const acceptProject = async (req, res, next) => {
     const gigId = req.params ? req.params.id : req;
 
     const connection = await Conn.getInstance();
-    let gigRepository = connection.getRepository(Gig);
-    let gig: Gig = await gigRepository.findOne({
+    const gigRepository = connection.getRepository(Gig);
+    const gig: Gig = await gigRepository.findOne({
         where: { id: gigId },
-        relations: ['projects']
+        relations: ['projects'],
     });
     if (!gig) {
         next(new NotFound(`gig id ${gigId} not found`));
     }
     const { projectId } = req.body;
     for (let i = 0; i < gig.projects.length; i++) {
-        let currentProject = gig.projects[i];
+        const currentProject = gig.projects[i];
         if (currentProject.id == projectId) {
             await connection
                 .createQueryBuilder()
                 .update(Project)
                 .set({
-                    ProjectStatus: ProjectStatus.Accepted
+                    ProjectStatus: ProjectStatus.Accepted,
                 })
                 .where({ id: currentProject.id })
                 .execute();
@@ -142,7 +138,7 @@ export const acceptProject = async (req, res, next) => {
                 .createQueryBuilder()
                 .update(Project)
                 .set({
-                    ProjectStatus: ProjectStatus.Rejected
+                    ProjectStatus: ProjectStatus.Rejected,
                 })
                 .where({ id: currentProject.id })
                 .execute();
