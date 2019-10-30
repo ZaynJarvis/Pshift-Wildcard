@@ -4,13 +4,13 @@ import {
     Entity,
     ManyToOne,
     PrimaryGeneratedColumn,
-    UpdateDateColumn,
+    UpdateDateColumn
 } from 'typeorm';
 import { User } from './User';
 
 export enum TransactionStatus {
     Pending = 'pending',
-    Completed = 'completed',
+    Completed = 'completed'
 }
 
 @Entity()
@@ -22,7 +22,7 @@ export class Transaction {
     @Column('text')
     public description: string;
     @Column({
-        default: 'pending',
+        default: 'pending'
         // enum: ['pending', 'completed'],
     })
     public transactionStatus: TransactionStatus;

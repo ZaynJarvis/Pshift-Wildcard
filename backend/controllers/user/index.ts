@@ -1,15 +1,16 @@
 import log4js from 'log4js';
 const AppLogger = log4js.getLogger('getKnowledge');
-import { Transaction, TransactionStatus } from '../../entity/Transaction';
+import { Gig, GigStore } from '../../models';
 import { NotFound } from '../../utils/NotFound';
 import { Conn } from '../../utils/connection';
 import { User } from '../../entity/User';
+import { Transaction } from '../../entity/Transaction';
 
-// export const getAllTransactions = (req, res, next) => {
+// export const getAllUsers = (req, res, next) => {
 //     if (res) {
-//         res.send(TransactionStore.d);
+//         res.send(UserStore.d);
 //     }
-//     return TransactionStore.d;
+//     return UserStore.d;
 // };
 
 // export const getTransactionByID = (req, res, next): Transaction => {
@@ -47,36 +48,51 @@ import { User } from '../../entity/User';
 //     AppLogger.info(`transaction id ${t.id} updated.`);
 // };
 
-export const getTransactionByID = async (req, res, next) => {
-    const transactionId = req.params ? req.params.id : req;
-
-    const connection = await Conn.getInstance();
-    let transactionRepository = connection.getRepository(Transaction);
-    let transaction: Transaction = await transactionRepository.findOne({
-        where: { id: transactionId }
-    });
-    console.log(transaction);
-    if (res) {
-        res.send(transaction);
-    }
-};
-
-export const initiateTransaction = async (req, res, next) => {
-    const { amount, type, description, clientId, freelancerId } = req.body;
+//Get all active gigs of a user
+export const getGigsByUser = async (req, res, next) => {
+    const userId = req.params ? req.params.id : req;
 
     const connection = await Conn.getInstance();
     let userRepository = connection.getRepository(User);
-    let client: User = await userRepository.findOne({
-        where: { id: clientId }
+    let user: User = await userRepository.findOne({
+        where: { id: userId },
+        relations: ['gigs']
     });
-    let freelancer: User = await userRepository.findOne({
-        where: { id: freelancerId }
+    console.log(user);
+    const allGigs = user.gigs.filter(x => x.active);
+    if (res) {
+        res.send(allGigs);
+    }
+};
+
+export const getProjectsByUser = async (req, res, next) => {
+    const userId = req.params ? req.params.id : req;
+
+    const connection = await Conn.getInstance();
+    let userRepository = connection.getRepository(User);
+    let user: User = await userRepository.findOne({
+        where: { id: userId },
+        relations: ['projects']
     });
-    let newTransaction = new Transaction();
-    newTransaction.amount = amount;
-    newTransaction.type = type;
-    newTransaction.description = description;
-    newTransaction.client = client;
-    newTransaction.freelancer = freelancer;
-    await connection.manager.save(newTransaction);
+    console.log(user);
+    const allProjects = user.projects;
+    if (res) {
+        res.send(allProjects);
+    }
+};
+
+export const getTransactionsByUser = async (req, res, next) => {
+    const userId = req.params ? req.params.id : req;
+
+    const connection = await Conn.getInstance();
+    let userRepository = connection.getRepository(User);
+    let user: User = await userRepository.findOne({
+        where: { id: userId },
+        relations: ['transactions']
+    });
+    console.log(user);
+    const allTransactions = user.transactions;
+    if (res) {
+        res.send(allTransactions);
+    }
 };
