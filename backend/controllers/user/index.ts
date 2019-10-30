@@ -180,7 +180,9 @@ export const createUser = async (req, res, next) => {
 
 export const getAllUsers = async (req, res, next) => {
     const connection = await Conn.getInstance();
+    console.log('got connection');
     let userRepository = connection.getRepository(User);
+    console.log('got userRepo');
     let allUsers: User[] = await userRepository.find({});
     if (res) {
         res.send(allUsers);
