@@ -181,7 +181,7 @@ export const createUser = async (req, res, next) => {
 export const getAllUsers = async (req, res, next) => {
     const connection = await Conn.getInstance();
     let userRepository = connection.getRepository(User);
-    let allUsers: Gig[] = await userRepository.find({});
+    let allUsers: User[] = await userRepository.find({});
     if (res) {
         res.send(allUsers);
     }
