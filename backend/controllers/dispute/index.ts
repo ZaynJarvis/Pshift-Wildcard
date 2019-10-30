@@ -1,32 +1,31 @@
 import log4js from 'log4js';
 const AppLogger = log4js.getLogger('getKnowledge');
-import { NotFound } from '../../utils/NotFound';
-import { Gig } from '../../entity/Gig';
-import { Project, ProjectStatus } from '../../entity/Project';
 import { Dispute } from '../../entity/Dispute';
+import { Gig } from '../../entity/Gig';
 import { Milestone } from '../../entity/Milestone';
+import { Project, ProjectStatus } from '../../entity/Project';
 import { User } from '../../entity/User';
 import { Conn } from '../../utils/connection';
+import { NotFound } from '../../utils/NotFound';
 
 export const createDispute = async (req, res, next) => {
     const { description, remark, clientId, milestoneId } = req.body;
 
     const connection = await Conn.getInstance();
-    let milestoneRepository = connection.getRepository(Milestone);
-    let mileStone: Milestone = await milestoneRepository.findOne({
+    const milestoneRepository = connection.getRepository(Milestone);
+    const mileStone: Milestone = await milestoneRepository.findOne({
         where: { id: milestoneId },
-        relations: ['dispute']
+        relations: ['dispute'],
     });
-    let clientRepository = connection.getRepository(User);
-    let client: User = await clientRepository.findOne({
+    const clientRepository = connection.getRepository(User);
+    const client: User = await clientRepository.findOne({
         where: { id: clientId },
-        relations: ['gigs']
+        relations: ['gigs'],
     });
-    let newDispute = new Dispute();
+    const newDispute = new Dispute();
     newDispute.description = description;
     newDispute.remark = remark;
     newDispute.milestone = mileStone;
-    newDispute.client = client;
     await connection.manager.save(newDispute);
     res.send();
 };
