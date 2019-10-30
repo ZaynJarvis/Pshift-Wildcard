@@ -96,3 +96,83 @@ export const getTransactionsByUser = async (req, res, next) => {
         res.send(allTransactions);
     }
 };
+
+export const getUserByID = async (req, res, next) => {
+    const userId = req.params ? req.params.id : req;
+
+    const connection = await Conn.getInstance();
+    let userRepository = connection.getRepository(User);
+    let user: User = await userRepository.findOne({
+        where: { id: userId }
+    });
+    console.log(user);
+    if (res) {
+        res.send(user);
+    }
+};
+
+export const createUser = async (req, res, next) => {
+    const { name, email, description, avatarUrl, password } = req.body;
+
+    const connection = await Conn.getInstance();
+
+    let newUser = new User();
+    newUser.name = name;
+    newUser.email = email;
+    newUser.description = description;
+    newUser.avatarUrl = avatarUrl;
+    newUser.setPassword(password);
+    await connection.manager.save(newUser);
+    // const user = new User(req.body);
+    // try {
+    //     const existedUser = UserStore.getUser(user.email);
+    //     if (existedUser) {
+    //         res.status(400).send({
+    //             message: `User (${user.email}) already existed, try to login.`,
+    //         });
+    //         return;
+    //     }
+    // } catch (err) {
+    //     next(err);
+    //     return;
+    // }
+    // try {
+    //     UserStore.saveUser(user);
+    //     res.status(200).send({
+    //         message: 'user register success',
+    //         id: user.id,
+    //     });
+    // } catch (err) {
+    //     next(err);
+    // }
+};
+
+// export const updateProfile = async (req, res, next) => {
+//     const userId = req.params ? req.params.id : req;
+
+//     const connection = await Conn.getInstance();
+//     let userRepository = connection.userRepository(Gig);
+//     let user: User = await userRepository.findOne({
+//         where: { id: userId }
+//     });
+//     if (!user) {
+//         next(new NotFound(`user id ${userId} not found`));
+//     }
+//     const { title, imageUrl, description, active } = req.body;
+//     await connection
+//         .createQueryBuilder()
+//         .update(Gig)
+//         .set({
+//             title: title,
+//             imageUrl: imageUrl,
+//             description: description,
+//             active: active
+//         })
+//         .where({ id: gigId })
+//         .execute();
+//     res.status(204).send();
+//     // if (res) {
+//     //     res.send(p);
+//     // }
+//     AppLogger.info(`gig id ${gigId} updated from ${req.body.uid}.`);
+// };

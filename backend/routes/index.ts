@@ -7,8 +7,8 @@ const router = Router();
 router.all('/hello', (req, res) => res.json({ text: 'Hello World!' }));
 
 // authentication unsecured route
-import { login, profile, register } from '../controllers/auth';
-router.post('/register', register);
+import { login, profile } from '../controllers/auth';
+// router.post('/register', register);
 router.post('/login', login);
 
 // route lock, comment out when authorization is not required

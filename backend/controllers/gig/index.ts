@@ -80,6 +80,7 @@ export const createGig = async (req, res, next) => {
     newGig.description = description;
     newGig.client = user;
     await connection.manager.save(newGig);
+    res.send();
 };
 
 export const updateGig = async (req, res, next) => {
