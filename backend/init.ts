@@ -25,8 +25,9 @@ import { Conn } from './utils/connection';
     // a.setPassword('kkaxs');
     // await connection.manager.save(a);
 
-    // const userRepo = await connection.getRepository(User);
-    // const gigRepo = await connection.getRepository(Gig);
+    const userRepo = await connection.getRepository(User);
+    const users = await userRepo.find({});
+    console.log(users);
 
     // const g = new Gig();
     // g.title = 'G';
@@ -34,9 +35,9 @@ import { Conn } from './utils/connection';
     // g.description = 'des';
     // g.client = await userRepo.findOne();
     // await connection.manager.save(g);
-
-    const proRepo = await connection.getRepository(Project);
-    const mileRepo = await connection.getRepository(Milestone);
+    const gigRepo = await connection.getRepository(Gig);
+    const gigs = await gigRepo.find({});
+    console.log(gigs);
 
     // const p = new Project();
     // p.amount = 3.0;
@@ -44,16 +45,18 @@ import { Conn } from './utils/connection';
     // p.gig = await gigRepo.findOne();
 
     // await connection.manager.save(p);
+    const proRepo = await connection.getRepository(Project);
+    const pro = await proRepo.findOne({});
+    console.log(pro);
+    const mileRepo = await connection.getRepository(Milestone);
+    const mile = await mileRepo.findOne({});
+    console.log(mile);
 
     // const m = new Milestone();
     // m.deliverables = 'del';
     // m.description = 'dec';
     // m.project = await proRepo.findOne();
     // await connection.manager.save(m);
-
-    const pro = await proRepo.findOne({ relations: ['milestones'] });
-
-    console.log(pro);
 })();
 
 HTTPLogger.token('user', (req: any) => {
@@ -73,9 +76,9 @@ HTTPLogger.token('purl', (req: any) => {
 
 log4js.configure({
     appenders: {
-        wildcard: { type: 'file', filename: path.resolve('logs', 'temp.log') },
+        wildcard: { type: 'file', filename: path.resolve('logs', 'temp.log') }
     },
-    categories: { default: { appenders: ['wildcard'], level: 'debug' } },
+    categories: { default: { appenders: ['wildcard'], level: 'debug' } }
 });
 
 // create logs, knowhow-demo, temp folder
