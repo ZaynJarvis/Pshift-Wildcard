@@ -24,7 +24,9 @@ export class Project {
     public freelancer: User;
     @ManyToOne(type => Gig, gig => gig.projects)
     public gig: Gig;
-    @OneToMany(type => Milestone, milestone => milestone.project)
+    @OneToMany(type => Milestone, milestone => milestone.project, {
+        cascade: true,
+    })
     public milestones: Milestone[];
 
     @PrimaryGeneratedColumn()

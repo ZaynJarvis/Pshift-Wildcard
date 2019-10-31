@@ -26,7 +26,7 @@ export class Milestone {
     public project: Project;
 
     @OneToMany(type => Dispute, dispute => dispute.milestone)
-    public dispute: Dispute[];
+    public disputes: Dispute[];
 
     @PrimaryGeneratedColumn()
     public id?: number;

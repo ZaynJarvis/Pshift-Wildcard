@@ -5,11 +5,20 @@ export class Conn {
 
     public static async getInstance() {
         if (!Conn.conn) {
-            Conn.conn = await createConnection();
+            try {
+                Conn.conn = await createConnection();
+            } catch (e) {
+                console.log(e);
+            }
             return Conn.conn;
         } else {
             return Conn.conn;
         }
+    }
+
+    public static async closeConnection() {
+        await Conn.conn.close();
+        Conn.conn = null;
     }
 
     private Connection() {}
