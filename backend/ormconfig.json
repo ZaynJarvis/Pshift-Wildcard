@@ -4,7 +4,7 @@
     "port": 3306,
     "username": "wildcard",
     "password": "wildcard",
-    "database": "wildcard",
+    "database": "twildcard",
     "synchronize": true,
     "logging": false,
     "entities": ["entity/**/*.ts"],
