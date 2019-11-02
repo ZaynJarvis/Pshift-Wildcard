@@ -20,7 +20,7 @@ export class Dispute {
     })
     public disputeStatus: DisputeStatus;
 
-    @ManyToOne(type => Milestone, ms => ms.dispute)
+    @ManyToOne(type => Milestone, ms => ms.disputes)
     public milestone: Milestone;
 
     @PrimaryGeneratedColumn()

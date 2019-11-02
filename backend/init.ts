@@ -6,7 +6,7 @@ import 'reflect-metadata';
 import { getAllGigs, updateGig } from './controllers/gig';
 import './utils/passport';
 
-import { createConnection } from 'typeorm';
+import { Dispute } from './entity/Dispute';
 import { Gig } from './entity/Gig';
 import { Milestone } from './entity/Milestone';
 import { Project } from './entity/Project';
@@ -16,7 +16,6 @@ import { Conn } from './utils/connection';
 
 (async () => {
     const connection = await Conn.getInstance();
-    console.log(1);
     // const a = new User();
     // a.name = 'OO';
     // a.email = 'PP';
@@ -25,8 +24,9 @@ import { Conn } from './utils/connection';
     // a.setPassword('kkaxs');
     // await connection.manager.save(a);
 
-    // const userRepo = await connection.getRepository(User);
-    // const gigRepo = await connection.getRepository(Gig);
+    const userRepo = await connection.getRepository(User);
+    // const users = await userRepo.findOne({ relations: ['gigs'] });
+    // console.log(users);
 
     // const g = new Gig();
     // g.title = 'G';
@@ -34,9 +34,9 @@ import { Conn } from './utils/connection';
     // g.description = 'des';
     // g.client = await userRepo.findOne();
     // await connection.manager.save(g);
-
-    const proRepo = await connection.getRepository(Project);
-    const mileRepo = await connection.getRepository(Milestone);
+    const gigRepo = await connection.getRepository(Gig);
+    // const gigs = await gigRepo.find({ relations: ['projects'] });
+    // console.log(gigs);
 
     // const p = new Project();
     // p.amount = 3.0;
@@ -44,16 +44,48 @@ import { Conn } from './utils/connection';
     // p.gig = await gigRepo.findOne();
 
     // await connection.manager.save(p);
+    // const proRepo = await connection.getRepository(Project);
+    // const pro = await proRepo.findOne({ relations: ['milestones'] });
+    // console.log(pro);
 
     // const m = new Milestone();
-    // m.deliverables = 'del';
-    // m.description = 'dec';
+    // m.deliverables = 'del2';
+    // m.description = 'dec2';
     // m.project = await proRepo.findOne();
+
     // await connection.manager.save(m);
 
-    const pro = await proRepo.findOne({ relations: ['milestones'] });
+    const mileRepo = await connection.getRepository(Milestone);
+    // const mile = await mileRepo.findOne({ relations: ['disputes'] });
+    // console.log(mile);
 
-    console.log(pro);
+    // const d = new Dispute();
+    // d.description = 'des';
+    // d.milestone = mile;
+    // d.remark = 'nothing';
+    // await connection.manager.save(d);
+
+    const p = new Project();
+    p.amount = 4.0;
+    p.freelancer = await userRepo.findOne();
+    p.gig = await gigRepo.findOne();
+    p.milestones = [
+        mileRepo.create({
+            deliverables: 'de3',
+            description: 'ds3',
+        }),
+        mileRepo.create({
+            deliverables: 'de4',
+            description: 'ds4',
+        }),
+    ];
+    await connection.manager.save(p);
+
+    const proRepo = await connection.getRepository(Project);
+    const pro = await proRepo.find({ relations: ['milestones'] });
+    console.log(pro[1]);
+
+    await Conn.closeConnection();
 })();
 
 HTTPLogger.token('user', (req: any) => {
