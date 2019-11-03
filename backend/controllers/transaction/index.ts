@@ -79,4 +79,5 @@ export const initiateTransaction = async (req, res, next) => {
     newTransaction.client = client;
     newTransaction.freelancer = freelancer;
     await connection.manager.save(newTransaction);
+    res.send();
 };

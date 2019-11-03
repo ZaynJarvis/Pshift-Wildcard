@@ -69,6 +69,7 @@ export const createProject = async (req, res, next) => {
     newProject.gig = gig;
     newProject.freelancer = freelancer;
     await connection.manager.save(newProject);
+    res.send();
 };
 
 export const getMilestonesByProject = async (req, res, next) => {
