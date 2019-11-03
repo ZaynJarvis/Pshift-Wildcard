@@ -113,7 +113,11 @@ export const getUserByID = async (req, res, next) => {
 
 export const createUser = async (req, res, next) => {
     const { name, email, description, avatarUrl, password } = req.body;
-
+    console.log(name);
+    console.log(email);
+    console.log(description);
+    console.log(avatarUrl);
+    console.log(password);
     const connection = await Conn.getInstance();
 
     let newUser = new User();

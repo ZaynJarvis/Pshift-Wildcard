@@ -5,7 +5,11 @@ import { Project, ProjectStatus } from '../../entity/Project';
 import { User } from '../../entity/User';
 import { Conn } from '../../utils/connection';
 import { NotFound } from '../../utils/NotFound';
-import { getRecommendation, likeProject, unlikeProject } from '../../utils/recEngine';
+import {
+    getRecommendation,
+    likeProject,
+    unlikeProject
+} from '../../utils/recEngine';
 
 // export const getGigByID = (req, res, next): Gig => {
 //     const id = req.params ? req.params.id : req;
@@ -54,7 +58,7 @@ export const getAllGigs = async (req, res, next) => {
     const connection = await Conn.getInstance();
     const gigRepository = connection.getRepository(Gig);
     const allGigs: Gig[] = await gigRepository.find({
-        where: { active: true },
+        where: { active: true }
     });
     if (res) {
         res.send(allGigs);
@@ -65,16 +69,20 @@ export const createGig = async (req, res, next) => {
     const { title, imageUrl, description, userId } = req.body;
 
     const connection = await Conn.getInstance();
+    console.log('got connection instance');
     const userRepository = connection.getRepository(User);
     const user: User = await userRepository.findOne({
         where: { id: userId },
-        relations: ['gigs'],
+        relations: ['gigs']
     });
+    console.log(user);
     const newGig = new Gig();
     newGig.title = title;
     newGig.imageUrl = imageUrl;
     newGig.description = description;
     newGig.client = user;
+    newGig.active = true;
+    console.log(newGig.active);
     await connection.manager.save(newGig);
     res.send();
 };
@@ -86,7 +94,7 @@ export const updateGig = async (req, res, next) => {
     const gigRepository = connection.getRepository(Gig);
     const gig: Gig = await gigRepository.findOne({
         where: { id: gigId },
-        relations: ['client'],
+        relations: ['client']
     });
     if (!gig) {
         next(new NotFound(`gig id ${gigId} not found`));
@@ -99,7 +107,7 @@ export const updateGig = async (req, res, next) => {
             title,
             imageUrl,
             description,
-            active,
+            active
         })
         .where({ id: gigId })
         .execute();
@@ -117,7 +125,7 @@ export const acceptProject = async (req, res, next) => {
     const gigRepository = connection.getRepository(Gig);
     const gig: Gig = await gigRepository.findOne({
         where: { id: gigId },
-        relations: ['projects'],
+        relations: ['projects']
     });
     if (!gig) {
         next(new NotFound(`gig id ${gigId} not found`));
@@ -130,7 +138,7 @@ export const acceptProject = async (req, res, next) => {
                 .createQueryBuilder()
                 .update(Project)
                 .set({
-                    ProjectStatus: ProjectStatus.Accepted,
+                    ProjectStatus: ProjectStatus.Accepted
                 })
                 .where({ id: currentProject.id })
                 .execute();
@@ -139,7 +147,7 @@ export const acceptProject = async (req, res, next) => {
                 .createQueryBuilder()
                 .update(Project)
                 .set({
-                    ProjectStatus: ProjectStatus.Rejected,
+                    ProjectStatus: ProjectStatus.Rejected
                 })
                 .where({ id: currentProject.id })
                 .execute();
