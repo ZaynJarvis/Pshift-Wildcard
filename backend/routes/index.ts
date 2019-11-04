@@ -21,15 +21,15 @@ router.post('/login', login);
 import {
     createProject,
     getMilestonesByProject,
-    markMilestone
-    // getAllProjects,
+    markMilestone,
+    getAllProjects
     // getProjectByID,
     // updateProject
 } from '../controllers';
 router.post('/projects', createProject);
 router.get('/projects/:id/milestones', getMilestonesByProject);
-router.put('/projects/:id/markMilestone');
-// router.get('/projects', getAllProjects);
+router.put('/projects/:id/markMilestone', markMilestone);
+router.get('/projects', getAllProjects);
 // router.get('/projects/:id', getProjectByID);
 // router.put('/projects/:id', updateProject);
 
@@ -40,7 +40,8 @@ import {
     // getGigByID,
     // getRecomGigs,
     updateGig,
-    acceptProject
+    acceptProject,
+    deleteGig
 } from '../controllers';
 
 router.post('/gigs', createGig);
@@ -49,6 +50,7 @@ router.get('/gigs', getAllGigs);
 // router.get('/gigs/recommend/:id', getRecomGigs);
 router.put('/gigs/:id', updateGig);
 router.put('/gigs/:id/accept', acceptProject);
+router.put('/gigs/:id/delete', deleteGig);
 
 // transaction
 import { 

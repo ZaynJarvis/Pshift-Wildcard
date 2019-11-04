@@ -104,10 +104,37 @@ export const updateGig = async (req, res, next) => {
         .createQueryBuilder()
         .update(Gig)
         .set({
-            title,
-            imageUrl,
-            description,
-            active
+            title: title,
+            imageUrl: imageUrl,
+            description: description,
+            active: active
+        })
+        .where({ id: gigId })
+        .execute();
+    res.status(204).send();
+    // if (res) {
+    //     res.send(p);
+    // }
+    AppLogger.info(`gig id ${gigId} updated from ${req.body.uid}.`);
+};
+
+export const deleteGig = async (req, res, next) => {
+    const gigId = req.params ? req.params.id : req;
+
+    const connection = await Conn.getInstance();
+    const gigRepository = connection.getRepository(Gig);
+    const gig: Gig = await gigRepository.findOne({
+        where: { id: gigId },
+        relations: ['client']
+    });
+    if (!gig) {
+        next(new NotFound(`gig id ${gigId} not found`));
+    }
+    await connection
+        .createQueryBuilder()
+        .update(Gig)
+        .set({
+            active: false
         })
         .where({ id: gigId })
         .execute();

@@ -7,13 +7,6 @@ import { User } from '../../entity/User';
 import { Milestone, MilestoneStatus } from '../../entity/Milestone';
 import { Conn } from '../../utils/connection';
 
-// export const getAllProjects = (req, res, next) => {
-//     if (res) {
-//         res.send(ProjectStore.d);
-//     }
-//     return ProjectStore.d;
-// };
-
 // export const getProjectByID = (req, res, next): Project => {
 //     const id = req.params ? req.params.id : req;
 //     const p = ProjectStore.getProject(id);
@@ -51,7 +44,6 @@ import { Conn } from '../../utils/connection';
 
 export const createProject = async (req, res, next) => {
     const { amount, gigId, freelancerId } = req.body;
-    const userId = req.params ? req.params.id : req;
 
     const connection = await Conn.getInstance();
     let gigRepository = connection.getRepository(Gig);
@@ -125,4 +117,15 @@ export const markMilestone = async (req, res, next) => {
     //     res.send(p);
     // }
     AppLogger.info(`milestone id ${milestoneId} updated from ${req.body.uid}.`);
+};
+
+export const getAllProjects = async (req, res, next) => {
+    const connection = await Conn.getInstance();
+    const projectRepository = connection.getRepository(Project);
+    const allProjects: Project[] = await projectRepository.find({
+        relations: ['gig']
+    });
+    if (res) {
+        res.send(allProjects);
+    }
 };
