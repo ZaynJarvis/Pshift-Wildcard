@@ -103,7 +103,8 @@ export const getUserByID = async (req, res, next) => {
     const connection = await Conn.getInstance();
     let userRepository = connection.getRepository(User);
     let user: User = await userRepository.findOne({
-        where: { id: userId }
+        where: { id: userId },
+        relations: ['gigs', 'projects']
     });
     console.log(user);
     if (res) {
@@ -187,8 +188,13 @@ export const getAllUsers = async (req, res, next) => {
     console.log('got connection');
     let userRepository = connection.getRepository(User);
     console.log('got userRepo');
-    let allUsers: User[] = await userRepository.find({});
+    let allUsers: User[] = await userRepository.find({
+        relations: ['transactions']
+    });
+    console.log(allUsers);
     if (res) {
         res.send(allUsers);
+    } else {
+        res.end();
     }
 };

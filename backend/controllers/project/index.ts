@@ -51,7 +51,8 @@ export const createProject = async (req, res, next) => {
         where: { id: gigId },
         relations: ['client']
     });
-    let freelancer: User = await gigRepository.findOne({
+    let userRepository = connection.getRepository(User);
+    let freelancer: User = await userRepository.findOne({
         where: { id: freelancerId },
         relations: ['gigs']
     });

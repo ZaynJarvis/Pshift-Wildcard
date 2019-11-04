@@ -58,7 +58,8 @@ export const getAllGigs = async (req, res, next) => {
     const connection = await Conn.getInstance();
     const gigRepository = connection.getRepository(Gig);
     const allGigs: Gig[] = await gigRepository.find({
-        where: { active: true }
+        where: { active: true },
+        relations: ['projects']
     });
     if (res) {
         res.send(allGigs);
