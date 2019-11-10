@@ -90,4 +90,7 @@ router.get('/users', getAllUsers);
 import { createDispute } from '../controllers/dispute';
 router.post('/diputes', createDispute);
 
+//milestone
+import { createMilestone } from '../controllers/milestone';
+router.post('/milestones', createMilestone);
 export default router;
