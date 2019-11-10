@@ -33,6 +33,10 @@ router.get('/projects', getAllProjects);
 // router.get('/projects/:id', getProjectByID);
 // router.put('/projects/:id', updateProject);
 
+//milestone
+import { createMilestone } from '../controllers/milestone';
+router.post('/milestones', createMilestone);
+
 // gig
 import {
     createGig,
@@ -53,7 +57,7 @@ router.put('/gigs/:id/accept', acceptProject);
 router.put('/gigs/:id/delete', deleteGig);
 
 // transaction
-import { 
+import {
     initiateTransaction,
     getTransactionByID, 
     getAllTransactions, 
@@ -90,7 +94,4 @@ router.get('/users', getAllUsers);
 import { createDispute } from '../controllers/dispute';
 router.post('/diputes', createDispute);
 
-//milestone
-import { createMilestone } from '../controllers/milestone';
-router.post('/milestones', createMilestone);
 export default router;
