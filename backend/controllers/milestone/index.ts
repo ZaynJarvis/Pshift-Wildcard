@@ -9,11 +9,10 @@ import { Conn } from '../../utils/connection';
 
 export const createMilestone = async (req, res, next) => {
     const { description, deliverables, projectId } = req.body;
-
     const connection = await Conn.getInstance();
     let projectRepository = connection.getRepository(Project);
     let project: Project = await projectRepository.findOne({
-        where: { id: Project }
+        where: { id: projectId }
     });
     let newMilestone = new Milestone();
     newMilestone.description = description;
