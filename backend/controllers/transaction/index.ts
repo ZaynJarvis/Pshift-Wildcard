@@ -81,3 +81,14 @@ export const initiateTransaction = async (req, res, next) => {
     await connection.manager.save(newTransaction);
     res.send();
 };
+
+export const getAllTransactions = async (req, res, next) => {
+    const connection = await Conn.getInstance();
+    const transactionRepository = connection.getRepository(Transaction);
+    const allTransactions: Transaction[] = await transactionRepository.find({
+        relations: ['client']
+    });
+    if (res) {
+        res.send(allTransactions);
+    }
+};

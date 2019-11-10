@@ -56,11 +56,11 @@ router.put('/gigs/:id/delete', deleteGig);
 import { 
     initiateTransaction,
     getTransactionByID, 
-    //  getAllTransactions, 
+    getAllTransactions, 
     //  updateTransaction 
     } from '../controllers'; // prettier-ignore
 // router.post('/transactions', createTransaction);
-// router.get('/transactions', getAllTransactions);
+router.get('/transactions', getAllTransactions);
 router.get('/transactions/:id', getTransactionByID);
 router.post('/transactions', initiateTransaction);
 // router.put('/transactions/:id', updateTransaction);
