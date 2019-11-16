@@ -22,15 +22,15 @@ import {
     createProject,
     getMilestonesByProject,
     markMilestone,
-    getAllProjects
-    // getProjectByID,
+    getAllProjects,
+    getProjectByID
     // updateProject
 } from '../controllers';
 router.post('/projects', createProject);
 router.get('/projects/:id/milestones', getMilestonesByProject);
 router.put('/projects/:id/markMilestone', markMilestone);
 router.get('/projects', getAllProjects);
-// router.get('/projects/:id', getProjectByID);
+router.get('/projects/:id', getProjectByID);
 // router.put('/projects/:id', updateProject);
 
 //milestone
@@ -41,7 +41,7 @@ router.post('/milestones', createMilestone);
 import {
     createGig,
     getAllGigs,
-    // getGigByID,
+    getGigByID,
     // getRecomGigs,
     updateGig,
     acceptProject,
@@ -50,7 +50,7 @@ import {
 
 router.post('/gigs', createGig);
 router.get('/gigs', getAllGigs);
-// router.get('/gigs/:id', getGigByID);
+router.get('/gigs/:id', getGigByID);
 // router.get('/gigs/recommend/:id', getRecomGigs);
 router.put('/gigs/:id', updateGig);
 router.put('/gigs/:id/accept', acceptProject);

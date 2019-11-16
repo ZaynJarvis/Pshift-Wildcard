@@ -66,6 +66,20 @@ export const getAllGigs = async (req, res, next) => {
     }
 };
 
+export const getGigByID = async (req, res, next) => {
+    const gigId = req.params ? req.params.id : req;
+
+    const connection = await Conn.getInstance();
+    const gigRepository = connection.getRepository(Gig);
+    const gig: Gig = await gigRepository.findOne({
+        where: { active: true, id: gigId },
+        relations: ['projects']
+    });
+    if (res) {
+        res.send(gig);
+    }
+};
+
 export const createGig = async (req, res, next) => {
     const { title, imageUrl, description, userId } = req.body;
 

@@ -130,3 +130,17 @@ export const getAllProjects = async (req, res, next) => {
         res.send(allProjects);
     }
 };
+
+export const getProjectByID = async (req, res, next) => {
+    const projectId = req.params ? req.params.id : req;
+
+    const connection = await Conn.getInstance();
+    const projectRepository = connection.getRepository(Project);
+    const project: Project = await projectRepository.findOne({
+        where: { id: projectId },
+        relations: ['gig']
+    });
+    if (res) {
+        res.send(project);
+    }
+};

@@ -56,7 +56,7 @@ export const getGigsByUser = async (req, res, next) => {
     let userRepository = connection.getRepository(User);
     let user: User = await userRepository.findOne({
         where: { id: userId },
-        relations: ['gigs']
+        relations: ['gigs', 'gigs.projects']
     });
     console.log(user);
     const allGigs = user.gigs.filter(x => x.active);
@@ -72,7 +72,7 @@ export const getProjectsByUser = async (req, res, next) => {
     let userRepository = connection.getRepository(User);
     let user: User = await userRepository.findOne({
         where: { id: userId },
-        relations: ['projects']
+        relations: ['projects', 'projects.gig']
     });
     console.log(user);
     const allProjects = user.projects;
