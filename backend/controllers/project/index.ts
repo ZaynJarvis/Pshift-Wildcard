@@ -144,3 +144,28 @@ export const getProjectByID = async (req, res, next) => {
         res.send(project);
     }
 };
+
+export const updateProject = async (req, res, next) => {
+    const projectId = req.params ? req.params.id : req;
+
+    const connection = await Conn.getInstance();
+    const projectRepository = connection.getRepository(Project);
+    const project: Gig = await projectRepository.findOne({
+        where: { id: projectId }
+    });
+    if (!project) {
+        next(new NotFound(`project id ${projectId} not found`));
+    }
+    const { amount, ProjectStatus } = req.body;
+    await connection
+        .createQueryBuilder()
+        .update(Gig)
+        .set({
+            amount: amount,
+            ProjectStatus: ProjectStatus
+        })
+        .where({ id: projectId })
+        .execute();
+    res.status(204).send();
+    AppLogger.info(`project id ${projectId} updated.`);
+};

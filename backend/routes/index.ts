@@ -23,15 +23,15 @@ import {
     getMilestonesByProject,
     markMilestone,
     getAllProjects,
-    getProjectByID
-    // updateProject
+    getProjectByID,
+    updateProject
 } from '../controllers';
 router.post('/projects', createProject);
 router.get('/projects/:id/milestones', getMilestonesByProject);
 router.put('/projects/:id/markMilestone', markMilestone);
 router.get('/projects', getAllProjects);
 router.get('/projects/:id', getProjectByID);
-// router.put('/projects/:id', updateProject);
+router.put('/projects/:id', updateProject);
 
 //milestone
 import { createMilestone } from '../controllers/milestone';
