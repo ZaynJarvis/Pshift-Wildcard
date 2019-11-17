@@ -5,3 +5,7 @@ export const UPDATE_GIG = 'UPDATE_GIG';
 export const SET_LOADING = 'SET_LOADING';
 export const GET_ALL_PROJECTS = 'GET_ALL_PROJECTS';
 export const UPDATE_USER_ID = 'UPDATE_USER_ID';
+export const GET_GIG_BY_ID = 'GET_GIG_BY_ID';
+export const GET_PROJECT_BY_ID = 'GET_PROJECT_BY_ID';
+export const GET_PROJECTS_BY_USER = 'GET_PROJECT_BY_USER';
+export const GET_GIGS_BY_USER = 'GET_GIG_BY_USER';
