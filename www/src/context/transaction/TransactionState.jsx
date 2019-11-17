@@ -6,36 +6,35 @@ import TransactionReducer from './transactionReducer';
 import { GET_ALL_TRANSACTIONS, SET_LOADING } from '../types';
 
 const TransactionState = props => {
-	const initialState = {
-		transactions: [],
-		loading: false,
-	};
+  const initialState = {
+    transactions: [],
+    loading: false
+  };
 
-	const [state, dispatch] = useReducer(TransactionReducer, initialState);
+  const [state, dispatch] = useReducer(TransactionReducer, initialState);
 
-	const getAllTransactions = async () => {
-		setLoading();
-		const res = await axios.get(`http://54.169.193.114:3001/api/transactions`);
-		dispatch({
-			type: GET_ALL_TRANSACTIONS,
-			payload: res.data,
-		});
-	};
+  const getAllTransactions = async () => {
+    setLoading();
+    const res = await axios.get(`http://localhost:3001/api/transactions`);
+    dispatch({
+      type: GET_ALL_TRANSACTIONS,
+      payload: res.data
+    });
+  };
 
-	// Set Loading
-	const setLoading = () => dispatch({ type: SET_LOADING });
+  // Set Loading
+  const setLoading = () => dispatch({ type: SET_LOADING });
 
-	return (
-		<TransactionContext.Provider
-			value={{
-				transactions: state.transactions,
-				loading: state.loading,
-				getAllTransactions,
-			}}
-		>
-			{props.children}
-		</TransactionContext.Provider>
-	);
+  return (
+    <TransactionContext.Provider
+      value={{
+        transactions: state.transactions,
+        loading: state.loading,
+        getAllTransactions
+      }}>
+      {props.children}
+    </TransactionContext.Provider>
+  );
 };
 
 export default TransactionState;
