@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  description: This is the documentation for [Wildcard](http://wildcard.zaynjarvis.com:3001) for DBS Pshift Hackathon 2019. The repository can be found on GitHub [here](https://github.com/ZaynJarvis/Pshift-Wildcard/tree/master/backend).
+  description: This is the documentation for [Wildcard](http://wildcard.zaynjarvis.com) for DBS Pshift Hackathon 2019. The repository can be found on GitHub [here](https://github.com/ZaynJarvis/Pshift-Wildcard/tree/master/backend).
   version: 1.0.0
   title: Wildcard API
   contact:
