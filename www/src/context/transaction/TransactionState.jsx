@@ -22,7 +22,7 @@ const TransactionState = props => {
   const getTransactionsByUser = async uid => {
     setLoading();
     const res = await axios.get(
-      `http://localhost:3001/api/users/${uid}/transactions`,
+      `http://service:3001/api/users/${uid}/transactions`,
       AuthService.getAuthHeader()
     );
     dispatch({
@@ -34,7 +34,7 @@ const TransactionState = props => {
   const getAllTransactions = async () => {
     setLoading();
     const res = await axios.get(
-      `http://localhost:3001/api/transactions`,
+      `http://service:3001/api/transactions`,
       AuthService.getAuthHeader()
     );
     dispatch({

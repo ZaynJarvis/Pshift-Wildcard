@@ -1,6 +1,5 @@
 .PHONY: all
 all: 
-	$(MAKE) -C backend all
 	$(MAKE) -C www all
 	sudo docker-compose up --build -d
 

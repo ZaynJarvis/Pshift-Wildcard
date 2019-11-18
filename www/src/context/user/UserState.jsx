@@ -19,7 +19,7 @@ const UserState = props => {
 
 	const getProfile = async () => {
 		setLoading();
-		const res = await axios.get(`http://localhost:3001/api/profile`, AuthService.getAuthHeader());
+		const res = await axios.get(`http://service:3001/api/profile`, AuthService.getAuthHeader());
 		dispatch({
 			type: GET_PROFILE,
 			payload: res.data,

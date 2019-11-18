@@ -5,6 +5,7 @@
     "scripts": {
         "build": "tsc",
         "dev": "ts-node-dev ./index.ts",
+        "server": "ts-node ./index.ts",
         "start": "node ./built/index.js",
         "format": "prettier --write \"src/**/*.ts\"",
         "lint": "tslint -p tsconfig.json && eslint . --ignore-path .gitignore",

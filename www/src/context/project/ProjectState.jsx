@@ -24,7 +24,7 @@ const ProjectState = props => {
   const getProjectsByUser = async uid => {
     setLoading();
     const res = await axios.get(
-      `http://localhost:3001/api/users/${uid}/projects`,
+      `http://service:3001/api/users/${uid}/projects`,
       AuthService.getAuthHeader(),
     );
     dispatch({
@@ -35,7 +35,7 @@ const ProjectState = props => {
 
   // Get project by id
   const getProjectByID = async pid => {
-    const res = await axios.get(`http://localhost:3001/api/projects/${pid}`, AuthService.getAuthHeader());
+    const res = await axios.get(`http://service:3001/api/projects/${pid}`, AuthService.getAuthHeader());
     dispatch({
       type: GET_PROJECT_BY_ID,
       payload: res.data
@@ -45,7 +45,7 @@ const ProjectState = props => {
   // Get all projects
   const getAllProjects = async () => {
     setLoading();
-    const res = await axios.get(`http://localhost:3001/api/projects`, AuthService.getAuthHeader());
+    const res = await axios.get(`http://service:3001/api/projects`, AuthService.getAuthHeader());
     dispatch({
       type: GET_ALL_PROJECTS,
       payload: res.data

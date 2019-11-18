@@ -1,4 +1,4 @@
-FROM node
+FROM node:10
 WORKDIR /app
 COPY ./package.json .
 RUN wget http://download.redis.io/redis-stable.tar.gz && \
@@ -11,10 +11,10 @@ RUN wget http://download.redis.io/redis-stable.tar.gz && \
     rm -r redis-stable && \
     npm install -g concurrently
 
-RUN npm install --only=prod
+RUN npm i
 
 COPY . .
 
-CMD concurrently "/usr/bin/redis-server --bind '0.0.0.0'" "sleep 5s; redis-cli flushall; npm run dev"
+CMD concurrently "/usr/bin/redis-server --bind '0.0.0.0'" "sleep 5s; redis-cli flushall; npm run server"
 
 EXPOSE 3001
