@@ -1,0 +1,894 @@
+openapi: 3.0.1
+info:
+  description: This is the documentation for [Wildcard](http://pshift.zaynjarvis.com:3001) for DBS Pshift Hackathon 2019. The repository can be found on GitHub [here](https://github.com/ZaynJarvis/Pshift-Wildcard/tree/master/backend).
+  version: 1.0.0
+  title: Wildcard API
+  contact:
+    email: 'zaynjarvis@gmail.com'
+
+# Tags
+tags:
+  - name: test
+    description: API test connection
+  - name: auth
+    description: Operations about user authentication
+  - name: project
+    description: Operations about projects
+  - name: milestone
+    description: Operations for milestones
+  - name: gig
+    description: Operations about gigs
+  - name: transaction
+    description: Operations about transactions
+  - name: insurance
+    description: Operations about insurance
+  - name: user
+    description: Operations about user
+  - name: dispute
+    description: Operations about dispute
+servers:
+  - url: https://wildcard.zaynjarvis.com/
+
+# Paths
+paths:
+  # test
+  /hello:
+    get:
+      tags:
+        - test
+      summary: Test connection
+      description: Make a test connection with server
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              example: User example@example.com already existed, try to login.
+
+  # auth
+  /register:
+    # register
+    post:
+      tags:
+        - auth
+      summary: Register user
+      description: Register a user given user's name, email, description, avatarUrl and password
+      responses:
+        200:
+          description: OK
+        400:
+          description: Email already exists
+          content:
+            application/json:
+              example: User example@example.com already existed, try to login.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                description:
+                  type: string
+                avatarUrl:
+                  type: string
+                password:
+                  type: string
+
+  /login:
+    # login
+    post:
+      tags:
+        - auth
+      summary: Login user
+      description: Logs user in using Passport module
+      responses:
+        200:
+          description: OK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+
+  # project
+  /projects:
+    # createProject
+    post:
+      tags:
+        - project
+      summary: Create a project from a gig
+      description: Create a project along with the offered amount from a gig given its gigId
+      responses:
+        200:
+          description: OK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                amount:
+                  type: number
+                gigId:
+                  type: string
+                freelancerId:
+                  type: string
+    # getAllProjects
+    get:
+      tags:
+        - project
+      summary: Get all projects
+      description: Get array of all projects
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Project'
+
+  /projects/{id}/milestones:
+    # getMilestonesByProject
+    get:
+      tags:
+        - project
+      summary: Get Milestones for project
+      description: Get array of Milestones for a project given its projectId
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Milestone'
+      parameters:
+        - name: id
+          in: path
+          description: ID of Project
+          required: true
+          schema:
+            type: string
+
+  /projects/{id}/markMilestone:
+    # markMilestone
+    post:
+      tags:
+        - project
+      summary: Mark milestone
+      description: Mark milestone given its milestoneId
+      responses:
+        204:
+          description: OK
+        404:
+          description: Not found
+          content:
+            application/json:
+              example: milestone id 1 not found
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                milestoneId:
+                  type: string
+                userId:
+                  type: string
+      parameters:
+        - name: id
+          in: path
+          description: ID of Project
+          required: true
+          schema:
+            type: string
+
+  /projects/{id}:
+    # getProjectByID
+    get:
+      tags:
+        - project
+      summary: Get project by projectId
+      description: Get project by projectId
+      responses:
+        200:
+          description: OK'
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Project'
+      parameters:
+        - name: id
+          in: path
+          description: ID of Project
+          required: true
+          schema:
+            type: string
+    # updateProject
+    put:
+      tags:
+        - project
+      summary: Update project
+      description: Update project for given projectId
+      responses:
+        204:
+          description: OK
+        404:
+          description: Project not found
+          content:
+            application/json:
+              example: project id ${projectId} not found
+      parameters:
+        - name: id
+          in: path
+          description: ID of Project
+          required: true
+          schema:
+            type: string
+
+  # milestone
+  /milestones:
+    # createMilestone
+    post:
+      tags:
+        - milestone
+      summary: Create milestone
+      description: Create milestone for given Project ID
+      responses:
+        200:
+          description: OK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                description:
+                  type: string
+                deliverables:
+                  type: string
+                projectId:
+                  type: string
+  # gig
+  /gigs:
+    # getAllGigs
+    get:
+      tags:
+        - gig
+      summary: Get Gigs for User
+      description: Get array of Gigs for currently signed in user
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Gig'
+    # createGig
+    post:
+      tags:
+        - gig
+      summary: Create Gig
+      description: Create a Gig given a title, imageUrl, description, and userId
+      responses:
+        200:
+          description: OK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                title:
+                  type: string
+                imageUrl:
+                  type: string
+                description:
+                  type: string
+                userId:
+                  type: string
+  /gigs/recommend:
+    # get one recommend gig
+    get:
+      tags:
+        - gig
+      summary: Get a recommend Gig for User
+      description: Get a recommend Gig for currently signed in user
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Gig'
+  /gigs/{id}:
+    # getGigByID
+    get:
+      tags:
+        - gig
+      summary: Get Gig
+      description: Get Gig given its ID
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Gig'
+      parameters:
+        - name: id
+          in: path
+          description: The project id that needs to be fetched.
+          required: true
+          schema:
+            type: string
+    # updateGig
+    put:
+      tags:
+        - gig
+      summary: Update Gig
+      description: Update Gig given its ID
+      responses:
+        204:
+          description: OK
+        404:
+          description: Gig not found
+          content:
+            application/json:
+              example: gig id 1 not found
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                title:
+                  type: string
+                imageUrl:
+                  type: string
+                description:
+                  type: string
+                active:
+                  type: string
+      parameters:
+        - name: id
+          in: path
+          description: ID of Gig
+          required: true
+          schema:
+            type: string
+
+  /gigs/{id}/accept:
+    # acceptProject
+    put:
+      tags:
+        - gig
+      summary: Accept a Gig
+      description: Accept a Gig given its ID
+      responses:
+        204:
+          description: OK
+        404:
+          description: Gig not found
+          content:
+            application/json:
+              example: gig id 1 not found
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                projectId:
+                  type: string
+      parameters:
+        - name: id
+          in: path
+          description: ID of Gig
+          required: true
+          schema:
+            type: string
+  # deleteGig
+  /gigs/{id}/delete:
+    put:
+      tags:
+        - gig
+      summary: Delete Gig
+      description: Delete Gig given its ID
+      responses:
+        204:
+          description: OK
+        404:
+          description: Gig not found
+          content:
+            application/json:
+              example: gig id 1 not found
+      parameters:
+        - name: id
+          in: path
+          description: ID of Gig
+          required: true
+          schema:
+            type: string
+
+  # transaction
+  /transactions:
+    # getAllTransactions
+    get:
+      tags:
+        - transaction
+      summary: Get Transactions
+      description: Get array of Transactions given currently logged in user
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Transaction'
+    # initiateTransaction
+    post:
+      tags:
+        - transaction
+      summary: Initiate Transaction
+      description: Initiate Transaction from Client to Freelancer
+      responses:
+        200:
+          description: OK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                amount:
+                  type: number
+                type:
+                  type: string
+                description:
+                  type: string
+                clientId:
+                  type: string
+                freelancerId:
+                  type: string
+
+  /transactions/{id}:
+    # getTransactionByID
+    get:
+      tags:
+        - transaction
+      summary: Get Transaction
+      description: Get Transaction given its ID
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Transaction'
+      parameters:
+        - name: id
+          in: path
+          description: ID of Transaction
+          required: true
+          schema:
+            type: string
+
+  # insurance
+  /insurances:
+    # getAllInsurances
+    get:
+      tags:
+        - insurance
+      summary: Get Insurances
+      description: Get array of Insurances available
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Insurance'
+    # createInsurance
+    post:
+      tags:
+        - insurance
+      summary: Create Insurance
+      description: Create Insurance given an Insurance ID
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              example: insurance 1 created
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: string
+                  description: ID for Insurance
+
+  /insurances/{id}:
+    # getInsuranceByID
+    get:
+      tags:
+        - insurance
+      summary: Get Insurance
+      description: Get Insurance given its ID
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Insurance'
+        404:
+          description: Insurance not found
+          content:
+            application/json:
+              example: insurance id 1 not found
+      parameters:
+        - name: id
+          in: path
+          description: ID of Insurance
+          required: true
+          schema:
+            type: string
+    # updateInsurance
+    put:
+      tags:
+        - insurance
+      summary: Update Insurance
+      description: Update Insurance given its ID
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              example: insurance id 1 updated
+        404:
+          description: Insurance not found
+          content:
+            application/json:
+              example: insurance id 1 not found
+      parameters:
+        - name: id
+          in: path
+          description: ID of Insurance
+          required: true
+          schema:
+            type: string
+
+  # user
+  /users:
+    # getAllUsers
+    get:
+      tags:
+        - user
+      summary: Get all Users
+      description: Get array of all Users
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    # createUser
+    post:
+      tags:
+        - user
+      summary: Create User
+      description: Create User given User's name, email, description, avatarUrl, password
+      responses:
+        200:
+          description: OK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                description:
+                  type: string
+                avatarUrl:
+                  type: string
+                password:
+                  type: string
+
+  /users/{id}/gigs:
+    # getGigsByUser
+    get:
+      tags:
+        - user
+      summary: Get Gigs given User ID
+      description: Get array of Gigs for a given User ID
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Gig'
+      parameters:
+        - name: id
+          in: path
+          description: ID for User
+          required: true
+          schema:
+            type: string
+
+  /users/{id}/projects:
+    # getProjectsByUser
+    get:
+      tags:
+        - user
+      summary: Get Projects given User ID
+      description: Get array of Projects for a given User ID
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Project'
+      parameters:
+        - name: id
+          in: path
+          description: ID for User
+          required: true
+          schema:
+            type: string
+
+  /users/{id}/transactions:
+    # getTransactionsByUser
+    get:
+      tags:
+        - user
+      summary: Get Transactions given User ID
+      description: Get array of Transactions for a given User ID
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Transaction'
+      parameters:
+        - name: id
+          in: path
+          description: ID for User
+          required: true
+          schema:
+            type: string
+
+  # dispute
+  /disputes:
+    # createDispute
+    post:
+      tags:
+        - dispute
+      summary: Create Dispute
+      description: Create a Dispute for a Milestone
+      responses:
+        200:
+          description: OK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                description:
+                  type: string
+                remark:
+                  type: string
+                clientId:
+                  type: string
+                milestoneId:
+                  type: string
+
+# ====================================================
+
+components:
+  schemas:
+    Gig:
+      type: object
+      properties:
+        title:
+          type: string
+        imageUrl:
+          type: string
+        description:
+          type: string
+        active:
+          type: boolean
+
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        salt:
+          type: string
+        hash:
+          type: string
+        description:
+          type: string
+        avatarUrl:
+          type: string
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+        projects:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+        gigs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Gig'
+
+    Transaction:
+      type: object
+      properties:
+        amount:
+          type: number
+        type:
+          type: string
+        description:
+          type: string
+        transactionStatus:
+          $ref: '#/components/schemas/TransactionStatus'
+        client:
+          $ref: '#/components/schemas/User'
+        freelancer:
+          $ref: '#/components/schemas/User'
+        id:
+          type: number
+        createdAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date
+
+    Project:
+      type: object
+      properties:
+        amount:
+          type: number
+        ProjectStatus:
+          $ref: '#/components/schemas/ProjectStatus'
+        freelancer:
+          $ref: '#/components/schemas/User'
+        gig:
+          $ref: '#/components/schemas/Gig'
+        milestones:
+          type: array
+          items:
+            $ref: '#/components/schemas/Milestone'
+        id:
+          type: string
+
+    Dispute:
+      type: object
+      properties:
+        description:
+          type: string
+        remark:
+          type: string
+        disputeStatus:
+          $ref: '#/components/schemas/DisputeStatus'
+        milestone:
+          $ref: '#/components/schemas/Milestone'
+        id:
+          type: number
+
+    Milestone:
+      type: object
+      properties:
+        description:
+          type: string
+        deliverables:
+          type: string
+        MilestoneStatus:
+          $ref: '#/components/schemas/MilestoneStatus'
+        project:
+          $ref: '#/components/schemas/Project'
+        disputes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dispute'
+        id:
+          type: number
+
+    Insurance:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        imageUrl:
+          type: string
+        url:
+          type: string
+        amount:
+          type: number
+        inCarousel:
+          type: boolean
+
+    DisputeStatus:
+      type: string
+      enum:
+        - Pending
+        - Improving
+        - Completed
+    MilestoneStatus:
+      type: string
+      enum:
+        - Proposed
+        - CC
+        - CF
+        - CA
+    ProjectStatus:
+      type: string
+      enum:
+        - Proposed
+        - Accepted
+        - Rejected
+        - Completed
+    TransactionStatus:
+      type: string
+      enum:
+        - Pending
+        - Completed
