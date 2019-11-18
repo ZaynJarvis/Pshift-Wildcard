@@ -5,7 +5,7 @@
     "username": "wildcard",
     "password": "wildcard",
     "database": "wildcard",
-    "synchronize": true,
+    "synchronize": false,
     "logging": false,
     "entities": ["entity/**/*.ts"],
     "migrations": ["migration/**/*.ts"],

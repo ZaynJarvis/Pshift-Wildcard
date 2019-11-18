@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './style.css';
 import Layout from '../Layout';
 import TagMenu from './TagMenu';
@@ -6,7 +6,6 @@ import SearchInput, { createFilter } from 'react-search-input';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import GigContext from '../../context/gig/gigContext';
-import UserContext from '../../context/user/userContext';
 import Image from 'react-graceful-image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
@@ -15,38 +14,34 @@ const KEYS_TO_FILTERS = ['title', 'description'];
 
 const MarketPage = () => {
 	const gigContext = useContext(GigContext);
-	const userContext = useContext(UserContext);
 
-	const { gigs, updateGig } = gigContext;
-	const { id: uid } = userContext;
-
+	const { gigs, updateGig, getAllGigs } = gigContext;
 	const [searchTerm, setTerm] = useState('');
+
+	useEffect(() => {
+		getAllGigs();
+		// eslint-disable-next-line
+	}, []);
 
 	const searchUpdated = term => {
 		setTerm(term);
 	};
 
 	const updateLike = (id, like) => {
-		if (like === undefined) {
-			like = [uid];
-			updateGig(id, { like, uid });
-		} else if (like.includes(uid)) {
-			like = like.filter(u => u !== uid);
-			updateGig(id, { like, uid });
+		if (like) {
+			updateGig(id, { like: false });
 		} else {
-			like = [...like, uid];
-			updateGig(id, { like, uid });
+			updateGig(id, { like: true });
 		}
 	};
 
 	const filteredGigs = gigs.filter(createFilter(searchTerm, KEYS_TO_FILTERS));
-
 	return (
-		<Layout title="Marketplace">
+		<Layout title='Marketplace'>
 			<Container>
 				<Row>
 					<Col>
-						<SearchInput className="search-input form-control" onChange={searchUpdated} />
+						<SearchInput className='search-input form-control' onChange={searchUpdated} />
 					</Col>
 				</Row>
 				<TagMenu />
@@ -57,30 +52,30 @@ const MarketPage = () => {
 								<Card>
 									<Image
 										src={project.imageUrl}
-										noLazyLoad="true"
-										className="cardImgTop"
-										height="200"
-										alt="..."
+										noLazyLoad='true'
+										className='cardImgTop'
+										height='200'
+										alt='...'
 										style={{ objectFit: 'cover' }}
 									></Image>
 									<Card.Body>
 										<Card.Title>{project.title}</Card.Title>
 										<Card.Text>{project.description}</Card.Text>
-										<div className="links">
+										<div className='links'>
 											<LinkContainer to={`/offer/${project.id}`}>
-												<Button variant="outline-info">Apply</Button>
+												<Button variant='outline-info'>Apply</Button>
 											</LinkContainer>
-											{project.like !== undefined && project.like.includes(uid) ? (
+											{project.like ? (
 												<FontAwesomeIcon
 													icon={faStar}
 													onClick={() => updateLike(project.id, project.like)}
-													className="like"
+													className='like'
 												/>
 											) : (
 												<FontAwesomeIcon
 													icon={faStar}
 													onClick={() => updateLike(project.id, project.like)}
-													className="default"
+													className='default'
 												/>
 											)}
 										</div>

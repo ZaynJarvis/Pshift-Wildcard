@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, ManyToOne, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
 import { Project } from './Project';
 import { User } from './User';
 
@@ -11,7 +11,7 @@ export class Gig {
     @Column('text')
     public description: string;
     @Column({
-        default: false,
+        default: true,
     })
     public active: boolean;
 
@@ -19,6 +19,8 @@ export class Gig {
     public client: User;
     @OneToMany(type => Project, project => project.gig)
     public projects: Project[];
+    @ManyToMany(type => User, user => user.like)
+    public like: User[];
 
     @PrimaryGeneratedColumn()
     public id?: number;

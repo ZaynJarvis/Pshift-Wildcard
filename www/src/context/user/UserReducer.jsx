@@ -1,12 +1,13 @@
-import { UPDATE_USER_ID } from '../types';
+import { GET_PROFILE } from '../types';
 
 export default (state, action) => {
 	switch (action.type) {
-		case UPDATE_USER_ID:
-			console.log(action.payload);
+		case GET_PROFILE:
+			localStorage.setItem('uid', action.payload.id);
 			return {
 				...state,
-				id: action.payload,
+				user: action.payload,
+				uid: action.payload.id,
 			};
 		default:
 			return state;

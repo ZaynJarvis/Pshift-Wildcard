@@ -1,5 +1,6 @@
 import passport from 'passport';
-import { User, UserStore } from '../../models';
+import { User } from '../../entity/User';
+import { Conn } from '../../utils/connection';
 
 const uncachedRequire = path => {
     delete require.cache[require.resolve(path)];
@@ -7,12 +8,22 @@ const uncachedRequire = path => {
 };
 
 export const register = async (req, res, next) => {
-    const user = new User(req.body);
+    const { name, email, description, avatarUrl, password } = req.body;
+    const newUser = new User();
+    newUser.name = name;
+    newUser.email = email;
+    newUser.description = description;
+    newUser.avatarUrl = avatarUrl || '';
+    newUser.setPassword(password);
+    const connection = await Conn.getInstance();
     try {
-        const existedUser = UserStore.getUser(user.email);
+        const userRepository = connection.getRepository(User);
+        const existedUser: User = await userRepository.findOne({
+            where: { email: newUser.email }
+        });
         if (existedUser) {
             res.status(400).send({
-                message: `User (${user.email}) already existed, try to login.`,
+                message: `User (${newUser.email}) already existed, try to login.`
             });
             return;
         }
@@ -21,10 +32,10 @@ export const register = async (req, res, next) => {
         return;
     }
     try {
-        UserStore.saveUser(user);
+        await connection.manager.save(newUser);
         res.status(200).send({
             message: 'user register success',
-            id: user.id,
+            id: newUser.id
         });
     } catch (err) {
         next(err);
