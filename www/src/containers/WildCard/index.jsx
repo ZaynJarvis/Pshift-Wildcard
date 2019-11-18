@@ -16,12 +16,15 @@ import RegisterPage from '../AuthPage/register';
 import AuthService from '../AuthPage/AuthService';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={(props) => (
-		AuthService.isAuthenticated
-      ? <Component {...props} />
-      : <Redirect to='/login' />
-  )} />
-)
+		<Route {...rest} render={(props) => {
+	
+	return (
+			AuthService.isAuthenticated()
+				? <Component {...props} />
+				: <Redirect to='/login' />
+		)}} />
+	)
+
 
 const WildCard = () => {
 	return (

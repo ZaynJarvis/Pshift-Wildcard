@@ -26,8 +26,6 @@ class AuthService {
     }
 
     isAuthenticated() {
-        console.log(localStorage.getItem("jwt"));
-        console.log(!!localStorage.getItem("jwt"));
         return !!localStorage.getItem("jwt");
     }
 }
