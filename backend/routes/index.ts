@@ -7,7 +7,7 @@ const router = Router();
 router.all('/hello', (req, res) => res.json({ text: 'Hello World!' }));
 
 // authentication unsecured route
-import { login, register } from '../controllers/auth';
+import { login, profile, register } from '../controllers/auth';
 router.post('/register', register);
 router.post('/login', login);
 
@@ -15,17 +15,16 @@ router.post('/login', login);
 router.use(passport.authenticate('jwt', { session: false }));
 
 // profile
-import { profile } from '../controllers';
 router.get('/profile', profile);
 
 // project
 import {
     createProject,
-    getMilestonesByProject,
-    markMilestone,
     getAllProjects,
+    getMilestonesByProject,
     getProjectByID,
-    updateProject
+    markMilestone,
+    updateProject,
 } from '../controllers';
 router.post('/projects', createProject);
 router.get('/projects/:id/milestones', getMilestonesByProject);
@@ -34,56 +33,58 @@ router.get('/projects', getAllProjects);
 router.get('/projects/:id', getProjectByID);
 router.put('/projects/:id', updateProject);
 
-//milestone
+// milestone
 import { createMilestone } from '../controllers/milestone';
 router.post('/milestones', createMilestone);
 
 // gig
 import {
+    acceptProject,
     createGig,
+    deleteGig,
     getAllGigs,
     getGigByID,
-    // getRecomGigs,
+    getRecomGigs,
     updateGig,
-    acceptProject,
-    deleteGig
 } from '../controllers';
 
 router.post('/gigs', createGig);
 router.get('/gigs', getAllGigs);
+router.get('/gigs/recommend', getRecomGigs);
 router.get('/gigs/:id', getGigByID);
-// router.get('/gigs/recommend/:id', getRecomGigs);
 router.put('/gigs/:id', updateGig);
 router.put('/gigs/:id/accept', acceptProject);
 router.put('/gigs/:id/delete', deleteGig);
 
 // transaction
 import {
-    initiateTransaction,
-    getTransactionByID,
     getAllTransactions,
-    //  updateTransaction
-    } from '../controllers'; // prettier-ignore
-// router.post('/transactions', createTransaction);
+    getTransactionByID,
+    initiateTransaction,
+} from '../controllers'; // prettier-ignore
 router.get('/transactions', getAllTransactions);
 router.get('/transactions/:id', getTransactionByID);
 router.post('/transactions', initiateTransaction);
-// router.put('/transactions/:id', updateTransaction);
 
 // insurance
-import { createInsurance, getAllInsurances, getInsuranceByID, updateInsurance } from '../controllers'; // prettier-ignore
+import {
+    createInsurance,
+    getAllInsurances,
+    getInsuranceByID,
+    updateInsurance,
+} from '../controllers';
 router.post('/insurances', createInsurance);
 router.get('/insurances', getAllInsurances);
 router.get('/insurances/:id', getInsuranceByID);
 router.put('/insurances/:id', updateInsurance);
 
-//user
+// user
 import {
     createUser,
     getAllUsers,
     getGigsByUser,
     getProjectsByUser,
-    getTransactionsByUser
+    getTransactionsByUser,
 } from '../controllers/user';
 router.get('/users/:id/gigs', getGigsByUser);
 router.get('/users/:id/projects', getProjectsByUser);
@@ -91,7 +92,7 @@ router.get('/users/:id/transactions', getTransactionsByUser);
 router.post('/users', createUser);
 router.get('/users', getAllUsers);
 
-//dispute
+// dispute
 import { createDispute } from '../controllers/dispute';
 router.post('/diputes', createDispute);
 

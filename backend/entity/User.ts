@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
-import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Gig } from './Gig';
 import { Milestone } from './Milestone';
 import { Project } from './Project';
@@ -29,6 +29,9 @@ export class User {
     public projects: Project[];
     @OneToMany(type => Gig, gig => gig.client)
     public gigs: Gig[];
+    @ManyToMany(type => Gig, gig => gig.like)
+    @JoinTable()
+    public like: Gig[];
 
     public setPassword(passwd: string) {
         this.salt = crypto.randomBytes(16).toString('hex');

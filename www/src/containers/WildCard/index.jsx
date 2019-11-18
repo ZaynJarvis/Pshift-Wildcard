@@ -40,7 +40,7 @@ const WildCard = () => {
 const SubRoute = ({ location }) => {
 	return (
 		<>
-			<Route path="/" exact component={LoginPage} />
+			<Route path="/" exact component={HomePage} />
 			<Route path="/login" component={LoginPage} />
 			<Route path="/login:email" component={LoginPage} />
 			<Route path="/register" component={RegisterPage} />

@@ -2,8 +2,8 @@ import passport from 'passport';
 import { ExtractJwt, Strategy as JWTstrategy } from 'passport-jwt';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { UserStore } from '../models';
-import { Conn } from "./connection";
-import { User } from "../entity/User";
+import { Conn } from './connection';
+import { User } from '../entity/User';
 
 export class UnauthorizedError extends Error {
     public status = 401;
@@ -23,7 +23,6 @@ passport.use(
         },
         async (token, done) => {
             try {
-                console.log(token);
                 const connection = await Conn.getInstance();
                 const userRepository = connection.getRepository(User);
                 const { salt, hash, ...user }: User = await userRepository.findOne({
@@ -45,7 +44,6 @@ passport.use(
             passwordField: 'password',
         },
         async (email, password, done) => {
-
             try {
                 const connection = await Conn.getInstance();
                 const userRepository = connection.getRepository(User);
