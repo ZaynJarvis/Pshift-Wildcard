@@ -4,6 +4,7 @@ import TransactionContext from './transactionContext';
 import TransactionReducer from './transactionReducer';
 
 import { GET_ALL_TRANSACTIONS, SET_LOADING } from '../types';
+import AuthService from '../../containers/AuthPage/AuthService';
 
 const TransactionState = props => {
   const initialState = {
@@ -15,7 +16,7 @@ const TransactionState = props => {
 
   const getAllTransactions = async () => {
     setLoading();
-    const res = await axios.get(`http://localhost:3001/api/transactions`);
+    const res = await axios.get(`http://localhost:3001/api/transactions`, AuthService.getAuthHeader());
     dispatch({
       type: GET_ALL_TRANSACTIONS,
       payload: res.data

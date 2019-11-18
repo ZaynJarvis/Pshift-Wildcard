@@ -2,6 +2,8 @@ import passport from 'passport';
 import { ExtractJwt, Strategy as JWTstrategy } from 'passport-jwt';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { UserStore } from '../models';
+import { Conn } from "./connection";
+import { User } from "../entity/User";
 
 export class UnauthorizedError extends Error {
     public status = 401;
@@ -21,7 +23,12 @@ passport.use(
         },
         async (token, done) => {
             try {
-                const { salt, hash, ...user } = await UserStore.getUser(token.email);
+                console.log(token);
+                const connection = await Conn.getInstance();
+                const userRepository = connection.getRepository(User);
+                const { salt, hash, ...user }: User = await userRepository.findOne({
+                    where: { email: token.email },
+                });
                 return done(null, user);
             } catch (error) {
                 done(error);
@@ -38,8 +45,13 @@ passport.use(
             passwordField: 'password',
         },
         async (email, password, done) => {
+
             try {
-                const user = UserStore.getUser(email);
+                const connection = await Conn.getInstance();
+                const userRepository = connection.getRepository(User);
+                const user: User = await userRepository.findOne({
+                    where: { email },
+                });
                 const validate = await user.varifyPassword(password);
                 if (!validate) {
                     const err: any = new UnauthorizedError('Wrong Password');

@@ -20,6 +20,6 @@ export class Conn {
         await Conn.conn.close();
         Conn.conn = null;
     }
-
+    
     private Connection() {}
 }

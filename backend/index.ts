@@ -16,7 +16,7 @@ const AppLogger = log4js.getLogger('wildcard');
 const port = 3001;
 const httpLog = fs.createWriteStream(path.join(__dirname, 'http.log'), { flags: 'a' });
 const loggerFormat =
-    ':date[iso] :: :pmethod :purl :: [:status] res-length: :res[content-length]\t res-time :response-time ms :: :user';
+    ':date[iso] :: :pmethod :purl :req[header] :: [:status] res-length: :res[content-length]\t res-time :response-time ms :: :user';
 
 app.use(cookieParser());
 app.use(passport.initialize());
@@ -26,7 +26,7 @@ app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors({ origin: '*', optionsSuccessStatus: 200 }));
-
+app.use((req, res, next) => {console.log(res); next();})
 app.use('/api', routesApi);
 
 /* eslint-disable no-unused-vars */

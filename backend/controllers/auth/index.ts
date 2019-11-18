@@ -9,16 +9,16 @@ const uncachedRequire = path => {
 
 export const register = async (req, res, next) => {
     const { name, email, description, avatarUrl, password } = req.body;
-    let newUser = new User();
+    const newUser = new User();
     newUser.name = name;
     newUser.email = email;
     newUser.description = description;
-    newUser.avatarUrl = avatarUrl;
+    newUser.avatarUrl = avatarUrl || '';
     newUser.setPassword(password);
     const connection = await Conn.getInstance();
     try {
-        let userRepository = connection.getRepository(User);
-        let existedUser: User = await userRepository.findOne({
+        const userRepository = connection.getRepository(User);
+        const existedUser: User = await userRepository.findOne({
             where: { email: newUser.email }
         });
         if (existedUser) {

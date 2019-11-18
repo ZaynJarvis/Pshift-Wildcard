@@ -1,5 +1,5 @@
 import { Router } from 'express';
-// import passport from 'passport';
+import passport from 'passport';
 
 const router = Router();
 
@@ -7,12 +7,12 @@ const router = Router();
 router.all('/hello', (req, res) => res.json({ text: 'Hello World!' }));
 
 // authentication unsecured route
-import { login, profile } from '../controllers/auth';
-// router.post('/register', register);
+import { login, register } from '../controllers/auth';
+router.post('/register', register);
 router.post('/login', login);
 
 // route lock, comment out when authorization is not required
-// router.use(passport.authenticate('jwt', { session: false }));
+router.use(passport.authenticate('jwt', { session: false }));
 
 // profile
 // router.get('/profile', profile);
@@ -59,9 +59,9 @@ router.put('/gigs/:id/delete', deleteGig);
 // transaction
 import {
     initiateTransaction,
-    getTransactionByID, 
-    getAllTransactions, 
-    //  updateTransaction 
+    getTransactionByID,
+    getAllTransactions,
+    //  updateTransaction
     } from '../controllers'; // prettier-ignore
 // router.post('/transactions', createTransaction);
 router.get('/transactions', getAllTransactions);

@@ -3,6 +3,7 @@ import axios from 'axios';
 import InsuranceContext from './insuranceContext';
 import InsuranceReducer from './insuraneReducer';
 import { GET_ALL_INSURANCES, SET_LOADING } from '../types';
+import AuthService from '../../containers/AuthPage/AuthService';
 
 const InsuranceState = props => {
   const initialState = {
@@ -15,7 +16,7 @@ const InsuranceState = props => {
   // Get Insurance
   const getAllInsurances = async () => {
     setLoading();
-    const res = await axios.get(`http://localhost:3001/api/insurances`);
+    const res = await axios.get(`http://localhost:3001/api/insurances`, AuthService.getAuthHeader());
     dispatch({
       type: GET_ALL_INSURANCES,
       payload: res.data

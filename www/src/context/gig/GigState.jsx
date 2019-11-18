@@ -9,7 +9,7 @@ import {
   GET_GIG_BY_ID,
   GET_GIGS_BY_USER
 } from '../types';
-import { FaRss } from 'react-icons/fa';
+import AuthService from '../../containers/AuthPage/AuthService';
 
 const GigState = props => {
   const initialState = {
@@ -23,7 +23,7 @@ const GigState = props => {
   // Get gigs by user
   const getGigsByUser = async uid => {
     setLoading();
-    const res = await axios.get(`http://localhost:3001/api/users/${uid}/gigs`);
+    const res = await axios.get(`http://localhost:3001/api/users/${uid}/gigs`, AuthService.getAuthHeader());
     dispatch({
       type: GET_GIGS_BY_USER,
       payload: res.data
@@ -33,7 +33,7 @@ const GigState = props => {
   // Get gig by Id
   const getGigByID = async gid => {
     let data = [];
-    const res = await axios.get(`http://localhost:3001/api/gigs/${gid}`);
+    const res = await axios.get(`http://localhost:3001/api/gigs/${gid}`, AuthService.getAuthHeader());
     data = res.data;
     console.log(`Get gig of id ${gid} \n${data}`);
     dispatch({
@@ -47,11 +47,12 @@ const GigState = props => {
     setLoading();
     let data = [];
     const res = await axios.get(
-      `http://localhost:3001/api/gigs/recommend/${id}`
+      `http://localhost:3001/api/gigs/recommend/${id}`,
+      AuthService.getAuthHeader(),
     );
     data = res.data;
     console.log(data);
-    const resAll = await axios.get(`http://localhost:3001/api/gigs`);
+    const resAll = await axios.get(`http://localhost:3001/api/gigs`, AuthService.getAuthHeader());
     dispatch({
       type: GET_ALL_GIGS,
       payload: [...data, ...resAll.data]
@@ -60,7 +61,7 @@ const GigState = props => {
 
   const updateGig = async (id, content) => {
     setLoading();
-    const p = await axios.put(`http://localhost:3001/api/gigs/${id}`, content);
+    const p = await axios.put(`http://localhost:3001/api/gigs/${id}`, content, AuthService.getAuthHeader());
     dispatch({
       type: UPDATE_GIG,
       payload: state.gigs.map(s => {

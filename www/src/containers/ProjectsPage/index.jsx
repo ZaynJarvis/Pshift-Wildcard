@@ -12,7 +12,6 @@ import {
   Carousel,
   Tabs,
   Tab,
-  ListGroup
 } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import Image from 'react-graceful-image';

@@ -11,14 +11,24 @@ import WalletPage from '../WalletPage';
 import BottomNavigation from '../../components/BottomNavigation';
 import DisputePage from '../MilestonePage/DisputePage/index';
 import OfferPage from '../OfferPage/index';
-import LoginPage from '../LoginPage/index';
+import LoginPage from '../AuthPage/login';
+import RegisterPage from '../AuthPage/register';
+import AuthService from '../AuthPage/AuthService';
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={(props) => (
+		AuthService.isAuthenticated
+      ? <Component {...props} />
+      : <Redirect to='/login' />
+  )} />
+)
 
 const WildCard = () => {
 	return (
 		<Router>
 			<div className="page">
 				<Route component={SubRoute} />
-				<Route path="/project/:id" component={MilestonePage} />
+				<PrivateRoute path="/project/:id" component={MilestonePage} />
 			</div>
 		</Router>
 	);
@@ -27,17 +37,20 @@ const WildCard = () => {
 const SubRoute = ({ location }) => {
 	return (
 		<>
-			<Redirect path="/" exact to="/login" />
+			<Redirect path="/" exact to="/market" />
 			<Route path="/login" component={LoginPage} />
-			<Route path="/projects" exact component={ProjectPage} />
-			<Route path="/market" component={HomePage} />
-			<Route path="/insurance" component={InsurancePage} />
-			<Route path="/profile" component={ProfilePage} />
-			<Route path="/wallet" component={WalletPage} />
-			<Route path="/dispute" exact component={DisputePage} />
-			<Route path="/offer/:id" exact component={OfferPage} />
+			<Route path="/login:email" component={LoginPage} />
+			<Route path="/register" component={RegisterPage} />
+			
+			<PrivateRoute path="/projects" exact component={ProjectPage} />
+			<PrivateRoute path="/market" component={HomePage} />
+			<PrivateRoute path="/insurance" component={InsurancePage} />
+			<PrivateRoute path="/profile" component={ProfilePage} />
+			<PrivateRoute path="/wallet" component={WalletPage} />
+			<PrivateRoute path="/dispute" exact component={DisputePage} />
+			<PrivateRoute path="/offer/:id" exact component={OfferPage} />
 			{!(
-				location.pathname.indexOf('/project/') === 0 || location.pathname.indexOf('/login') === 0
+				location.pathname.indexOf('/project/') === 0 || location.pathname.indexOf('/login') === 0 || location.pathname.indexOf('/register') === 0
 			) && <BottomNavigation />}
 		</>
 	);

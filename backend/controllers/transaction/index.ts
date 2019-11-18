@@ -88,7 +88,5 @@ export const getAllTransactions = async (req, res, next) => {
     const allTransactions: Transaction[] = await transactionRepository.find({
         relations: ['client']
     });
-    if (res) {
-        res.send(allTransactions);
-    }
+    res.send(allTransactions);
 };
