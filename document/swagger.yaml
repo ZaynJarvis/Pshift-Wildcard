@@ -27,7 +27,7 @@ tags:
   - name: dispute
     description: Operations about dispute
 servers:
-  - url: http://wildcard.zaynjarvis.com:3001
+  - url: http://wildcard.zaynjarvis.com:3001/api
 
 # Paths
 paths:
