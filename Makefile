@@ -6,4 +6,3 @@ all:
 clean:
 	sudo docker-compose down
 	$(MAKE) -C www clean
-	$(MAKE) -C backend clean

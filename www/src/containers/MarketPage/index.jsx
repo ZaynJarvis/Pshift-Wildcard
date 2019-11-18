@@ -9,17 +9,20 @@ import GigContext from '../../context/gig/gigContext';
 import Image from 'react-graceful-image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import UserContext from '../../context/user/userContext';
 
 const KEYS_TO_FILTERS = ['title', 'description'];
 
 const MarketPage = () => {
 	const gigContext = useContext(GigContext);
+	const { getProfile } = React.useContext(UserContext);
 
 	const { gigs, updateGig, getAllGigs } = gigContext;
 	const [searchTerm, setTerm] = useState('');
 
 	useEffect(() => {
 		getAllGigs();
+		getProfile();
 		// eslint-disable-next-line
 	}, []);
 
