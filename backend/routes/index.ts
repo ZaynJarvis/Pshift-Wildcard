@@ -15,7 +15,8 @@ router.post('/login', login);
 router.use(passport.authenticate('jwt', { session: false }));
 
 // profile
-// router.get('/profile', profile);
+import { profile } from '../controllers';
+router.get('/profile', profile);
 
 // project
 import {

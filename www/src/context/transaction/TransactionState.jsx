@@ -3,7 +3,11 @@ import axios from 'axios';
 import TransactionContext from './transactionContext';
 import TransactionReducer from './transactionReducer';
 
-import { GET_ALL_TRANSACTIONS, SET_LOADING } from '../types';
+import {
+  GET_ALL_TRANSACTIONS,
+  SET_LOADING,
+  GET_TRANSACTIONS_BY_USER
+} from '../types';
 import AuthService from '../../containers/AuthPage/AuthService';
 
 const TransactionState = props => {
@@ -14,9 +18,25 @@ const TransactionState = props => {
 
   const [state, dispatch] = useReducer(TransactionReducer, initialState);
 
+  // Get transactions by users
+  const getTransactionsByUser = async uid => {
+    setLoading();
+    const res = await axios.get(
+      `http://localhost:3001/api/users/${uid}/transactions`,
+      AuthService.getAuthHeader()
+    );
+    dispatch({
+      type: GET_TRANSACTIONS_BY_USER,
+      payload: res.data
+    });
+  };
+
   const getAllTransactions = async () => {
     setLoading();
-    const res = await axios.get(`http://localhost:3001/api/transactions`, AuthService.getAuthHeader());
+    const res = await axios.get(
+      `http://localhost:3001/api/transactions`,
+      AuthService.getAuthHeader()
+    );
     dispatch({
       type: GET_ALL_TRANSACTIONS,
       payload: res.data
@@ -31,7 +51,8 @@ const TransactionState = props => {
       value={{
         transactions: state.transactions,
         loading: state.loading,
-        getAllTransactions
+        getAllTransactions,
+        getTransactionsByUser
       }}>
       {props.children}
     </TransactionContext.Provider>

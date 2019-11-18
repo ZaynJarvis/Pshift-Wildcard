@@ -12,6 +12,7 @@ import {
 } from 'react-bootstrap';
 import { FaBitcoin, FaEthereum, FaDollarSign } from 'react-icons/fa';
 import TransactionContext from '../../context/transaction/transactionContext';
+import UserContext from '../../context/user/userContext';
 
 const Wallet = ({ type, title }) => {
   const currencyType = {
@@ -34,11 +35,13 @@ const Wallet = ({ type, title }) => {
   const Icon = currencyType[type];
 
   const transactionContext = useContext(TransactionContext);
+  const userContext = useContext(UserContext);
 
-  const { transactions, getAllTransactions } = transactionContext;
+  const { transactions, getTransactionsByUser } = transactionContext;
+  const { uid } = userContext;
 
   useEffect(() => {
-    getAllTransactions();
+    getTransactionsByUser(uid);
     // eslint-disable-next-line
   }, []);
 
@@ -62,8 +65,11 @@ const Wallet = ({ type, title }) => {
               <ListGroup.Item key={value.id}>
                 <Row className='transaction'>
                   <Col>
-                    <h6>{value.item}</h6>
-                    <p>{value.date}</p>
+                    <h6>
+                      {value.transactionStatus.charAt(0).toUpperCase() +
+                        value.transactionStatus.slice(1)}
+                    </h6>
+                    <p>{Date(value.updatedAt)}</p>
                   </Col>
                   <Col>
                     <h3

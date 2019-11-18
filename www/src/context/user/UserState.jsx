@@ -9,6 +9,7 @@ import { GET_PROFILE, SET_LOADING } from '../types';
 const UserState = props => {
   const initialState = {
     user: {},
+    uid: -1,
     loading: false
   };
 
@@ -18,7 +19,10 @@ const UserState = props => {
 
   const getProfile = async () => {
     setLoading();
-    const res = await axios.get(`http://localhost:3001/api/profile`, AuthService.getAuthHeader());
+    const res = await axios.get(
+      `http://localhost:3001/api/profile`,
+      AuthService.getAuthHeader()
+    );
     dispatch({
       type: GET_PROFILE,
       payload: res.data
@@ -29,8 +33,9 @@ const UserState = props => {
     <UserContext.Provider
       value={{
         user: state.user,
+        uid: state.uid,
         loading: state.loading,
-        getProfile,
+        getProfile
       }}>
       {props.children}
     </UserContext.Provider>

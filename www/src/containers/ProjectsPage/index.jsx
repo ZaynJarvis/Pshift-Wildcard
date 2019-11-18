@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import './style.css';
 import Layout from '../Layout';
 import ProjectContext from '../../context/project/projectContext';
+import UserContext from '../../context/user/userContext';
 
 import {
   Container,
@@ -11,7 +12,7 @@ import {
   Card,
   Carousel,
   Tabs,
-  Tab,
+  Tab
 } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import Image from 'react-graceful-image';
@@ -21,10 +22,11 @@ const ProjectsPage = () => {
 
   const { projects, getProjectsByUser } = projectContext;
 
-  // TODO Get id of login user
-  const uid = 1;
+  // Get id of current user
+  const userContext = useContext(UserContext);
 
   useEffect(() => {
+    const { uid } = userContext;
     getProjectsByUser(uid);
     console.log(projects);
     // eslint-disable-next-line
@@ -88,32 +90,41 @@ const ProjectsPage = () => {
               <Tab eventKey='ongoing' title='Ongoing'>
                 <Row>
                   {projects
-                    .filter(project => project.ProjectStatus === 'pending')
-                    .map(project => (
-                      <Col md={4} key={project.id}>
-                        <Card>
-                          <Image
-                            src={project.gig.imageUrl}
-                            noLazyLoad='true'
-                            style={{ objectFit: 'cover' }}
-                            className='cardImgTop'
-                            height='200'
-                            alt='...'></Image>
-                          <Card.Body>
-                            <Card.Title>{project.gig.title}</Card.Title>
-                            <Card.Text>{project.gig.description}</Card.Text>
-                            <LinkContainer to='/project/0'>
-                              <Button>Manage Milestones</Button>
-                            </LinkContainer>
-                          </Card.Body>
-                          {/* <ListGroup className='list-group-flush'>
+                    ? projects
+                        .filter(
+                          project =>
+                            project.ProjectStatus === 'pending' || 'proposed'
+                        )
+                        .map(project => (
+                          <Col md={4} key={project.id}>
+                            <Card>
+                              <Image
+                                src={project.gig ? project.gig.imageUrl : null}
+                                noLazyLoad='true'
+                                style={{ objectFit: 'cover' }}
+                                className='cardImgTop'
+                                height='200'
+                                alt='...'></Image>
+                              <Card.Body>
+                                <Card.Title>
+                                  {project.gig ? project.gig.title : null}
+                                </Card.Title>
+                                <Card.Text>
+                                  {project.gig ? project.gig.description : null}
+                                </Card.Text>
+                                <LinkContainer to='/project/0'>
+                                  <Button>Manage Milestones</Button>
+                                </LinkContainer>
+                              </Card.Body>
+                              {/* <ListGroup className='list-group-flush'>
                           <ListGroup.Item variant='success'>
                             Phase 2 of 4: In Progress
                           </ListGroup.Item>
                         </ListGroup> */}
-                        </Card>
-                      </Col>
-                    ))}
+                            </Card>
+                          </Col>
+                        ))
+                    : null}{' '}
                 </Row>
               </Tab>
 
