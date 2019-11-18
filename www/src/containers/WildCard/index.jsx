@@ -37,7 +37,7 @@ const WildCard = () => {
 const SubRoute = ({ location }) => {
 	return (
 		<>
-			<Redirect path="/" exact to="/market" />
+			<Route path="/" exact component={LoginPage} />
 			<Route path="/login" component={LoginPage} />
 			<Route path="/login:email" component={LoginPage} />
 			<Route path="/register" component={RegisterPage} />

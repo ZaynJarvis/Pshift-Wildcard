@@ -11,23 +11,28 @@ import { Link } from 'react-router-dom';
 
 export default () => {
 	const { gigs } = React.useContext(GigContext);
-	const { id } = React.useContext(UserContext);
-	const recent = gigs.find(g => g.like && g.like.includes(id));
+	const { user } = React.useContext(UserContext);
+	const recent = gigs.find(g => g.like && g.like.includes(user.id));
 
 	return (
 		<div className="profile-wrapper">
 			<div className="content-wrapper">
 				<div className="profile-bg"></div>
 				<div className="profile-avatar">
-					<Image src={users[id].image} alt="..." style={{ objectFit: 'cover' }}></Image>
+					<Image src={users.avatarUrl || 'https://viper.works/minecraft/uploads/monthly_2016_09/Walrus.png.0e909d06f6171ffc1ac34dd736e1e82f.thumb.png.80c63490b20fdae166db28c9272e743f.png'} alt="..." style={{ objectFit: 'cover' }}></Image>
 				</div>
 				<div className="profile-desc">
 					<div>
-						<h3>{id}</h3>
-						<p>{users[id].desc}</p>
+						<h3>{user.name}</h3>
+						<p>{users.desc}</p>
 					</div>
 					<div>
-						{users[id].interests.map(i => (
+						{/* {users.interests.map(i => (
+							<span key={i} className="user-interest">
+								{i}
+							</span>
+						))} */}
+						{['design'].map(i => (
 							<span key={i} className="user-interest">
 								{i}
 							</span>
@@ -84,14 +89,14 @@ export default () => {
 						</Card>
 					</>
 				)}
-				<h4>Experiences</h4>
+				{/* <h4>Experiences</h4>
 				<div
 					style={{
 						marginBottom: '2rem',
 					}}
 				>
 					<Accordion defaultActiveKey={0} className="list-wrapper">
-						{users[id].projects.map((p, i) => (
+						{users.projects.map((p, i) => (
 							<Accordion.Toggle as={Card.Header} eventKey={i} key={i} className="list-content">
 								<div className="preview">
 									<span className="title">{p.title}</span>
@@ -108,8 +113,8 @@ export default () => {
 							</Accordion.Toggle>
 						))}
 					</Accordion>
-				</div>
-				{users[id].comments && users[id].comments[0] && (
+				</div> */}
+				{/* {users[id].comments && users[id].comments[0] && (
 					<>
 						<h4>Comments from Employers</h4>
 						<div className="user-comments">
@@ -124,7 +129,7 @@ export default () => {
 							</Card>
 						</div>
 					</>
-				)}
+				)} */}
 				<p
 					style={{
 						color: 'lightgrey',

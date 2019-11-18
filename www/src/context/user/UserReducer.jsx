@@ -1,8 +1,8 @@
-import { UPDATE_USER_ID } from '../types';
+import { GET_PROFILE } from '../types';
 
 export default (state, action) => {
 	switch (action.type) {
-		case UPDATE_USER_ID:
+		case GET_PROFILE:
 			console.log(action.payload);
 			return {
 				...state,

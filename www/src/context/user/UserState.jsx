@@ -1,28 +1,36 @@
+import axios from 'axios';
 import React, { useReducer } from 'react';
 import UserContext from './userContext';
 import UserReducer from './UserReducer';
+import AuthService from '../../containers/AuthPage/AuthService';
 
-import { UPDATE_USER_ID } from '../types';
+import { GET_PROFILE, SET_LOADING } from '../types';
 
 const UserState = props => {
   const initialState = {
-    id: 'Zayn'
+    user: {},
+    loading: false
   };
 
   const [state, dispatch] = useReducer(UserReducer, initialState);
 
-  const setUserID = async id => {
+  const setLoading = () => dispatch({ type: SET_LOADING });
+
+  const getProfile = async () => {
+    setLoading();
+    const res = await axios.get(`http://localhost:3001/api/profile`, AuthService.getAuthHeader());
     dispatch({
-      type: UPDATE_USER_ID,
-      payload: id
+      type: GET_PROFILE,
+      payload: res.data
     });
   };
 
   return (
     <UserContext.Provider
       value={{
-        id: state.id,
-        setUserID
+        user: state.user,
+        loading: state.loading,
+        getProfile,
       }}>
       {props.children}
     </UserContext.Provider>
