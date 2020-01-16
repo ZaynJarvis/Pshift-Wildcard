@@ -18,7 +18,7 @@ const GigState = props => {
 	const getGigsByUser = async uid => {
 		setLoading();
 		const res = await axios.get(
-			`http://54.169.193.114:3001/api/users/${uid}/gigs`,
+			`http://3.0.55.134:3001/api/users/${uid}/gigs`,
 			AuthService.getAuthHeader(),
 		);
 		dispatch({
@@ -31,7 +31,7 @@ const GigState = props => {
 	const getGigByID = async gid => {
 		let data = [];
 		const res = await axios.get(
-			`http://54.169.193.114:3001/api/gigs/${gid}`,
+			`http://3.0.55.134:3001/api/gigs/${gid}`,
 			AuthService.getAuthHeader(),
 		);
 		data = res.data;
@@ -46,11 +46,11 @@ const GigState = props => {
 	const getAllGigs = async id => {
 		setLoading();
 		const res = await axios.get(
-			`http://54.169.193.114:3001/api/gigs/recommend`,
+			`http://3.0.55.134:3001/api/gigs/recommend`,
 			AuthService.getAuthHeader(),
 		);
 		const resAll = await axios.get(
-			`http://54.169.193.114:3001/api/gigs`,
+			`http://3.0.55.134:3001/api/gigs`,
 			AuthService.getAuthHeader(),
 		);
 		let result = [];
@@ -66,7 +66,7 @@ const GigState = props => {
 	const updateGig = async (id, content) => {
 		setLoading();
 		const p = await axios.put(
-			`http://54.169.193.114:3001/api/gigs/${id}`,
+			`http://3.0.55.134:3001/api/gigs/${id}`,
 			content,
 			AuthService.getAuthHeader(),
 		);

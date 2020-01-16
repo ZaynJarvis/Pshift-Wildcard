@@ -20,7 +20,7 @@ const UserState = props => {
 	const getProfile = async () => {
 		setLoading();
 		const res = await axios.get(
-			`http://54.169.193.114:3001/api/profile`,
+			`http://3.0.55.134:3001/api/profile`,
 			AuthService.getAuthHeader(),
 		);
 		dispatch({

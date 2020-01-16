@@ -19,7 +19,7 @@ const ProjectState = props => {
 	const getProjectsByUser = async uid => {
 		setLoading();
 		const res = await axios.get(
-			`http://54.169.193.114:3001/api/users/${uid}/projects`,
+			`http://3.0.55.134:3001/api/users/${uid}/projects`,
 			AuthService.getAuthHeader(),
 		);
 		dispatch({
@@ -31,7 +31,7 @@ const ProjectState = props => {
 	// Get project by id
 	const getProjectByID = async pid => {
 		const res = await axios.get(
-			`http://54.169.193.114:3001/api/projects/${pid}`,
+			`http://3.0.55.134:3001/api/projects/${pid}`,
 			AuthService.getAuthHeader(),
 		);
 		dispatch({
@@ -44,7 +44,7 @@ const ProjectState = props => {
 	const getAllProjects = async () => {
 		setLoading();
 		const res = await axios.get(
-			`http://54.169.193.114:3001/api/projects`,
+			`http://3.0.55.134:3001/api/projects`,
 			AuthService.getAuthHeader(),
 		);
 		dispatch({

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const USER_API_BASE_URL = 'http://54.169.193.114:3001/api/';
+const USER_API_BASE_URL = 'http://3.0.55.134:3001/api/';
 
 class AuthService {
 	login(credentials) {
